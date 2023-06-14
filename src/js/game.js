@@ -1,17 +1,24 @@
 import '../css/style.css'
-import { Actor, Engine, Vector } from "excalibur"
+import { Actor, Engine, Physics, Vector } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 import { Maincharacter } from './Actors/character'
 
 export class Game extends Engine {
 
     constructor() {
-        super({ width: 800, height: 600 })
+        super({
+            width: 800,
+            height: 600
+        })
         this.start(ResourceLoader).then(() => this.startGame())
+        Physics.useRealisticPhysics();
+        Physics.gravity = new Vector(0, 400);
+
+        this.showDebug(true)
     }
 
 
-    startGame(engine) {
+    startGame() {
         console.log("start de game!")
         const player = new Maincharacter()
 
