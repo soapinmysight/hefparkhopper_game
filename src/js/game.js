@@ -18,5 +18,5 @@ export class Game extends Engine {
         this.add(fish)
     }
 }
-ollaaaaaaaaaaaaaaaaaaalalaaa
+
 new Game()
