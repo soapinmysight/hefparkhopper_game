@@ -13,21 +13,21 @@ export class Maincharacter extends ex.Actor {
         super({
             collisionType: ex.CollisionType.Active,
             collider: ex.Shape.Box(50, 40, ex.Vector.Half, ex.vec(0, 0)),
+            displayMode: ex.DisplayMode.FitScreen,
         });
 
         this.graphics.use(Resources.Fish.toSprite());
         this.health = 3;
-        this.speed = 800;
+        this.speed = 300;
         this.pos = new ex.Vector(50, 500);
-        // console.log(this.pos);
-        // this.vel = new ex.Vector(100, 100);
         this.pointer.useGraphicsBounds = true;
         this.enableCapturePointer = true;
         this.body.gravity = true;
+
     }
 
     onInitialize(engine) {
-        // this.pos = new Vector(3000, 3000);
+
         engine.input.keyboard.enabled = true;
 
         const keys = ex.Input.Keys;
@@ -39,7 +39,7 @@ export class Maincharacter extends ex.Actor {
                 this.vel.x = this.speed;
             } else if (evt.key === keys.W || evt.key === keys.Up) {
                 this.jumped = true;
-                this.vel.y = -700;
+                this.vel.y = -300;
             } else if (evt.key === keys.S || evt.key === keys.Down) {
                 // Handle S key press
             }
@@ -54,6 +54,7 @@ export class Maincharacter extends ex.Actor {
                 // Handle S key release
             }
         });
+
     }
 
     update(engine) {
