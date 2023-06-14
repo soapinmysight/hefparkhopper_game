@@ -14,7 +14,7 @@ export class Game extends Engine {
     startGame(engine) {
         console.log("start de game!")
         const player = new Maincharacter()
-        player.graphics.use(Resources.Fish.toSprite())
+
         this.add(player)
 
 

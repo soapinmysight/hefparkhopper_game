@@ -1,4 +1,5 @@
 import { Actor, CollisionType, Engine, Vector } from "excalibur"
+import { Resources, ResourceLoader } from "../resources"
 
 export class Maincharacter extends Actor {
     health
@@ -12,6 +13,7 @@ export class Maincharacter extends Actor {
         super({
             collisionType: CollisionType.Active,
         })
+        this.graphics.use(Resources.Fish.toSprite())
         this.health = 3
         this.speed
         this.pos = new Vector(100, 100)
