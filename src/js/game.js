@@ -4,7 +4,7 @@ import { Resources, ResourceLoader } from './resources.js'
 import { Maincharacter } from './Actors/character'
 // import { platform } from './Actors/platform.js'
 // import { Background } from './js/Actors/Background.js'
-import { LevelOne } from './Scenes/levelOne.js'
+import { LevelOne } from './Scenes/LevelOne.js'
 
 export class Game extends ex.Engine {
     constructor() {
