@@ -2,8 +2,8 @@ import '../css/style.css'
 import * as ex from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 import { Maincharacter } from './Actors/character'
-import { platform } from './platform.js'
-import { Background } from './Background.js'
+import { platform } from './Actors/platform.js'
+import { Background } from '../js/Actors/Background.js'
 import { level1 } from './Scenes/LevelOne.js'
 
 export class Game extends ex.Engine {
