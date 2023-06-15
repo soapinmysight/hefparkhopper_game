@@ -9,7 +9,7 @@ export class level1 extends ex.Scene {
 
     onInitialize(Engine) {
 
-        const backgroundImage = Resources.Fish.toSprite();
+        const backgroundImage = Resources.Bee.toSprite();
         const background = new Background(0, 80, 200, 20, backgroundImage);
         this.add(background);
 
