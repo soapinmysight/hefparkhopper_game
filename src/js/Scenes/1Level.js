@@ -2,7 +2,7 @@
 import * as ex from "excalibur"
 import { Resources, ResourceLoader } from '../resources.js'
 import { Maincharacter } from '../Actors/character.js'
-import { platform } from '../Actors/platform.js'
+import { Platform } from '../Actors/platform.js'
 import { Background } from '../Actors/Background.js'
 
 export class LevelOne extends ex.Scene {
@@ -13,11 +13,9 @@ export class LevelOne extends ex.Scene {
         const background = new Background(0, 0, 200, 20, backgroundImage);
         this.add(background);
 
-        const platform1 = new platform(0, 580, 2000, 20, ex.Color.Green);
-        this.add(platform1);
-
-        const platform2 = new platform(0, 380, 200, 20, ex.Color.Green);
-        this.add(platform2);
+        const platform = new Platform();
+        this.add(platform);
+        platform.pos = new ex.Vector(140, 550);
 
         console.log("start de game!")
         const player = new Maincharacter()

@@ -5,6 +5,7 @@ import buttonImage from "../images/button.png"
 import backgroundImage from "../images/background.png"
 import flowerImage from "../images/flower.png"
 import platformImage from "../images/platform.png"
+import Bottomborder from "../images/bottomBorder.png"
 
 const Resources = {
     Bee: new ImageSource(beeImage),
@@ -12,7 +13,8 @@ const Resources = {
     Button: new ImageSource(buttonImage),
     Background: new ImageSource(backgroundImage),
     Flower: new ImageSource(flowerImage),
-    Platform: new ImageSource(platformImage)
+    Platform: new ImageSource(platformImage),
+    BottomBorder: new ImageSource(Bottomborder)
 
 }
 const ResourceLoader = new Loader([
@@ -22,6 +24,7 @@ const ResourceLoader = new Loader([
     Resources.Background,
     Resources.Flower,
     Resources.Platform,
+    Resources.BottomBorder
 ])
 
 export { Resources, ResourceLoader }
