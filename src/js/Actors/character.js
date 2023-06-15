@@ -14,13 +14,12 @@ export class Maincharacter extends ex.Actor {
         super({
             collisionType: ex.CollisionType.Active,
             collider: circle,
-            // collider: ex.Shape.Circle(200, 40, ex.Vector.Half, ex.vec(0, 0)),
             displayMode: ex.DisplayMode.FitScreen,
         });
 
         this.graphics.use(Resources.Bee.toSprite());
         this.health = 3;
-        this.speed = 300;
+        this.speed = 200;
         this.scale = new ex.Vector(0.4, 0.4)
         this.pos = new ex.Vector(50, 500);
         this.pointer.useGraphicsBounds = true;
@@ -63,11 +62,11 @@ export class Maincharacter extends ex.Actor {
     }
 
     update(engine) {
-        if (this.vel.x > 0) {
-            this.vel.x -= 10;
-        } else if (this.vel.x < 0) {
-            this.vel.x += 10;
-        }
+        // if (this.vel.x > 0) {
+        //     this.vel.x -= 10;
+        // } else if (this.vel.x < 0) {
+        //     this.vel.x += 10;
+        // }
 
         if (this.vel.y === 0) {
             this.onGround = true;
@@ -76,12 +75,19 @@ export class Maincharacter extends ex.Actor {
             this.onGround = false;
         }
 
-        // if (this.vel.y === 0) { // Changed comparison operator from == to ===
-        //     this.onGround = true;
-        //     this.jumped = false;
-        // } else {
-        //     this.onGround = false;
-        // }
+        engine.input.keyboard.on("hold", (evt) => { // Changed parameter name from Engine to engine
+            if (evt.key === ex.Input.Keys.A) {
+                this.vel.x = -800;
+            } else if (evt.key === ex.Input.Keys.D) {
+                this.vel.x = 800;
+            } else if (evt.key === ex.Input.Keys.W && this.onGround) {
+                this.playerAnimations["jumpAnimation"].reset();
+                this.jumped = true;
+                this.vel.y = -700;
+            }
+        })
+
+
         engine.currentScene.camera.x = this.pos.x + 80
         // this.pos = this.pos.add(this.vel.scale(engine.deltaTime / 1000));
     }
