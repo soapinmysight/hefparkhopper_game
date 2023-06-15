@@ -11,5 +11,6 @@ export class platform extends ex.Actor {
             collisionType: ex.CollisionType.Fixed,
             collisionGroup: ex.CollisionGroupManager.groupByName('platform'),
         });
+        // this.graphics.use(Resources.platform.toSprite());
     }
 }

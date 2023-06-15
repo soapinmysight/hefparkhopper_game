@@ -9,8 +9,8 @@ export class level1 extends ex.Scene {
 
     onInitialize(Engine) {
 
-        const backgroundImage = Resources.Bee.toSprite();
-        const background = new Background(0, 80, 200, 20, backgroundImage);
+        const backgroundImage = Resources.Background.toSprite();
+        const background = new Background(0, 0, 200, 20, backgroundImage);
         this.add(background);
 
         const platform1 = new platform(0, 580, 2000, 20, ex.Color.Green);

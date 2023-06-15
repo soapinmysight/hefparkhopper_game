@@ -76,6 +76,7 @@ export class Maincharacter extends ex.Actor {
             this.onGround = false;
         }
 
+        engine.currentScene.camera.x = this.pos.x + 80
         // this.pos = this.pos.add(this.vel.scale(engine.deltaTime / 1000));
     }
 }
