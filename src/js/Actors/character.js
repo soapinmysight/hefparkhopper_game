@@ -10,15 +10,18 @@ export class Maincharacter extends ex.Actor {
     y
 
     constructor() {
+        const circle = ex.Shape.Circle(110, ex.vec(5, 25))
         super({
             collisionType: ex.CollisionType.Active,
-            collider: ex.Shape.Box(50, 40, ex.Vector.Half, ex.vec(0, 0)),
+            collider: circle,
+            // collider: ex.Shape.Circle(200, 40, ex.Vector.Half, ex.vec(0, 0)),
             displayMode: ex.DisplayMode.FitScreen,
         });
 
-        this.graphics.use(Resources.Fish.toSprite());
+        this.graphics.use(Resources.Bee.toSprite());
         this.health = 3;
         this.speed = 300;
+        this.scale = new ex.Vector(0.4, 0.4)
         this.pos = new ex.Vector(50, 500);
         this.pointer.useGraphicsBounds = true;
         this.enableCapturePointer = true;
@@ -43,6 +46,8 @@ export class Maincharacter extends ex.Actor {
             } else if (evt.key === keys.S || evt.key === keys.Down) {
                 // Handle S key press
             }
+
+
         });
 
         engine.input.keyboard.on("release", (evt) => {
