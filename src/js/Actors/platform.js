@@ -1,4 +1,5 @@
-import * as ex from 'excalibur';
+import * as ex from 'excalibur'
+import { Resources, ResourceLoader } from '../resources';
 
 export class platform extends ex.Actor {
     constructor(x, y, width, height) {
@@ -11,6 +12,6 @@ export class platform extends ex.Actor {
             collisionType: ex.CollisionType.Fixed,
             collisionGroup: ex.CollisionGroupManager.groupByName('platform'),
         });
-        // this.graphics.use(Resources.platform.toSprite());
+        this.graphics.use(Resources.Platform.toSprite());
     }
 }
