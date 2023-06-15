@@ -5,7 +5,7 @@ import { Maincharacter } from '../Actors/character.js'
 import { platform } from '../Actors/platform.js'
 import { Background } from '../Actors/Background.js'
 
-export class level1 extends ex.Scene {
+export class LevelOne extends ex.Scene {
 
     onInitialize(Engine) {
 

@@ -4,7 +4,7 @@ import { Resources, ResourceLoader } from './resources.js'
 import { Maincharacter } from './Actors/character'
 // import { platform } from './Actors/platform.js'
 // import { Background } from './js/Actors/Background.js'
-import { level1 } from './Scenes/LevelOne.js'
+import { LevelOne } from './Scenes/levelOne.js'
 
 export class Game extends ex.Engine {
     constructor() {
@@ -23,9 +23,9 @@ export class Game extends ex.Engine {
     startGame() {
         console.log("start the game!");
 
-        const map = new level1()
-        this.addScene('level1', map)
-        this.goToScene('level1')
+        const map = new LevelOne()
+        this.addScene('LevelOne', map)
+        this.goToScene('LevelOne')
     }
 }
 
