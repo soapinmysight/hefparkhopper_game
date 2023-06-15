@@ -19,7 +19,7 @@ export class Maincharacter extends ex.Actor {
 
         this.graphics.use(Resources.Bee.toSprite());
         this.health = 3;
-        this.speed = 200;
+        this.speed = 300;
         this.scale = new ex.Vector(0.4, 0.4)
         this.pos = new ex.Vector(50, 500);
         this.pointer.useGraphicsBounds = true;
@@ -39,34 +39,41 @@ export class Maincharacter extends ex.Actor {
                 this.vel.x = -this.speed;
             } else if (evt.key === keys.D || evt.key === keys.Right) {
                 this.vel.x = this.speed;
-            } else if (evt.key === keys.W || evt.key === keys.Up) {
-                this.jumped = true;
-                this.vel.y = -300;
-            } else if (evt.key === keys.S || evt.key === keys.Down) {
-                // Handle S key press
+                // } else if (evt.key === keys.W || evt.key === keys.Up) {
+                //     this.jumped = true;
+                //     this.vel.y = -300;
+                // }
+
             }
+        })
 
-
-        });
 
         engine.input.keyboard.on("release", (evt) => {
             if (evt.key === keys.A || evt.key === keys.D || evt.key === keys.Left || evt.key === keys.Right) {
-                this.vel.x = 0;
+                this.vel.x = -10;
             } else if (evt.key === keys.W || evt.key === keys.Up) {
                 // Handle W key release
-            } else if (evt.key === keys.S || evt.key === keys.Down) {
-                // Handle S key release
             }
         });
+
+        engine.input.keyboard.on("press", (evt) => {
+            if (evt.key === keys.W || evt.key === keys.Up) {
+                this.vel.y = 3000
+                console.log('jump')
+                this.onGround = false
+                this.jumped = true
+            }
+        })
+
 
     }
 
     update(engine) {
-        // if (this.vel.x > 0) {
-        //     this.vel.x -= 10;
-        // } else if (this.vel.x < 0) {
-        //     this.vel.x += 10;
-        // }
+        if (this.vel.x > 0) {
+            this.vel.x -= 10;
+        } else if (this.vel.x < 0) {
+            this.vel.x += 10;
+        }
 
         if (this.vel.y === 0) {
             this.onGround = true;

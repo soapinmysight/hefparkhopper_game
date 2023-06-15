@@ -2,20 +2,37 @@ import * as ex from 'excalibur'
 import { Resources, ResourceLoader } from '../resources';
 
 export class Platform extends ex.Actor {
-    
-    constructor() {
-
+    constructor(x, y, width, height) {
         super({
-            height: Resources.Platform.height,
-            width: Resources.Platform.width
+            pos: new ex.Vector(x, y),
+            width: width,
+            height: height,
+            color: ex.Color.Green, // Set the color to Green
+            anchor: ex.Vector.Zero,
+            collisionType: ex.CollisionType.Fixed,
+            collisionGroup: ex.CollisionGroupManager.groupByName('platform'),
         });
-
-    }
-
-    onInitialize(){
-
         this.graphics.use(Resources.Platform.toSprite());
-        this.scale = new ex.Vector(0.25,0.25);
-
     }
+
+
+
 }
+// export class Platform extends ex.Actor {
+
+//     constructor() {
+
+//         super({
+//             height: Resources.Platform.height,
+//             width: Resources.Platform.width
+//         });
+
+//     }
+
+//     onInitialize() {
+
+//         this.graphics.use(Resources.Platform.toSprite());
+//         this.scale = new ex.Vector(0.25, 0.25);
+
+//     }
+// }
