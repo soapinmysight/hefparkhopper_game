@@ -1,6 +1,6 @@
 import {Scene} from "excalibur";
 
-export class FailThree extends Scene {
+export class NepOne extends Scene {
     constructor() {
         super();
     }
