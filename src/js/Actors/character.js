@@ -69,11 +69,13 @@ export class Maincharacter extends ex.Actor {
     }
 
     update(engine) {
+        // Makes sure you don't keep rolling when releasing A or D
         if (this.vel.x > 0) {
             this.vel.x -= 10;
         } else if (this.vel.x < 0) {
             this.vel.x += 10;
         }
+
 
         if (this.vel.y === 0) {
             this.onGround = true;
@@ -82,17 +84,18 @@ export class Maincharacter extends ex.Actor {
             this.onGround = false;
         }
 
-        engine.input.keyboard.on("hold", (evt) => { // Changed parameter name from Engine to engine
-            if (evt.key === ex.Input.Keys.A) {
-                this.vel.x = -800;
-            } else if (evt.key === ex.Input.Keys.D) {
-                this.vel.x = 800;
-            } else if (evt.key === ex.Input.Keys.W && this.onGround) {
-                this.playerAnimations["jumpAnimation"].reset();
-                this.jumped = true;
-                this.vel.y = -700;
-            }
-        })
+        // Commented code for speeding the bee up with A & D, just for programming ease
+        // engine.input.keyboard.on("hold", (evt) => { // Changed parameter name from Engine to engine
+        //     if (evt.key === ex.Input.Keys.A) {
+        //         this.vel.x = -800;
+        //     } else if (evt.key === ex.Input.Keys.D) {
+        //         this.vel.x = 800;
+        //     } else if (evt.key === ex.Input.Keys.W && this.onGround) {
+        //         this.playerAnimations["jumpAnimation"].reset();
+        //         this.jumped = true;
+        //         this.vel.y = -700;
+        //     }
+        // })
 
 
         engine.currentScene.camera.x = this.pos.x + 80

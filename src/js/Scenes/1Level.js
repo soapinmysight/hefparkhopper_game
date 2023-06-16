@@ -10,7 +10,7 @@ export class LevelOne extends ex.Scene {
     onInitialize(Engine) {
 
         const backgroundImage = Resources.Background.toSprite();
-        const background = new Background(-500, -100, 200, 20, backgroundImage);
+        const background = new Background(-515, -100, 200, 20, backgroundImage);
         this.add(background);
 
         // const platform = new Platform();
