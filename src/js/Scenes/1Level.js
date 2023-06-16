@@ -4,6 +4,8 @@ import { Resources, ResourceLoader } from '../resources.js'
 import { Maincharacter } from '../Actors/character.js'
 import { Platform } from '../Actors/platform.js'
 import { Background } from '../Actors/Background.js'
+import { Spikes } from "../Actors/spikes.js"
+import { Spider } from "../Actors/spiders.js"
 
 export class LevelOne extends ex.Scene {
 
@@ -45,21 +47,47 @@ export class LevelOne extends ex.Scene {
         platform1.scale = new ex.Vector(10.9, 1)
         this.add(platform1);
 
-        // Flying platform (first)
+        // Flying platform (small)
         const platform2 = new Platform(0, 380, 925, 155);
         platform2.scale = new ex.Vector(0.3, 0.3)
         this.add(platform2);
 
+        const platform4 = new Platform(500, 280, 925, 155);
+        platform4.scale = new ex.Vector(0.3, 0.3)
+        this.add(platform4);
+
+        const platform5 = new Platform(1000, 180, 925, 155);
+        platform5.scale = new ex.Vector(0.3, 0.3)
+        this.add(platform5);
+
+        const platform6 = new Platform(1500, 280, 925, 155);
+        platform6.scale = new ex.Vector(0.3, 0.3)
+        this.add(platform6);
+
+        const platform7 = new Platform(1775, 280, 925, 155);
+        platform7.scale = new ex.Vector(0.3, 0.3)
+        this.add(platform7);
+
+
+        //Spikes
+        const spikes1 = new Spikes(800, 500, 925, 155);
+        spikes1.scale = new ex.Vector(0.5, 0.5)
+        this.add(spikes1);
+
+        // Enemies
+        const spider1 = new Spider()
+        spider1.pos = new ex.Vector(200, 200)
+        this.add(spider1)
+
         //Flying platform (second)
-        const platform3 = new Platform(700, 380, 925, 155);
-        platform3.scale = new ex.Vector(0.8, 0.3)
-        this.add(platform3);
+        // const platform3 = new Platform(700, 380, 925, 155);
+        // platform3.scale = new ex.Vector(0.8, 0.3)
+        // this.add(platform3);
 
 
         console.log("start de game!")
         // Adding bee to the game
         const player = new Maincharacter()
-
         this.add(player)
     }
 }
