@@ -5,7 +5,7 @@ import { Resources, ResourceLoader } from './resources.js'
 import { LevelOne } from './Scenes/1Level.js'
 import {Start} from "./Scenes/start.js";
 import {NepOne} from "./Scenes/nepOne.js";
-import {FailOne} from "./Scenes/fail1.js";
+import {FailOne} from "./Scenes/1Fail.js";
 import {VictoryOne} from "./Scenes/1Victory.js";
 
 import {LevelTwo} from "./Scenes/2Level.js";
@@ -19,6 +19,7 @@ import {FirstCutscene} from "./cutScene/firstScene.js";
 import {StartCutscene} from "./cutScene/startScene.js";
 import {SecondCutscene} from "./cutScene/secondScene.js";
 import {ThirdCutscene} from "./cutScene/thirdScene.js";
+import {BossFight} from "./BossFight/bossLevel.js";
 
 
 
@@ -46,7 +47,7 @@ export class Game extends ex.Engine {
         this.addScene("startCutscene", new StartCutscene)
 
         const levelOne = new LevelOne()
-        // this.addScene("Levelone", levelOne)
+        this.addScene("Levelone", levelOne)
         // this.goToScene("Levelone")
 
         const levelOneTest = new NepOne()
@@ -81,6 +82,8 @@ export class Game extends ex.Engine {
         this.addScene("VictoryThree", victoryThree)
 
         this.addScene("thirdCutScene", new ThirdCutscene)
+
+        this.addScene("bossFight", new BossFight)
     }
 }
 
