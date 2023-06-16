@@ -17,7 +17,7 @@ export class Maincharacter extends ex.Actor {
             displayMode: ex.DisplayMode.FitScreen,
         });
         this.graphics.use(Resources.Bee.toSprite()); // Bee picture
-        this.health = 3;
+        this.health = 200;
         this.speed = 300;  // The speed of the bee
         this.scale = new ex.Vector(0.4, 0.4) // Scaling of the bee
         this.pos = new ex.Vector(50, 500); //Staring position bee
