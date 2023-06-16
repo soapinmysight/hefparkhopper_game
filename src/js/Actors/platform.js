@@ -1,6 +1,7 @@
-import * as ex from 'excalibur';
+import * as ex from 'excalibur'
+import { Resources, ResourceLoader } from '../resources';
 
-export class platform extends ex.Actor {
+export class Platform extends ex.Actor {
     constructor(x, y, width, height) {
         super({
             pos: new ex.Vector(x, y),
@@ -11,6 +12,27 @@ export class platform extends ex.Actor {
             collisionType: ex.CollisionType.Fixed,
             collisionGroup: ex.CollisionGroupManager.groupByName('platform'),
         });
-        // this.graphics.use(Resources.platform.toSprite());
+        this.graphics.use(Resources.Platform.toSprite());
     }
+
+
+
 }
+// export class Platform extends ex.Actor {
+
+//     constructor() {
+
+//         super({
+//             height: Resources.Platform.height,
+//             width: Resources.Platform.width
+//         });
+
+//     }
+
+//     onInitialize() {
+
+//         this.graphics.use(Resources.Platform.toSprite());
+//         this.scale = new ex.Vector(0.25, 0.25);
+
+//     }
+// }

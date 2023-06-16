@@ -14,7 +14,6 @@ export class Maincharacter extends ex.Actor {
         super({
             collisionType: ex.CollisionType.Active,
             collider: circle,
-            // collider: ex.Shape.Circle(200, 40, ex.Vector.Half, ex.vec(0, 0)),
             displayMode: ex.DisplayMode.FitScreen,
         });
 
@@ -40,25 +39,32 @@ export class Maincharacter extends ex.Actor {
                 this.vel.x = -this.speed;
             } else if (evt.key === keys.D || evt.key === keys.Right) {
                 this.vel.x = this.speed;
-            } else if (evt.key === keys.W || evt.key === keys.Up) {
-                this.jumped = true;
-                this.vel.y = -300;
-            } else if (evt.key === keys.S || evt.key === keys.Down) {
-                // Handle S key press
+                // } else if (evt.key === keys.W || evt.key === keys.Up) {
+                //     this.jumped = true;
+                //     this.vel.y = -300;
+                // }
+
             }
+        })
 
-
-        });
 
         engine.input.keyboard.on("release", (evt) => {
             if (evt.key === keys.A || evt.key === keys.D || evt.key === keys.Left || evt.key === keys.Right) {
-                this.vel.x = 0;
+                this.vel.x = -10;
             } else if (evt.key === keys.W || evt.key === keys.Up) {
                 // Handle W key release
-            } else if (evt.key === keys.S || evt.key === keys.Down) {
-                // Handle S key release
             }
         });
+
+        engine.input.keyboard.on("press", (evt) => {
+            if (evt.key === keys.W || evt.key === keys.Up) {
+                this.vel.y = 3000
+                console.log('jump')
+                this.onGround = false
+                this.jumped = true
+            }
+        })
+
 
     }
 
@@ -75,6 +81,19 @@ export class Maincharacter extends ex.Actor {
         } else {
             this.onGround = false;
         }
+
+        engine.input.keyboard.on("hold", (evt) => { // Changed parameter name from Engine to engine
+            if (evt.key === ex.Input.Keys.A) {
+                this.vel.x = -800;
+            } else if (evt.key === ex.Input.Keys.D) {
+                this.vel.x = 800;
+            } else if (evt.key === ex.Input.Keys.W && this.onGround) {
+                this.playerAnimations["jumpAnimation"].reset();
+                this.jumped = true;
+                this.vel.y = -700;
+            }
+        })
+
 
         engine.currentScene.camera.x = this.pos.x + 80
         // this.pos = this.pos.add(this.vel.scale(engine.deltaTime / 1000));
