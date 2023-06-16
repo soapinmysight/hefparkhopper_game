@@ -7,32 +7,13 @@ export class Platform extends ex.Actor {
             pos: new ex.Vector(x, y),
             width: width,
             height: height,
-            color: ex.Color.Green, // Set the color to Green
-            anchor: ex.Vector.Zero,
-            collisionType: ex.CollisionType.Fixed,
-            collisionGroup: ex.CollisionGroupManager.groupByName('platform'),
+            anchor: ex.Vector.Zero, //Anchors the platforms
+            collisionType: ex.CollisionType.Fixed, //Bee bounces against the platforms
+            collisionGroup: ex.CollisionGroupManager.groupByName('platform'),//Make sure you bounce against all the platforms
         });
-        this.graphics.use(Resources.Platform.toSprite());
+        this.graphics.use(Resources.Platform.toSprite()); //Image of platform
     }
 
 
 
 }
-// export class Platform extends ex.Actor {
-
-//     constructor() {
-
-//         super({
-//             height: Resources.Platform.height,
-//             width: Resources.Platform.width
-//         });
-
-//     }
-
-//     onInitialize() {
-
-//         this.graphics.use(Resources.Platform.toSprite());
-//         this.scale = new ex.Vector(0.25, 0.25);
-
-//     }
-// }
