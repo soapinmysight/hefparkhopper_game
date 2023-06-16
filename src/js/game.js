@@ -39,9 +39,11 @@ export class Game extends ex.Engine {
         this.addScene('Start', start)
         // this.goToScene('Start')
 
+        this.addScene("startCutscene", new StartCutscene)
+
         const levelOne = new LevelOne()
         this.addScene("Levelone", levelOne)
-        this.goToScene("Levelone")
+        // this.goToScene("Levelone")
 
         const levelOneTest = new NepOne()
         this.addScene('LevelOne', levelOneTest)
@@ -52,6 +54,8 @@ export class Game extends ex.Engine {
         const victoryOne = new VictoryOne()
         this.addScene("VictoryOne", victoryOne)
 
+        this.addScene("firstCutscene", new FirstCutscene)
+
         const levelTwo = new LevelTwo()
         this.addScene("LevelTwo", levelTwo)
 
@@ -61,6 +65,8 @@ export class Game extends ex.Engine {
         const victoryTwo = new VictoryTwo()
         this.addScene('VictoryTwo', victoryTwo)
 
+        this.addScene("secondCutscene", new SecondCutscene)
+
         const levelThree = new LevelThree()
         this.addScene("LevelThree", levelThree)
 
@@ -69,6 +75,8 @@ export class Game extends ex.Engine {
 
         const victoryThree = new VictoryThree()
         this.addScene("VictoryThree", victoryThree)
+
+        this.addScene("thirdCutScene", new ThirdCutscene)
     }
 }
 

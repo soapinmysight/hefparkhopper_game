@@ -2,15 +2,46 @@ import {Actor, CollisionType} from "excalibur";
 import {Resources} from "../resources.js";
 
 export class MainButton extends Actor {
-    constructor() {
+    constructor(width, height) {
         super({
-            width: 200,
-            height: 100
+            width: width,
+            height: height,
         });
-        let button = Resources.Button.toSprite()
-        button.width = 200
-        button.height = 100
-        this.graphics.add(button)
+        this.enableCapturePointer = true
+        this.pointer.useGraphicsBounds = true
 
+    }
+}
+
+export class StartButton extends MainButton {
+    constructor() {
+        super(200, 150);
+        const btn = Resources.StartBtn.toSprite()
+        btn.width = 200
+        btn.height = 120
+        this.graphics.add(btn)
+    }
+}
+
+export class GameOverButton extends MainButton {
+    constructor() {
+        super(200, 150);
+        const btn = Resources.GameOverBtn.toSprite()
+        this.graphics.add(btn)
+    }
+}
+export class NextLvlButton extends MainButton {
+    constructor() {
+        super(200, 150);
+        const btn = Resources.NextLvlBtn.toSprite()
+        this.graphics.add(btn)
+    }
+}
+
+export class TryAgainButton extends MainButton {
+    constructor() {
+        super(200, 150);
+        const btn = Resources.TryAgainBtn.toSprite()
+        this.graphics.add(btn)
     }
 }
