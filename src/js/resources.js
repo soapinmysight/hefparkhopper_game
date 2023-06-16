@@ -20,6 +20,10 @@ import logoImage from "../images/logo.png"
 
 import textBubbleImage from "../images/textBubble.png"
 
+import boss from "../images/bossSpider.png"
+import honeyBomb from "../images/honeyBomb.png"
+import bossWeb from "../images/bossWeb.png"
+
 // import Bottomborder from "../images/bottomBorder.png"
 
 const Resources = {
@@ -41,7 +45,11 @@ const Resources = {
 
     Logo: new ImageSource(logoImage),
 
-    TextBubble: new ImageSource(textBubbleImage)
+    TextBubble: new ImageSource(textBubbleImage),
+
+    Boss: new ImageSource(boss),
+    HoneyBomb: new ImageSource(honeyBomb),
+    BossWeb: new ImageSource(bossWeb)
 
     // BottomBorder: new ImageSource(Bottomborder)
 
@@ -64,7 +72,11 @@ const ResourceLoader = new Loader([
 
     Resources.Logo,
 
-    Resources.TextBubble
+    Resources.TextBubble,
+
+    Resources.Boss,
+    Resources.HoneyBomb,
+    Resources.BossWeb,
 
     // Resources.BottomBorder
 ])
