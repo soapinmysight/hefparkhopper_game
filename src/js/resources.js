@@ -1,4 +1,4 @@
-import { ImageSource, Sound, Resource, Loader } from 'excalibur'
+import { ImageSource, Loader } from 'excalibur'
 
 import backgroundImage from "../images/background2.png"
 import platformImage from "../images/platform.png"
