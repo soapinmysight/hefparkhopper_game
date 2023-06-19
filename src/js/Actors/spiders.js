@@ -1,27 +1,35 @@
-import {Actor, CollisionType} from "excalibur";
-import {Resources} from "../resources.js";
+import * as ex from "excalibur";
+import { Resources } from "../resources.js";
 
-export class Spider extends Actor {
-    constructor() {
+export class Spider extends ex.Actor {
+    x
+    y
+    speed
+    constructor(x, y) {
+
         super({
-            width: 40,
-            height: 40
+            width: 120,
+            height: 100,
+            pos: new ex.Vector(x, y)
         });
         const spider = Resources.Spider.toSprite()
-        spider.width = 40
-        spider.height = 40
+        spider.width = 120
+        spider.height = 100
         this.graphics.add(spider)
+        this.speed = 300
+
     }
     onInitialize(_engine) {
         super.onInitialize(_engine);
-        this.body.collisionType = CollisionType.Active
+        this.body.collisionType = ex.CollisionType.Fixed
         this.on("precollision", (event) => this.onPreCollision(event))
+
     }
     onPreCollision(event) {
         const side = event.side
         const otherActor = event.other
 
-        if(side === 'Top') {
+        if (side === 'Top') {
             console.log('spider collided on top')
 
         } else if (side === 'Right' || side === 'Left') {

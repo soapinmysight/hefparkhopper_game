@@ -27,6 +27,8 @@ export class GameOverButton extends MainButton {
     constructor() {
         super(200, 150);
         const btn = Resources.GameOverBtn.toSprite()
+        btn.width = 200
+        btn.height = 120
         this.graphics.add(btn)
     }
 }
@@ -34,6 +36,8 @@ export class NextLvlButton extends MainButton {
     constructor() {
         super(200, 150);
         const btn = Resources.NextLvlBtn.toSprite()
+        btn.width = 200
+        btn.height = 120
         this.graphics.add(btn)
     }
 }
@@ -42,6 +46,8 @@ export class TryAgainButton extends MainButton {
     constructor() {
         super(200, 150);
         const btn = Resources.TryAgainBtn.toSprite()
+        btn.width = 200
+        btn.height = 120
         this.graphics.add(btn)
     }
 }

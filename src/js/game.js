@@ -3,18 +3,23 @@ import * as ex from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 
 import { LevelOne } from './Scenes/1Level.js'
-import { Start } from "./Scenes/start.js";
-import { NepOne } from "./Scenes/nepOne.js";
-import { FailOne } from "./Scenes/fail1.js";
-import { VictoryOne } from "./Scenes/1Victory.js";
+import {Start} from "./Scenes/start.js";
+import {NepOne} from "./Scenes/nepOne.js";
+import {FailOne} from "./Scenes/1Fail.js";
+import {VictoryOne} from "./Scenes/1Victory.js";
 
-import { LevelTwo } from "./Scenes/2Level.js";
-import { FailTwo } from "./Scenes/2Fail.js";
-import { VictoryTwo } from "./Scenes/2Victory.js";
+import {LevelTwo} from "./Scenes/2Level.js";
+import {FailTwo} from "./Scenes/2Fail.js";
+import {VictoryTwo} from "./Scenes/2Victory.js";
 
-import { LevelThree } from "./Scenes/3Level.js";
-import { FailThree } from "./Scenes/3Fail.js";
-import { VictoryThree } from "./Scenes/3Victory.js";
+import {LevelThree} from "./Scenes/3Level.js";
+import {FailThree} from "./Scenes/3Fail.js";
+import {VictoryThree} from "./Scenes/3Victory.js";
+import {FirstCutscene} from "./cutScene/firstScene.js";
+import {StartCutscene} from "./cutScene/startScene.js";
+import {SecondCutscene} from "./cutScene/secondScene.js";
+import {ThirdCutscene} from "./cutScene/thirdScene.js";
+import {BossFight} from "./BossFight/bossLevel.js";
 
 
 
@@ -37,13 +42,13 @@ export class Game extends ex.Engine {
 
         const start = new Start()
         this.addScene('Start', start)
-        // this.goToScene('Start')
+        this.goToScene('Start')
 
-        // this.addScene("startCutscene", new StartCutscene)
+        this.addScene("startCutscene", new StartCutscene)
 
         const levelOne = new LevelOne()
         this.addScene("Levelone", levelOne)
-        this.goToScene("Levelone")
+        // this.goToScene("Levelone")
 
         const levelOneTest = new NepOne()
         this.addScene('LevelOne', levelOneTest)
@@ -54,7 +59,7 @@ export class Game extends ex.Engine {
         const victoryOne = new VictoryOne()
         this.addScene("VictoryOne", victoryOne)
 
-        // this.addScene("firstCutscene", new FirstCutscene)
+        this.addScene("firstCutscene", new FirstCutscene)
 
         const levelTwo = new LevelTwo()
         this.addScene("LevelTwo", levelTwo)
@@ -65,7 +70,7 @@ export class Game extends ex.Engine {
         const victoryTwo = new VictoryTwo()
         this.addScene('VictoryTwo', victoryTwo)
 
-        // this.addScene("secondCutscene", new SecondCutscene)
+        this.addScene("secondCutscene", new SecondCutscene)
 
         const levelThree = new LevelThree()
         this.addScene("LevelThree", levelThree)
@@ -76,7 +81,9 @@ export class Game extends ex.Engine {
         const victoryThree = new VictoryThree()
         this.addScene("VictoryThree", victoryThree)
 
-        // this.addScene("thirdCutScene", new ThirdCutscene)
+        this.addScene("thirdCutScene", new ThirdCutscene)
+
+        this.addScene("bossFight", new BossFight)
     }
 }
 

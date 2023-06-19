@@ -1,27 +1,35 @@
-// import '../css/style.css'
-import * as ex from "excalibur"
-import { Resources, ResourceLoader } from '../resources.js'
-import { Maincharacter } from '../Actors/character.js'
-import { platform } from '../Actors/platform.js'
-import { Background } from '../Background.js'
 
-export class level1 extends ex.Scene {
+import {Scene, Vector} from "excalibur"
+import {StartButton, TryAgainButton} from "../Actors/button.js";
 
-    onInitialize(Engine) {
 
-        const backgroundImage = Resources.Bee.toSprite();
-        const background = new Background(0, 80, 200, 20, backgroundImage);
-        this.add(background);
+export class FailOne extends Scene {
 
-        const platform1 = new platform(0, 580, 2000, 20, ex.Color.Green);
-        this.add(platform1);
+    game
+    constructor() {
+        super();
+    }
+    onInitialize(_engine) {
+        super.onInitialize(_engine);
+        this.game = _engine
+    }
+    onActivate(_context) {
+        super.onActivate(_context);
+        this.startFailOne()
+    }
+    startFailOne(){
+        console.log('failOne')
+        let tryAgain = new TryAgainButton()
+        tryAgain.pos = new Vector(400, 500)
+        tryAgain.on('pointerup', () => {
+            this.game.goToScene('LevelOne')
+        })
+        this.add(tryAgain)
+    }
 
-        const platform2 = new platform(0, 380, 200, 20, ex.Color.Green);
-        this.add(platform2);
+    onDeactivate(_context) {
+        super.onDeactivate(_context);
 
-        console.log("start de game!")
-        const player = new Maincharacter()
-        this.add(player)
-        // this.camera.strategy.lockToActor(this.player)
+
     }
 }
