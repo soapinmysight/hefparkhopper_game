@@ -20,9 +20,9 @@ export class BossSpider extends Actor {
 
         this.actions.repeatForever((ctx) => {
 
-            ctx.moveBy(-80, 0, 50)
+            ctx.moveBy(-100, 0, 50)
 
-            ctx.moveBy(80, 0, 50)
+            ctx.moveBy(100, 0, 50)
 
         })
 
