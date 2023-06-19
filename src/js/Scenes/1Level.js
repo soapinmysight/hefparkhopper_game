@@ -13,7 +13,7 @@ export class LevelOne extends ex.Scene {
 
         //Background image
         const backgroundImage = Resources.Background.toSprite();
-        const background = new Background(-550, 0, 200, 20, backgroundImage);
+        const background = new Background(-550, -50, 200, 20, backgroundImage);
         this.add(background);
 
 
