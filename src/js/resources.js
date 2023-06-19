@@ -23,6 +23,7 @@ import textBubbleImage from "../images/textBubble.png"
 import boss from "../images/bossSpider.png"
 import honeyBomb from "../images/honeyBomb.png"
 import bossWeb from "../images/bossWeb.png"
+import bossFloorTemp from "../tempFloorBoss.png"
 
 // import Bottomborder from "../images/bottomBorder.png"
 
@@ -49,7 +50,8 @@ const Resources = {
 
     Boss: new ImageSource(boss),
     HoneyBomb: new ImageSource(honeyBomb),
-    BossWeb: new ImageSource(bossWeb)
+    BossWeb: new ImageSource(bossWeb),
+    TempBossFloor: new ImageSource(bossFloorTemp),
 
     // BottomBorder: new ImageSource(Bottomborder)
 
@@ -77,6 +79,7 @@ const ResourceLoader = new Loader([
     Resources.Boss,
     Resources.HoneyBomb,
     Resources.BossWeb,
+    Resources.TempBossFloor,
 
     // Resources.BottomBorder
 ])
