@@ -12,6 +12,7 @@ export class Spikes extends ex.Actor {
             // collisionGroup: ex.CollisionGroupManager.groupByName('spikes'),//Make sure you bounce against all the platforms
         });
         this.graphics.use(Resources.Spikes.toSprite()); //Image of platform
+        this.scale = new ex.Vector(0.5, 0.5)
     }
 
 

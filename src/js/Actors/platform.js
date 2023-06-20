@@ -12,6 +12,7 @@ export class Platform extends ex.Actor {
             collisionGroup: ex.CollisionGroupManager.groupByName('platform'),//Make sure you bounce against all the platforms
         });
         this.graphics.use(Resources.Platform.toSprite()); //Image of platform
+        this.scale = new ex.Vector(0.3, 0.3)
     }
 
 
