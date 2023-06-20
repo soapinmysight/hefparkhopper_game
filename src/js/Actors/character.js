@@ -15,6 +15,9 @@ export class Maincharacter extends ex.Actor {
             collisionType: ex.CollisionType.Active, // Gives the bee a collision with the platforms
             collider: circle,
             displayMode: ex.DisplayMode.FitScreen,
+            // collisionType: ex.CollisionType.Active,
+            // collider: ex.Shape.Box(250, 250, ex.Vector.Half, ex.vec(0, 0)),
+            // displayMode: ex.DisplayMode.FitScreen,
         });
         this.graphics.use(Resources.Bee.toSprite()); // Bee picture
         this.health = 200;
@@ -28,8 +31,11 @@ export class Maincharacter extends ex.Actor {
     }
 
     onInitialize(engine) {
+        this.game = engine
         engine.input.keyboard.enabled = true; //Keyboard binds
+
         const keys = ex.Input.Keys; //Keys input
+
         engine.input.keyboard.on("hold", (evt) => { //When you hold a key
             if (evt.key === keys.A || evt.key === keys.Left) {
                 this.vel.x = -this.speed; //Move left with A or <--
@@ -38,59 +44,58 @@ export class Maincharacter extends ex.Actor {
             }
         })
 
-
         engine.input.keyboard.on("release", (evt) => { //When you release a key after you hold it
             if (evt.key === keys.A || evt.key === keys.D || evt.key === keys.Left || evt.key === keys.Right) {
-                this.vel.x = -10; //Makes sure you stop instantly and don't roll on
+                this.vel.x = 0; //Makes sure you stop instantly and don't roll on
             }
         });
 
-        engine.input.keyboard.on("press", (evt) => { //When you press a button
-            if (evt.key === keys.W || evt.key === keys.Up) {
-                this.vel.y = 3000 //Jumping
-                // this.pos.y = 500
-
-                console.log('jump')
-                this.onGround = false
-                this.jumped = true
+        engine.input.keyboard.on("press", (evt) => {
+            if (evt.key === keys.W || evt.key === keys.Up) { //Jumping
+                if (this.onGround == true) {
+                    this.vel.y = -600
+                    this.onGround = false
+                    this.jumped = true
+                    console.log('jump')
+                }
             }
         })
-
-
     }
 
-    onPostUpdate(_engine, _delta) {
-        super.onPostUpdate(_engine, _delta);
-        // Makes sure you don't keep rolling when releasing A or D
+    update(engine) {
         if (this.vel.x > 0) {
             this.vel.x -= 10;
         } else if (this.vel.x < 0) {
             this.vel.x += 10;
         }
 
+        console.log(this.vel.y)
 
-        // if (this.vel.y === 0) {
-        //     this.onGround = true;
-        //     this.jumped = false;
-        // } else {
-        //     this.onGround = false;
-        // }
+        if (this.vel.y === 0) {
+            this.onGround = true;
+            this.jumped = false;
+        } else {
+            this.onGround = false;
+        }
+        engine.currentScene.camera.x = this.pos.x + 80 //Tracking the bee with the camera
+    }
 
+    onPostUpdate(_engine, _delta) {
+        super.onPostUpdate(_engine, _delta);
+        // Makes sure you don't keep rolling when releasing A or D
         // Commented code for speeding the bee up with A & D, just for programming ease
-        _engine.input.keyboard.on("hold", (evt) => {
-            if (evt.key === ex.Input.Keys.A) {
-                this.vel.x = -800;
-            } else if (evt.key === ex.Input.Keys.D) {
-                this.vel.x = 800;
-            } else if (evt.key === ex.Input.Keys.W && this.onGround) {
-                this.jumped = true;
-                this.vel.y = -700;
-            }
-        })
+        // _engine.input.keyboard.on("hold", (evt) => {
+        //     if (evt.key === ex.Input.Keys.A) {
+        //         this.vel.x = -800;
+        //     } else if (evt.key === ex.Input.Keys.D) {
+        //         this.vel.x = 800;
+        //     } else if (evt.key === ex.Input.Keys.W && this.onGround) {
+        //         this.jumped = true;
+        //         this.vel.y = -700;
+        //     }
+        // })
 
-        _engine.currentScene.camera.x = this.pos.x + 80 //Tracking the bee with the camera
-
-        this.on("collision", (event) => this.onPreCollision(event));
+        // this.on("collision", (event) => this.onPreCollision(event));
     }
 
 

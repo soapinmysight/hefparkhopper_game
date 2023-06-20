@@ -33,13 +33,11 @@ export class Game extends ex.Engine {
         });
         this.start(ResourceLoader).then(() => this.startGame());
         this.showDebug(true);
-        ex.Physics.useRealisticPhysics();
-        ex.Physics.acc = new ex.vec(0, 800);
+        // ex.Physics.useRealisticPhysics();
+        ex.Physics.acc = new ex.vec(0, 300);
     }
 
     startGame() {
-        console.log("start the game!");
-
         const start = new Start()
         this.addScene('Start', start)
         this.goToScene('Start')
