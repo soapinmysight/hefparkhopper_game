@@ -15,13 +15,7 @@ export class bossScene extends Scene {
         this.startCutScene()
     }
     startCutScene(){
-        console.log('cutscene')
-        let start = new StartButton()
-        start.pos = new Vector(400, 500)
-        start.on('pointerup', () => {
-            this.game.goToScene('LevelOne')
-        })
-        this.add(start)
+        console.log(`end game`)
     }
 
     onDeactivate(_context) {

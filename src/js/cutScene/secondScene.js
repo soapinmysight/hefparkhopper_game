@@ -12,14 +12,15 @@ export class SecondCutscene extends Scene {
     }
     onActivate(_context) {
         super.onActivate(_context);
-        this.startCutScene()
+        this.startSecondCutScene()
     }
-    startCutScene(){
-        console.log('cutscene')
+    startSecondCutScene(){
+
+        console.log('cutscene 2nd')
         let start = new StartButton()
         start.pos = new Vector(400, 500)
         start.on('pointerup', () => {
-            this.game.goToScene('LevelOne')
+            this.game.goToScene('LevelThree')
         })
         this.add(start)
     }

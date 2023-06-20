@@ -15,7 +15,7 @@ export class NepOne extends Scene {
         this.startLevelOne()
     }
     startLevelOne(){
-        console.log('cutscene')
+        console.log('level one')
 
         let victory = new GameOverButton()
         victory.pos = new Vector(400, 500)

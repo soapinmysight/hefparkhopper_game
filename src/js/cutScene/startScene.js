@@ -15,7 +15,7 @@ export class StartCutscene extends Scene {
         this.startCutScene()
     }
     startCutScene(){
-        console.log('cutscene')
+        console.log('cutscene start')
         let start = new StartButton()
         start.pos = new Vector(400, 500)
         start.on('pointerup', () => {
