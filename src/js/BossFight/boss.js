@@ -1,6 +1,8 @@
 import { Actor, CollisionType, Vector } from "excalibur";
 import { Resources } from '../resources.js'
 
+import { Maincharacter } from "../Actors/character.js";
+
 export class BossSpider extends Actor {
 
     health = 10000;
@@ -34,7 +36,7 @@ export class BossSpider extends Actor {
 
         if(event.other instanceof Maincharacter){
             console.log("ouch!");
-            event.other.takeDamage(50);                //does 50 damage to main character
+            // event.other.takeDamage(50);                //does 50 damage to main character
         }
 
     }
