@@ -8,8 +8,23 @@ import { Spikes } from "../Actors/spikes.js"
 import { Spider } from "../Actors/spiders.js"
 
 export class LevelOne extends ex.Scene {
+    game
+    health
+    constructor() {
+        super();
+    }
+    onInitialize(_engine) {
+        super.onInitialize(_engine);
+        this.game = _engine
+        this.health = 2
+    }
 
-    onInitialize(Engine) {
+    onActivate(_context) {
+        super.onActivate(_context);
+        this.startLevelOne()
+    }
+
+    startLevelOne() {
 
         //Background image
         const backgroundImage = Resources.Background.toSprite();
@@ -172,7 +187,10 @@ export class LevelOne extends ex.Scene {
         this.add(player)
 
 
-
+    }
+    onPostUpdate(_engine, _delta) {
+        super.onPostUpdate(_engine, _delta);
+        console.log(this.health)
     }
 
 }

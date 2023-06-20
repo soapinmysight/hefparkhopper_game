@@ -59,7 +59,8 @@ export class Maincharacter extends ex.Actor {
 
     }
 
-    update(engine) {
+    onPostUpdate(_engine, _delta) {
+        super.onPostUpdate(_engine, _delta);
         // Makes sure you don't keep rolling when releasing A or D
         if (this.vel.x > 0) {
             this.vel.x -= 10;
@@ -76,7 +77,7 @@ export class Maincharacter extends ex.Actor {
         // }
 
         // Commented code for speeding the bee up with A & D, just for programming ease
-        engine.input.keyboard.on("hold", (evt) => { // Changed parameter name from Engine to engine
+        _engine.input.keyboard.on("hold", (evt) => { // Changed parameter name from Engine to engine
             if (evt.key === ex.Input.Keys.A) {
                 this.vel.x = -800;
             } else if (evt.key === ex.Input.Keys.D) {
@@ -87,6 +88,10 @@ export class Maincharacter extends ex.Actor {
             }
         })
 
-        engine.currentScene.camera.x = this.pos.x + 80 //Tracking the bee with the camera
+        _engine.currentScene.camera.x = this.pos.x + 80 //Tracking the bee with the camera
+
+        this.on("collision", (event) => this.onPreCollision(event));
     }
+
+
 }

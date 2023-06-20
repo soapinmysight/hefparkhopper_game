@@ -5,6 +5,7 @@ export class Spider extends ex.Actor {
     x
     y
     speed
+    health
     constructor(x, y) {
 
         super({
@@ -30,11 +31,13 @@ export class Spider extends ex.Actor {
         const otherActor = event.other
 
         if (side === 'Top') {
-            console.log('spider collided on top')
+            console.log('spider collided on top and died')
+            this.kill()
 
         } else if (side === 'Right' || side === 'Left') {
+            this.health --
 
-            console.log('spider collided right or left')
+            console.log(`spider collided right or left`)
         }
     }
 }
