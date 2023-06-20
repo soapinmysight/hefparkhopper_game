@@ -53,7 +53,7 @@ export class BossFight extends Scene {
 
         const character = new MaincharacterBoss();
         this.add(character);
-        character.pos = new Vector (400  , 0);
+        character.pos = new Vector (130  , 525);
 
         const boss = new BossSpider();
         this.add(boss);
