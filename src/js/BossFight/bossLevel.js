@@ -20,11 +20,8 @@ export class BossFight extends Scene {
         Physics.useRealisticPhysics();
         Physics.gravity = new Vector(0, 800);
         
-
     }
 
-
-    
     onInitialize(engine){
 
         const backgroundBoss = new BackgroundBoss();
@@ -33,19 +30,14 @@ export class BossFight extends Scene {
 
         const floor = new BossFloor();
         this.add(floor);
-        floor.pos = new Vector (427  , 610);
+        floor.pos = new Vector (427  , 640);
 
         const character = new Maincharacter();
         this.add(character);
-        character.pos = new Vector (0  , 0);
+        character.pos = new Vector (400  , 0);
 
         const boss = new BossSpider();
         this.add(boss);
-        boss.pos = new Vector (0  , 0);
-    }
-
-    onPostUpdate(engine){
-        // console.log('elk frame')
-        // console.log(this.ding)
+        boss.pos = new Vector (800  , 500);
     }
 }
