@@ -24,6 +24,7 @@ import boss from "../images/bossSpider.png"
 import honeyBomb from "../images/honeyBomb.png"
 import bossWeb from "../images/bossWeb.png"
 import bossFloorTemp from "../images/tempFloorBoss.png"
+import portalImage from "../images/portal.png"
 
 const Resources = {
 
@@ -35,6 +36,8 @@ const Resources = {
     Spider: new ImageSource(spiderImage),
 
     Flower: new ImageSource(flowerImage),
+
+    Portal: new ImageSource(portalImage),
 
     Button: new ImageSource(buttonImage),
     StartBtn: new ImageSource(startBtnImage),
@@ -50,7 +53,7 @@ const Resources = {
     HoneyBomb: new ImageSource(honeyBomb),
     BossWeb: new ImageSource(bossWeb),
     TempBossFloor: new ImageSource(bossFloorTemp),
-    Portal: new ImageSource(portalImage),
+
 
 }
 const ResourceLoader = new Loader([
@@ -62,6 +65,8 @@ const ResourceLoader = new Loader([
     Resources.Spider,
 
     Resources.Flower,
+
+    Resources.Portal,
 
     Resources.Button,
     Resources.StartBtn,

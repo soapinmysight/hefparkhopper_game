@@ -6,6 +6,7 @@ import { Platform } from '../Actors/platform.js'
 import { Background } from '../Actors/Background.js'
 import { Spikes } from "../Actors/spikes.js"
 import { Spider } from "../Actors/spiders.js"
+import { Portal } from "../Actors/portal.js"
 
 export class LevelOne extends ex.Scene {
     game
@@ -173,15 +174,11 @@ export class LevelOne extends ex.Scene {
         this.add(spider3)
 
 
+        //Portal
+        let portal = new Portal()
+        portal.pos = new ex.Vector(8300, 350)
+        this.add(portal)
 
-
-        //Flying platform (second)
-        // const platform3 = new Platform(700, 380, 925, 155);
-        // platform3.scale = new ex.Vector(0.8, 0.3)
-        // this.add(platform3);
-
-
-        console.log("start de game!")
         // Adding bee to the game
         const player = new Maincharacter()
         this.add(player)

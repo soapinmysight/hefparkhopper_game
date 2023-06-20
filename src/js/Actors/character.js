@@ -77,7 +77,7 @@ export class Maincharacter extends ex.Actor {
         // }
 
         // Commented code for speeding the bee up with A & D, just for programming ease
-        _engine.input.keyboard.on("hold", (evt) => { // Changed parameter name from Engine to engine
+        _engine.input.keyboard.on("hold", (evt) => {
             if (evt.key === ex.Input.Keys.A) {
                 this.vel.x = -800;
             } else if (evt.key === ex.Input.Keys.D) {
