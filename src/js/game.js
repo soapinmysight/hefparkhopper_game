@@ -3,23 +3,23 @@ import * as ex from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 
 import { LevelOne } from './Scenes/1Level.js'
-import {Start} from "./Scenes/start.js";
-import {NepOne} from "./Scenes/nepOne.js";
-import {FailOne} from "./Scenes/1Fail.js";
-import {VictoryOne} from "./Scenes/1Victory.js";
+import { Start } from "./Scenes/start.js";
+import { NepOne } from "./Scenes/nepOne.js";
+import { FailOne } from "./Scenes/1Fail.js";
+import { VictoryOne } from "./Scenes/1Victory.js";
 
-import {LevelTwo} from "./Scenes/2Level.js";
-import {FailTwo} from "./Scenes/2Fail.js";
-import {VictoryTwo} from "./Scenes/2Victory.js";
+import { LevelTwo } from "./Scenes/2Level.js";
+import { FailTwo } from "./Scenes/2Fail.js";
+import { VictoryTwo } from "./Scenes/2Victory.js";
 
-import {LevelThree} from "./Scenes/3Level.js";
-import {FailThree} from "./Scenes/3Fail.js";
-import {VictoryThree} from "./Scenes/3Victory.js";
-import {FirstCutscene} from "./cutScene/firstScene.js";
-import {StartCutscene} from "./cutScene/startScene.js";
-import {SecondCutscene} from "./cutScene/secondScene.js";
-import {ThirdCutscene} from "./cutScene/thirdScene.js";
-import {BossFight} from "./BossFight/bossLevel.js";
+import { LevelThree } from "./Scenes/3Level.js";
+import { FailThree } from "./Scenes/3Fail.js";
+import { VictoryThree } from "./Scenes/3Victory.js";
+import { FirstCutscene } from "./cutScene/firstScene.js";
+import { StartCutscene } from "./cutScene/startScene.js";
+import { SecondCutscene } from "./cutScene/secondScene.js";
+import { ThirdCutscene } from "./cutScene/thirdScene.js";
+import { BossFight } from "./BossFight/bossLevel.js";
 
 
 
@@ -32,7 +32,7 @@ export class Game extends ex.Engine {
             maxFps: 60
         });
         this.start(ResourceLoader).then(() => this.startGame());
-        this.showDebug(true);
+        // this.showDebug(true);
         ex.Physics.useRealisticPhysics();
         ex.Physics.acc = new ex.vec(0, 800);
     }

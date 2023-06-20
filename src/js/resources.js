@@ -50,6 +50,7 @@ const Resources = {
     HoneyBomb: new ImageSource(honeyBomb),
     BossWeb: new ImageSource(bossWeb),
     TempBossFloor: new ImageSource(bossFloorTemp),
+    Portal: new ImageSource(portalImage),
 
 }
 const ResourceLoader = new Loader([
