@@ -24,6 +24,8 @@ import boss from "../images/bossSpider.png"
 import honeyBomb from "../images/honeyBomb.png"
 import bossWeb from "../images/bossWeb.png"
 import bossFloorTemp from "../images/tempFloorBoss.png"
+import bossBackground from "../images/bossBackground.png"
+
 import portalImage from "../images/portal.png"
 
 const Resources = {
@@ -53,6 +55,7 @@ const Resources = {
     HoneyBomb: new ImageSource(honeyBomb),
     BossWeb: new ImageSource(bossWeb),
     TempBossFloor: new ImageSource(bossFloorTemp),
+    BossBackground: new ImageSource(bossBackground)
 
 
 }
@@ -82,6 +85,7 @@ const ResourceLoader = new Loader([
     Resources.HoneyBomb,
     Resources.BossWeb,
     Resources.TempBossFloor,
+    Resources.BossBackground
 ])
 
 export { Resources, ResourceLoader }

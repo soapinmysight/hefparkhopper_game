@@ -13,7 +13,7 @@ export class BossFloor extends Actor {
         // this.pos = new Vector (960,1030);
 
         this.graphics.add(Resources.TempBossFloor.toSprite());
-        this.scale = new Vector(0.9,0.9)
+        // this.scale = new Vector(0.9,0.9)
 
         this.body.collisionType = CollisionType.Fixed;
     }
