@@ -1,10 +1,11 @@
 import { Vector, Physics, Scene, Actor, CollisionType } from "excalibur";
+import { Resources } from "../resources";
 
 import { BossFloor } from "./bossBottomBorder";
 import { BossSpider } from "./boss";
 import { MaincharacterBoss } from "./bossCharacter";
-import { Resources } from "../resources";
 import { BackgroundBoss } from "./bossBackground";
+
 
 export class BossFight extends Scene {
 
@@ -54,8 +55,8 @@ export class BossFight extends Scene {
         this.add(character);
         character.pos = new Vector (400  , 0);
 
-        // const boss = new BossSpider();
-        // this.add(boss);
-        // boss.pos = new Vector (800  , 500);
+        const boss = new BossSpider();
+        this.add(boss);
+        boss.pos = new Vector (1000  , 480);
     }
 }

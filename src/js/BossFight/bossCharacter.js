@@ -1,11 +1,11 @@
 import { Actor, CollisionType, Vector, Shape, Input, Timer } from "excalibur";
-import { Resources, ResourceLoader } from '../resources.js';
+import { Resources } from '../resources.js';
 
 import { BossFloor } from "./bossBottomBorder.js";
 
 export class MaincharacterBoss extends Actor {
 
-    health = 100;
+    health = 200;
     damage
     grounded
     timer
@@ -58,12 +58,12 @@ export class MaincharacterBoss extends Actor {
     reset(){
 
         this.graphics.use('HappyBee');                              //de reset functie voor wanneer je het level opnieuw wilt doen
-        this.health = 100;
+        this.health = 200;
         
     }
 
     isGrounded(event){
-        //console.log("Collsion start");
+
         if(event.other instanceof BossFloor){                       //checken of er collision is met de vloer
             console.log("you're on the floor");
             this.grounded = true;
@@ -125,15 +125,15 @@ export class MaincharacterBoss extends Actor {
         this.graphics.use('SadBee');                 //hier word de sad bee graphics geactiveerd wanneer de bee geraakt word
         this.timer.start();                          //hier word de timer gestart om de graphics na een seconde weer terug te zetten naar normaal
 
-        if(this.health < 76) {                       //hier ga ik gebaseerd op de hoeveelheid health, een parameter meegeven aan de scene
+        if(this.health < 151) {                       //hier ga ik gebaseerd op de hoeveelheid health, een parameter meegeven aan de scene
             this.scene.hearts(3);                    //wat word ontvangen in een hearts functie. deze zal weer een parameter meegeven
         }                                            //aan een functie binnen een class die UI zal heten. hier in zullen de punten,
                                                      //de flowers en de hearts te zien zijn. gebaseerd op de parameters zullen er hearts
-        if(this.health < 51) {                       //worden verwijderd
+        if(this.health < 101) {                       //worden verwijderd
             this.scene.hearts(2);
         }
 
-        if(this.health <26) {
+        if(this.health < 51) {
             this.scene.hearts(1);
         }
 

@@ -2,6 +2,7 @@ import { Actor, CollisionType, Vector } from "excalibur";
 import { Resources } from '../resources.js'
 
 import { Maincharacter } from "../Actors/character.js";
+import { MaincharacterBoss } from "./bossCharacter.js";
 
 export class BossSpider extends Actor {
 
@@ -19,6 +20,7 @@ export class BossSpider extends Actor {
         this.body.collisionType = CollisionType.Fixed
 
         this.graphics.add(Resources.Boss.toSprite());
+        this.scale = new Vector (1.3, 1.3)
 
         this.actions.repeatForever((ctx) => {
 
@@ -34,7 +36,7 @@ export class BossSpider extends Actor {
 
     doDamage(event){
 
-        if(event.other instanceof Maincharacter){
+        if(event.other instanceof MaincharacterBoss){
             console.log("ouch!");
             // event.other.takeDamage(50);                //does 50 damage to main character
         }

@@ -15,6 +15,6 @@ export class BackgroundBoss extends Actor {
         this.graphics.add(Resources.BossBackground.toSprite());
         this.body.collisionType = CollisionType.Fixed;
 
-        this.scale = new Vector(0.4, 0.4)
+        this.scale = new Vector(0.4, 0.4);
     }
 }
