@@ -1,8 +1,8 @@
 import { Actor, CollisionType, Vector } from "excalibur";
 import { Resources } from '../resources.js'
 
-import { Maincharacter } from "../Actors/character.js";
 import { MaincharacterBoss } from "./bossCharacter.js";
+import { SpiderWebShot } from "./bossAttack.js";
 
 export class BossSpider extends Actor {
 
@@ -38,7 +38,7 @@ export class BossSpider extends Actor {
 
         if(event.other instanceof MaincharacterBoss){
             console.log("ouch!");
-            // event.other.takeDamage(50);                //does 50 damage to main character
+            event.other.takeDamage(50);                //does 50 damage to main character
         }
 
     }
@@ -51,5 +51,13 @@ export class BossSpider extends Actor {
             this.kill();
         }
 
+    }
+
+    webShot() {
+
+        const webShoot = new SpiderWebShot();
+        webShoot.pos = this.pos.clone();
+        this.scene.add(webShoot);
+        
     }
 }
