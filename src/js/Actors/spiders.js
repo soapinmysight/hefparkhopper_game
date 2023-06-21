@@ -10,8 +10,8 @@ export class Spider extends ex.Actor {
     constructor(x, y) {
 
         super({
-            width: 120,
-            height: 100,
+            width: 100,
+            height: 80,
             pos: new ex.Vector(x, y)
         });
         const spider = Resources.Spider.toSprite()

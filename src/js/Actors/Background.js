@@ -1,6 +1,6 @@
 import * as ex from 'excalibur';
 
-export class Background extends ex.Actor {
+export class BackgroundLvlOne extends ex.Actor {
     constructor(x, y, width, height, image) {
         super({
             pos: new ex.Vector(x, y),
