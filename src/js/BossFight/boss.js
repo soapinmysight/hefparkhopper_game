@@ -64,7 +64,7 @@ export class BossSpider extends Actor {
 
         if(event.other instanceof MaincharacterBoss){
             console.log("ouch!");
-            event.other.takeDamage(50);                //does 50 damage to main character
+            event.other.takeDamage(50);                
         }
 
     }
