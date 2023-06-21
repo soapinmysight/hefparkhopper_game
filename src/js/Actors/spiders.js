@@ -1,5 +1,6 @@
 import * as ex from "excalibur";
 import { Resources } from "../resources.js";
+import {Maincharacter} from "./character.js";
 
 export class Spider extends ex.Actor {
     x
@@ -30,14 +31,16 @@ export class Spider extends ex.Actor {
         const side = event.side
         const otherActor = event.other
 
-        if (side === 'Top') {
-            console.log('spider collided on top and died')
-            this.kill()
-
-        } else if (side === 'Right' || side === 'Left') {
-            this.health --
-
-            console.log(`spider collided right or left`)
+        if(otherActor instanceof Maincharacter) {
+            if (side === 'Top') {
+                console.log('character killed a spider')
+                this.kill()
+            } else if (side === 'Right' || side === 'Left') {
+                otherActor.kill()
+                console.log(`character walked into spider and died`)
+            }
         }
+
+
     }
 }
