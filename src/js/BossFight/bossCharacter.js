@@ -1,98 +1,154 @@
-import { Actor, Shape, CollisionType, Input, Vector, DisplayMode } from "excalibur";
-import { Resources } from "../resources";
+import { Actor, CollisionType, Vector, Shape, Input, Timer } from "excalibur";
+import { Resources } from '../resources.js';
+
+import { BossFloor } from "./bossBottomBorder.js";
 
 export class MaincharacterBoss extends Actor {
 
-    health
-    speed
-    jumped = false
-    onGround = true
-    x
-    y
+    health = 200;
+    damage
+    grounded
+    timer
 
-    constructor() {
-        const circle = Shape.Circle(110, new Vector(5, 25)) // Makes the bee a round shape so it can roll
+
+    constructor(){
+
+        const circle = Shape.Circle(105, new Vector(6, 27.5));
+
         super({
-            collisionType: CollisionType.Active, // Gives the bee a collision with the platforms
-            collider: circle,
-            displayMode: DisplayMode.FitScreen,
+            height: 100,
+            width: 100,
+            collider: circle
         });
-        this.graphics.use(Resources.Bee.toSprite()); // Bee picture
+
+        this.timer = new Timer({
+            fcn: () => this.graphics.use('HappyBee'),      //dit is een timer waarmee ik de graphics van de bee weer terug naar
+            repeats: false,                                //normaal zet na het aanvallen (tijdens aanval verandert de image naar madBee)
+            interval: 1000,
+        })
+    }
+
+    // onActivate(ctx) {
+
+    //     this.MaincharacterBoss.pos = new Vector(10, 500);         //dit gaan we later nodig hebben met het resetten van de levels
+    //     this.MaincharacterBoss.reset();
+    // }
+
+    onInitialize(engine){
+
+        this.game = engine;
+
+        this.body.useGravity = true;
+
+        this.body.collisionType = CollisionType.Active;
+
+        this.graphics.add('HappyBee',Resources.Bee.toSprite());     //de sprite toevoegen voor de normale bee
+        this.graphics.add('MadBee',Resources.MadBee.toSprite());    //de sprite toevoegen voor de aanval bee
+        this.graphics.add('SadBee',Resources.SadBee.toSprite());    //de sprite toevoegen voor de sad bee (wanneer hij damage neemt)
+        this.scale = new Vector (0.5,0.5);                                 //de verschillende sprites hebben jullie niet nodig aangezien
+                                                                           //jullie geen attack met "bullets" hebben
+
+        this.graphics.use('HappyBee');                              //de default graphics instellen
+
+        this.on('collisionstart', (event) => { this.isGrounded(event)} );   //checken of er collision is
+
+        this.game.currentScene.add(this.timer);                     //de timer toevoegen aan de scene
+    }
+
+    reset(){
+
+        this.graphics.use('HappyBee');                              //de reset functie voor wanneer je het level opnieuw wilt doen
         this.health = 200;
-        this.speed = 300;  // The speed of the bee
-        this.scale = new Vector(0.4, 0.4) // Scaling of the bee
-        this.pos = new Vector(50, 500); //Staring position bee
-        this.pointer.useGraphicsBounds = true;
-        this.enableCapturePointer = true;
-        this.body.gravity = true; //Gravity
-
+        
     }
 
-    onInitialize(engine) {
-        engine.input.keyboard.enabled = true; //Keyboard binds
-        const keys = Input.Keys; //Keys input
-        engine.input.keyboard.on("hold", (evt) => { //When you hold a key
-            if (evt.key === keys.A || evt.key === keys.Left) {
-                this.vel.x = -this.speed; //Move left with A or <--
-            } else if (evt.key === keys.D || evt.key === keys.Right) {
-                this.vel.x = this.speed; //Move right with D or -->
-            }
-        })
+    isGrounded(event){
 
+        if(event.other instanceof BossFloor){                       //checken of er collision is met de vloer
+            console.log("you're on the floor");
+            this.grounded = true;
+        } 
 
-        engine.input.keyboard.on("release", (evt) => { //When you release a key after you hold it
-            if (evt.key === keys.A || evt.key === keys.D || evt.key === keys.Left || evt.key === keys.Right) {
-                this.vel.x = -10; //Makes sure you stop instantly and don't roll on
-            }
-        });
-
-        engine.input.keyboard.on("press", (evt) => { //When you press a button
-            if (evt.key === keys.W || evt.key === keys.Up) {
-                this.vel.y = 3000 //Jumping
-                // this.pos.y = 500
-
-                console.log('jump')
-                this.onGround = false
-                this.jumped = true
-            }
-        })
-
-
+        // if(event.other instanceof Platform){
+        //     console.log("you're on a platform");                 //checken of er collision is met een plaform
+        //     this.grounded = true;                                //(heb zelf nog geen platform vandaar comment)
+        // } 
+ 
     }
 
-    onPostUpdate(_engine, _delta) {
-        super.onPostUpdate(_engine, _delta);
-        // Makes sure you don't keep rolling when releasing A or D
-        if (this.vel.x > 0) {
-            this.vel.x -= 10;
-        } else if (this.vel.x < 0) {
-            this.vel.x += 10;
+    onPreUpdate(engine) {
+
+        let xspeed = 0;                                           //set de xspeed op 0
+        let yspeed = 0;                                           //set de yspeed op 0
+
+
+        if(engine.input.keyboard.isHeld(Input.Keys.D)) {          //voor uit bewegen met D
+           xspeed = 240;
         }
 
+        if(engine.input.keyboard.isHeld(Input.Keys.A)) {          //achter uit bewegen met A
+            xspeed = -240;
+        }
 
-        // if (this.vel.y === 0) {
-        //     this.onGround = true;
-        //     this.jumped = false;
-        // } else {
-        //     this.onGround = false;
+        //console.log(this.grounded)
+        
+        if(this.grounded) {
+            if(engine.input.keyboard.wasPressed(Input.Keys.Space)) {       //springen met space
+                yspeed = -500;
+                this.grounded = false;
+            }
+        
+            if(engine.input.keyboard.wasPressed(Input.Keys.B)) {           //dubbel jump voor het geval je die wilt toevoegen
+                yspeed = -650;                                             //zo niet kan je gwn deleten:)
+                this.grounded = false;
+            }
+        }
+
+        // if(engine.input.keyboard.wasPressed(Input.Keys.L)) {
+        //     this.attack();                                              //attack, moet ik nog maken en dus is nog commented
+        //     this.graphics.use('MadBubbles');                            //keybind zal nog veranderen, is nog van mn oude code
+        //     this.timer.start();
         // }
 
-        // Commented code for speeding the bee up with A & D, just for programming ease
-        _engine.input.keyboard.on("hold", (evt) => {
-            if (evt.key === Input.Keys.A) {
-                this.vel.x = -800;
-            } else if (evt.key === Input.Keys.D) {
-                this.vel.x = 800;
-            } else if (evt.key === Input.Keys.W && this.onGround) {
-                this.jumped = true;
-                this.vel.y = -700;
-            }
-        })
+        this.vel = new Vector(
+            xspeed ,                                 //de "nieuwe"/ current speed instellen/updaten
+            this.vel.y + yspeed
+        )
 
-        // _engine.currentScene.camera.x = this.pos.x + 80 //Tracking the bee with the camera
-
-        this.on("collision", (event) => this.onPreCollision(event));
     }
 
+    takeDamage(amount){                              //de functie voor het nemen van damage
+
+        console.log("I take damage " + amount);      //hier word de hoeveelheid damage uit de paramaters van de totale health afgehaald
+        this.health -= amount;
+
+        this.graphics.use('SadBee');                 //hier word de sad bee graphics geactiveerd wanneer de bee geraakt word
+        this.timer.start();                          //hier word de timer gestart om de graphics na een seconde weer terug te zetten naar normaal
+
+        if(this.health < 151) {                       //hier ga ik gebaseerd op de hoeveelheid health, een parameter meegeven aan de scene
+            this.scene.hearts(3);                    //wat word ontvangen in een hearts functie. deze zal weer een parameter meegeven
+        }                                            //aan een functie binnen een class die UI zal heten. hier in zullen de punten,
+                                                     //de flowers en de hearts te zien zijn. gebaseerd op de parameters zullen er hearts
+        if(this.health < 101) {                       //worden verwijderd
+            this.scene.hearts(2);
+        }
+
+        if(this.health < 51) {
+            this.scene.hearts(1);
+        }
+
+        if(this.health < 1 ){
+            console.log("oopsies, dead")             //hier ben je game over:'(
+            // this.game.goToScene('gameOver', new GameOver());
+        }
+    }
+
+    // attack(){
+
+    //     const bubBullet = new BubBullets();       //code voor de attack
+    //     bubBullet.pos = this.pos.clone();
+    //     this.scene.add(bubBullet);
+
+    // }
 
 }

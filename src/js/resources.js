@@ -6,6 +6,10 @@ import spikeImage from "../images/spikes.png"
 
 
 import beeImage from "../images/bee2.png"
+import sadBee from "../images/sadBee.png"
+import madBee from "../images/madBee.png"
+import happiestBee from "../images/happiestBee.png"
+
 import spiderImage from "../images/spoeder.png"
 
 import flowerImage from "../images/flower.png"
@@ -35,6 +39,10 @@ const Resources = {
     Spikes: new ImageSource(spikeImage),
 
     Bee: new ImageSource(beeImage),
+    SadBee: new ImageSource(sadBee),
+    MadBee: new ImageSource(madBee),
+    HappiestBee: new ImageSource(happiestBee),
+
     Spider: new ImageSource(spiderImage),
 
     Flower: new ImageSource(flowerImage),
@@ -65,6 +73,10 @@ const ResourceLoader = new Loader([
     Resources.Spikes,
 
     Resources.Bee,
+    Resources.SadBee,
+    Resources.MadBee,
+    Resources.HappiestBee,
+    
     Resources.Spider,
 
     Resources.Flower,
