@@ -8,6 +8,7 @@ export class BossSpider extends Actor {
 
     health = 10000;
     timer;
+    spriteTimer;
 
     constructor(){
 
@@ -22,6 +23,12 @@ export class BossSpider extends Actor {
             interval: 4000,
         })
 
+        this.spriteTimer = new Timer({
+            fcn: () => this.graphics.use('Boss'),
+            repeats: false,
+            interval: 300,
+        })
+
     }
 
     onInitialize(engine){
@@ -30,8 +37,11 @@ export class BossSpider extends Actor {
 
         this.body.collisionType = CollisionType.Fixed
 
-        this.graphics.add(Resources.Boss.toSprite());
-        this.scale = new Vector (1.3, 1.3)
+        this.graphics.add('Boss', Resources.Boss.toSprite());
+        this.graphics.add('BossHit', Resources.BossHit.toSprite());
+        this.scale = new Vector (1.3, 1.3);
+
+        this.graphics.use('Boss');
 
         this.actions.repeatForever((ctx) => {
 
@@ -40,6 +50,8 @@ export class BossSpider extends Actor {
             ctx.moveBy(100, 0, 50)
 
         })
+
+        this.game.currentScene.add(this.spriteTimer); 
 
         this.game.currentScene.add(this.timer);  
         this.timer.start();
@@ -61,6 +73,9 @@ export class BossSpider extends Actor {
 
         this.health -= amount;
 
+        this.graphics.use('BossHit');
+        this.spriteTimer.start();
+
         if(this.health < 1) {
             this.timer.stop();
             this.kill();
@@ -73,7 +88,6 @@ export class BossSpider extends Actor {
 
         const webShoot = new SpiderWebShot();
         webShoot.pos = this.pos.clone();
-        // this.scene.add(webShoot);
         this.scene.addWebShot(webShoot)
 
     }
