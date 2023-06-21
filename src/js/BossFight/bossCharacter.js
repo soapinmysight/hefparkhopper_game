@@ -2,6 +2,7 @@ import { Actor, CollisionType, Vector, Shape, Input, Timer } from "excalibur";
 import { Resources } from '../resources.js';
 
 import { BossFloor } from "./bossBottomBorder.js";
+import { HoneyBomber } from "./characterAttack.js";
 
 export class MaincharacterBoss extends Actor {
 
@@ -104,11 +105,11 @@ export class MaincharacterBoss extends Actor {
             }
         }
 
-        // if(engine.input.keyboard.wasPressed(Input.Keys.L)) {
-        //     this.attack();                                              //attack, moet ik nog maken en dus is nog commented
-        //     this.graphics.use('MadBubbles');                            //keybind zal nog veranderen, is nog van mn oude code
-        //     this.timer.start();
-        // }
+        if(engine.input.keyboard.wasPressed(Input.Keys.ShiftLeft)) {
+            this.honeyBomb();                                              //attack, moet ik nog maken en dus is nog commented
+            this.graphics.use('MadBee');                            //keybind zal nog veranderen, is nog van mn oude code
+            this.timer.start();
+        }
 
         this.vel = new Vector(
             xspeed ,                                 //de "nieuwe"/ current speed instellen/updaten
@@ -125,17 +126,17 @@ export class MaincharacterBoss extends Actor {
         this.graphics.use('SadBee');                 //hier word de sad bee graphics geactiveerd wanneer de bee geraakt word
         this.timer.start();                          //hier word de timer gestart om de graphics na een seconde weer terug te zetten naar normaal
 
-        if(this.health < 151) {                       //hier ga ik gebaseerd op de hoeveelheid health, een parameter meegeven aan de scene
-            this.scene.hearts(3);                    //wat word ontvangen in een hearts functie. deze zal weer een parameter meegeven
-        }                                            //aan een functie binnen een class die UI zal heten. hier in zullen de punten,
+        // if(this.health < 151) {                       //hier ga ik gebaseerd op de hoeveelheid health, een parameter meegeven aan de scene
+            // this.scene.hearts(3);                    //wat word ontvangen in een hearts functie. deze zal weer een parameter meegeven
+        // }                                            //aan een functie binnen een class die UI zal heten. hier in zullen de punten,
                                                      //de flowers en de hearts te zien zijn. gebaseerd op de parameters zullen er hearts
-        if(this.health < 101) {                       //worden verwijderd
-            this.scene.hearts(2);
-        }
+        // if(this.health < 101) {                       //worden verwijderd
+            // this.scene.hearts(2);
+        // }
 
-        if(this.health < 51) {
-            this.scene.hearts(1);
-        }
+        // if(this.health < 51) {
+            // this.scene.hearts(1);
+        // }
 
         if(this.health < 1 ){
             console.log("oopsies, dead")             //hier ben je game over:'(
@@ -143,12 +144,12 @@ export class MaincharacterBoss extends Actor {
         }
     }
 
-    // attack(){
+    honeyBomb(){
 
-    //     const bubBullet = new BubBullets();       //code voor de attack
-    //     bubBullet.pos = this.pos.clone();
-    //     this.scene.add(bubBullet);
+        const bomb = new HoneyBomber();       //code voor de attack
+        bomb.pos = this.pos.clone();
+        this.scene.add(bomb);
 
-    // }
+    }
 
 }

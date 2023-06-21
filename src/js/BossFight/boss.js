@@ -43,12 +43,13 @@ export class BossSpider extends Actor {
 
     }
 
-    getHit(amount){
+    hitBoss(amount){
 
         this.health -= amount;
 
         if(this.health < 1) {
             this.kill();
+            console.log("Victory for you, whoo hoo")
         }
 
     }
@@ -58,6 +59,6 @@ export class BossSpider extends Actor {
         const webShoot = new SpiderWebShot();
         webShoot.pos = this.pos.clone();
         this.scene.add(webShoot);
-        
+
     }
 }
