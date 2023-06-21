@@ -9,7 +9,7 @@ import { BackgroundBoss } from "./bossBackground";
 
 export class BossFight extends Scene {
 
-    ding
+   character;
 
     constructor() {
 
@@ -21,6 +21,11 @@ export class BossFight extends Scene {
         Physics.useRealisticPhysics();
         Physics.gravity = new Vector(0, 800);
 
+    }
+
+    addWebShot(webShoot){
+        this.add(webShoot);
+        webShoot.actions.meet(this.character, 200);
     }
 
     onInitialize(engine) {
@@ -51,9 +56,9 @@ export class BossFight extends Scene {
         this.add(floor);
         floor.pos = new Vector(427, 640);
 
-        const character = new MaincharacterBoss();
-        this.add(character);
-        character.pos = new Vector(400, 0);
+        this.character = new MaincharacterBoss();
+        this.add(this.character);
+        this.character.pos = new Vector(400, 0);
 
         const boss = new BossSpider();
         this.add(boss);

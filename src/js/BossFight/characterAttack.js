@@ -1,15 +1,22 @@
-import { Actor, Vector, CollisionType, Random } from "excalibur"
+import { Actor, Vector, CollisionType, Random, Shape } from "excalibur"
 import { Resources } from "../resources.js"
 
 import { BossSpider } from "./boss.js"
 import { BossFloor } from "./bossBottomBorder.js"
+import { SpiderWebShot } from "./bossAttack.js"
 
 export class HoneyBomber extends Actor {
 
-    constructor(){
+    constructor(x, y){
+
+        const circle = Shape.Circle(30);
+
         super({
-            width: Resources.HoneyBomb.width,
-            height: Resources.HoneyBomb.height
+            // width: Resources.HoneyBomb.width,
+            // height: Resources.HoneyBomb.height,
+            x: x + Math.random() * 50,
+            y: y + Math.random() * 50,
+            collider: circle
         })
     }
 
@@ -20,8 +27,8 @@ export class HoneyBomber extends Actor {
         this.body.collisionType = CollisionType.Active;
         this.body.useGravity = true;
 
-        this.vel = new Vector(400 , -300);
-        // this.rotation = Math.random() * 10;
+        this.vel = new Vector(400 , -400);
+        this.rotation = Math.random() * 10;
 
         this.graphics.use(Resources.HoneyBomb.toSprite());
         this.scale = new Vector(0.5, 0.5);
@@ -38,6 +45,11 @@ export class HoneyBomber extends Actor {
 
         if(event.other instanceof BossFloor){
             this.kill();
+        }
+
+        if(event.other instanceof SpiderWebShot){
+            this.kill();
+            event.other.kill();
         }
     }
 }
