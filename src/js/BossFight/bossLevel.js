@@ -10,7 +10,7 @@ export class BossFight extends Scene {
 
     ding
 
-    constructor(){
+    constructor() {
 
         super({
             width: 854,
@@ -19,14 +19,14 @@ export class BossFight extends Scene {
 
         Physics.useRealisticPhysics();
         Physics.gravity = new Vector(0, 800);
-        
+
     }
 
-    onInitialize(engine){
+    onInitialize(engine) {
 
         const backgroundBoss = new BackgroundBoss();
         this.add(backgroundBoss);
-        backgroundBoss.pos = new Vector (580, 210);
+        backgroundBoss.pos = new Vector(580, 210);
 
         let leftWall = new Actor({
             pos: new Vector(-10, 0),
@@ -38,7 +38,7 @@ export class BossFight extends Scene {
         this.add(leftWall);
 
         let rightWall = new Actor({
-            pos: new Vector (1265, 0),
+            pos: new Vector(1265, 0),
             width: 30,
             height: 9000000000,
             collisionType: CollisionType.Fixed
@@ -48,11 +48,11 @@ export class BossFight extends Scene {
 
         const floor = new BossFloor();
         this.add(floor);
-        floor.pos = new Vector (427  , 640);
+        floor.pos = new Vector(427, 640);
 
         const character = new MaincharacterBoss();
         this.add(character);
-        character.pos = new Vector (400  , 0);
+        character.pos = new Vector(400, 0);
 
         // const boss = new BossSpider();
         // this.add(boss);
