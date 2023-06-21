@@ -1,5 +1,6 @@
 import * as ex from 'excalibur'
 import { Resources, ResourceLoader } from '../resources';
+import {Maincharacter} from "./character.js";
 
 export class Spikes extends ex.Actor {
     constructor(x, y, width, height) {
@@ -13,6 +14,19 @@ export class Spikes extends ex.Actor {
         });
         this.graphics.use(Resources.Spikes.toSprite()); //Image of platform
         this.scale = new ex.Vector(0.5, 0.5)
+    }
+    onInitialize(engine) {
+        super.onInitialize(engine);
+        this.body.collisionType = ex.CollisionType.Active;
+        this.on("precollision", (event) => this.onPreCollision(event));
+    }
+    onPreCollision(event) {
+        const otherActor = event.other
+
+        if(otherActor instanceof Maincharacter){
+            otherActor.kill();
+        }
+
     }
 
 
