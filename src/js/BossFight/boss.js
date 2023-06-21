@@ -12,8 +12,8 @@ export class BossSpider extends Actor {
     constructor(){
 
         super({
-            width: Resources.Boss.width,
-            height: Resources.Boss.height
+            width: 200,
+            height: 200
         })
 
         this.timer = new Timer({
