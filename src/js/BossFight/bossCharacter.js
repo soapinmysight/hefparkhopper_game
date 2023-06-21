@@ -10,7 +10,8 @@ export class MaincharacterBoss extends Actor {
     damage
     grounded
     timer
-
+    attackTimer
+    mayAttack
 
     constructor(){
 
@@ -25,6 +26,12 @@ export class MaincharacterBoss extends Actor {
         this.timer = new Timer({
             fcn: () => this.graphics.use('HappyBee'),      //dit is een timer waarmee ik de graphics van de bee weer terug naar
             repeats: false,                                //normaal zet na het aanvallen (tijdens aanval verandert de image naar madBee)
+            interval: 1000,
+        })
+
+        this.attackTimer = new Timer({
+            fcn: () => this.mayAttack = true,
+            repeats: false,
             interval: 1000,
         })
     }
@@ -51,9 +58,12 @@ export class MaincharacterBoss extends Actor {
 
         this.graphics.use('HappyBee');                              //de default graphics instellen
 
+        this.mayAttack = true;
+
         this.on('collisionstart', (event) => { this.isGrounded(event)} );   //checken of er collision is
 
-        this.game.currentScene.add(this.timer);                     //de timer toevoegen aan de scene
+        this.game.currentScene.add(this.timer); 
+        this.game.currentScene.add(this.attackTimer);                   //de timer toevoegen aan de scene
     }
 
     reset(){
@@ -105,10 +115,17 @@ export class MaincharacterBoss extends Actor {
             }
         }
 
-        if(engine.input.keyboard.wasPressed(Input.Keys.ShiftLeft)) {
-            this.honeyBomb();                                              //attack, moet ik nog maken en dus is nog commented
-            this.graphics.use('MadBee');                            //keybind zal nog veranderen, is nog van mn oude code
-            this.timer.start();
+        if(this.mayAttack){
+
+            if(engine.input.keyboard.wasPressed(Input.Keys.ShiftLeft)) {
+
+                this.honeyBomb();                                       //attack, moet ik nog maken en dus is nog commented
+                this.graphics.use('MadBee');                            //keybind zal nog veranderen, is nog van mn oude code
+                this.timer.start();
+                this.mayAttack = false;
+                this.attackTimer.start();
+            }
+
         }
 
         this.vel = new Vector(
@@ -149,7 +166,6 @@ export class MaincharacterBoss extends Actor {
         const bomb = new HoneyBomber();       //code voor de attack
         bomb.pos = this.pos.clone();
         this.scene.add(bomb);
-
     }
 
 }
