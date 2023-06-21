@@ -1,5 +1,6 @@
 import * as ex from "excalibur";
 import { Resources } from "../resources";
+import { Platform } from "./platform";
 
 export class Maincharacter extends ex.Actor {
     health
@@ -52,7 +53,7 @@ export class Maincharacter extends ex.Actor {
 
         engine.input.keyboard.on("press", (evt) => {
             if (evt.key === keys.W || evt.key === keys.Up) { //Jumping
-                if (this.onGround == true) {
+                if (this.onGround === true) {
                     this.vel.y = -600
                     this.onGround = false
                     this.jumped = true
@@ -60,6 +61,7 @@ export class Maincharacter extends ex.Actor {
                 }
             }
         })
+        this.on('collisionstart', (evt) => this.onCollisionStart(evt))
     }
 
     update(engine) {
@@ -69,15 +71,21 @@ export class Maincharacter extends ex.Actor {
             this.vel.x += 10;
         }
 
-        console.log(this.vel.y)
+        // if (this.vel.y === 0) {
+        //     this.onGround = true;
+        //     this.jumped = false;
+        // } else {
+        //     this.onGround = false;
+        // }
 
-        if (this.vel.y === 0) {
-            this.onGround = true;
-            this.jumped = false;
-        } else {
-            this.onGround = false;
-        }
         engine.currentScene.camera.x = this.pos.x + 80 //Tracking the bee with the camera
+    }
+
+    onCollisionStart(evt) {
+        if (evt.other instanceof Platform) { //Checking if there is collision with the platforms
+            console.log("you're on the floor");
+            this.onGround = true;
+        }
     }
 
     onPostUpdate(_engine, _delta) {
@@ -94,9 +102,5 @@ export class Maincharacter extends ex.Actor {
         //         this.vel.y = -700;
         //     }
         // })
-
-        // this.on("collision", (event) => this.onPreCollision(event));
     }
-
-
 }
