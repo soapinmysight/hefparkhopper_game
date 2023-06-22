@@ -9,11 +9,14 @@ import { Spider } from "../Actors/spiders.js"
 import { Portal } from "../Actors/portal.js"
 import { Flower } from "../Actors/flower.js"
 
+
 export class LevelOne extends ex.Scene {
     game
     health
-    constructor() {
-        super();
+    score
+    constructor(score) {
+        super({});
+        this.score = score
     }
     onInitialize(_engine) {
         super.onInitialize(_engine);
@@ -104,7 +107,7 @@ export class LevelOne extends ex.Scene {
         const platform15 = new PlatformLvlOne(4900, 130, 925, 155);
         this.add(platform15);
 
-        const platform16 = new PlatformLvlOne(4900, 130, 925, 155);
+        const platform16 = new PlatformLvlOne(5500, 130, 925, 155);
         this.add(platform16);
 
         const platform17 = new PlatformLvlOne(5775, 130, 925, 155);
@@ -196,9 +199,12 @@ export class LevelOne extends ex.Scene {
         const player = new Maincharacter()
         // player.anchor = new ex.Vector(5, 25)
         this.add(player)
-
-
     }
+
+    onPreUpdate() {
+        this.scoreLabel.text = `Score: ${this.score.getScore()}`
+    }
+
     onPostUpdate(_engine, _delta) {
         super.onPostUpdate(_engine, _delta);
         // console.log(this.health)

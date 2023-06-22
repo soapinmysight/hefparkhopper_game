@@ -1,6 +1,6 @@
 import * as ex from 'excalibur'
 import { Resources, ResourceLoader } from '../resources';
-import {Maincharacter} from "./character.js";
+import { Maincharacter } from "./character.js";
 
 export class MainSpike extends ex.Actor {
 
@@ -11,9 +11,9 @@ export class MainSpike extends ex.Actor {
     }
     onPreCollision(event) {
         const otherActor = event.other
-        if(otherActor instanceof Maincharacter){
-            otherActor.kill();
-        }
+        // if(otherActor instanceof Maincharacter){
+        //     otherActor.kill();
+        // }
     }
 }
 

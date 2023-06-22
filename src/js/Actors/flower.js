@@ -2,7 +2,8 @@ import * as ex from 'excalibur'
 import { Resources, ResourceLoader } from '../resources';
 
 export class Flower extends ex.Actor {
-    constructor(x, y, width, height) {
+    score
+    constructor(x, y, width, height, score) {
         super({
             pos: new ex.Vector(x, y),
             width: 2250,
@@ -13,8 +14,19 @@ export class Flower extends ex.Actor {
         });
         this.graphics.use(Resources.Flower.toSprite()); //Image of platform
         this.scale = new ex.Vector(0.03, 0.03)
+        this.score = score
     }
 
+    onInitialize() {
+        this.on('collisionstart', (evt) => this.onCollisionStart(evt))
+    }
 
+    onCollisionStart(evt) {
+        if (evt.other instanceof Maincharacter) {
+            this.score.incrementScore()
+            this.kill()
+        }
+
+    }
 
 }
