@@ -3,6 +3,7 @@ import { Resources } from '../resources.js';
 
 import { BossFloor } from "./bossBottomBorder.js";
 import { HoneyBomber } from "./characterAttack.js";
+import { BossPlatform } from "./bossPlatform.js";
 
 export class MaincharacterBoss extends Actor {
 
@@ -80,10 +81,10 @@ export class MaincharacterBoss extends Actor {
             this.grounded = true;
         } 
 
-        // if(event.other instanceof Platform){
-        //     console.log("you're on a platform");                 //checken of er collision is met een plaform
-        //     this.grounded = true;                                //(heb zelf nog geen platform vandaar comment)
-        // } 
+        if(event.other instanceof BossPlatform){
+            console.log("you're on a platform");                 
+            this.grounded = true;                                
+        } 
  
     }
 
