@@ -101,7 +101,5 @@ export class Maincharacter extends ex.Actor {
 
     onPostUpdate(_engine, _delta) {
         super.onPostUpdate(_engine, _delta);
-
-
     }
 }
