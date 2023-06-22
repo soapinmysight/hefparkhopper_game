@@ -18,6 +18,7 @@ export class LevelOne extends ex.Scene {
         super({});
         this.score = score
     }
+
     onInitialize(_engine) {
         super.onInitialize(_engine);
         this.game = _engine
@@ -30,7 +31,6 @@ export class LevelOne extends ex.Scene {
     }
 
     startLevelOne() {
-
         //Background image
         const backgroundImage = Resources.Background.toSprite();
         const background = new BackgroundLvlOne(-550, -50, 200, 20, backgroundImage);
@@ -48,7 +48,6 @@ export class LevelOne extends ex.Scene {
         })
         this.add(this.scoreLabel)
 
-
         // Right invisible wall
         let leftWall = new ex.Actor({
             pos: ex.vec(-1, 0),
@@ -56,6 +55,7 @@ export class LevelOne extends ex.Scene {
             height: 9000000000,
             collisionType: ex.CollisionType.Fixed
         })
+
         // Left invisible wall
         let rightWall = new ex.Actor({
             pos: ex.vec(8500, 0),
@@ -63,6 +63,7 @@ export class LevelOne extends ex.Scene {
             height: 9000000000,
             collisionType: ex.CollisionType.Fixed
         })
+
         // Roof
         let foundation = new ex.Actor({
             pos: ex.vec(0, 600),
@@ -125,6 +126,31 @@ export class LevelOne extends ex.Scene {
         const platform17 = new PlatformLvlOne(5775, 130, 925, 155);
         this.add(platform17);
 
+        let platform18 = new PlatformLvlOne(6500, 130, 925, 155)
+        platform18.actions.repeatForever((repeatCtx) => {
+            repeatCtx.moveTo(6500, 130, 100)
+            repeatCtx.moveTo(6500, 540, 100)
+        })
+        this.add(platform18)
+
+        let platform20 = new PlatformLvlOne(7100, 130, 925, 155)
+        this.add(platform20)
+
+        let platform21 = new PlatformLvlOne(7375, 130, 925, 155)
+        this.add(platform21)
+
+        let platform22 = new PlatformLvlOne(7650, 130, 925, 155)
+        this.add(platform22)
+
+        let platform24 = new PlatformLvlOne(7100, 330, 925, 155)
+        this.add(platform24)
+
+        let platform25 = new PlatformLvlOne(7375, 330, 925, 155)
+        this.add(platform25)
+
+        let platform26 = new PlatformLvlOne(7650, 330, 925, 155)
+        this.add(platform26)
+
         //Spikes
         const spikes1 = new SpikesLvlOne(800, 500);
         this.add(spikes1);
@@ -176,6 +202,25 @@ export class LevelOne extends ex.Scene {
         const flower8 = new Flower(5950, 50, this.score);
         this.add(flower8);
 
+        const flower9 = new Flower(7200, 50, this.score);
+        this.add(flower9);
+
+        const flower10 = new Flower(7400, 50, this.score);
+        this.add(flower10);
+
+        const flower11 = new Flower(7600, 50, this.score);
+        this.add(flower11);
+
+        const flower12 = new Flower(7800, 50, this.score);
+        this.add(flower12);
+
+        const flower13 = new Flower(7350, 250, this.score);
+        this.add(flower13);
+
+        const flower14 = new Flower(7620, 250, this.score);
+        this.add(flower14);
+
+
         // Enemies
         let spider1 = new Spider()
         spider1.pos = new ex.Vector(1100, 130)
@@ -201,6 +246,30 @@ export class LevelOne extends ex.Scene {
         })
         this.add(spider3)
 
+        let spider4 = new Spider()
+        spider4.pos = new ex.Vector(7100, 530)
+        spider4.actions.repeatForever((repeatCtx) => {
+            repeatCtx.moveTo(7100, 530, 100)
+            repeatCtx.moveTo(7200, 530, 100)
+        })
+        this.add(spider4)
+
+        let spider5 = new Spider()
+        spider5.pos = new ex.Vector(7450, 530)
+        spider5.actions.repeatForever((repeatCtx) => {
+            repeatCtx.moveTo(7450, 530, 100)
+            repeatCtx.moveTo(7600, 530, 100)
+        })
+        this.add(spider5)
+
+        let spider6 = new Spider()
+        spider6.pos = new ex.Vector(7900, 530)
+        spider6.actions.repeatForever((repeatCtx) => {
+            repeatCtx.moveTo(7900, 530, 200)
+            repeatCtx.moveTo(8150, 530, 200)
+        })
+        this.add(spider6)
+
 
         //Portal
         let portal = new Portal()
@@ -219,7 +288,6 @@ export class LevelOne extends ex.Scene {
 
     onPostUpdate(_engine, _delta) {
         super.onPostUpdate(_engine, _delta);
-        // console.log(this.health)
     }
 
 }
