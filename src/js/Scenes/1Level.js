@@ -36,6 +36,18 @@ export class LevelOne extends ex.Scene {
         const background = new BackgroundLvlOne(-550, -50, 200, 20, backgroundImage);
         this.add(background);
 
+        //Score label
+        this.scoreLabel = new ex.Label({
+            text: `Score: 0`,
+            pos: new ex.Vector(100, 100),
+            font: new ex.Font({
+                unit: ex.FontUnit.Px,
+                size: 20,
+                color: ex.Color.Black
+            })
+        })
+        this.add(this.scoreLabel)
+
 
         // Right invisible wall
         let leftWall = new ex.Actor({
@@ -114,25 +126,25 @@ export class LevelOne extends ex.Scene {
         this.add(platform17);
 
         //Spikes
-        const spikes1 = new SpikesLvlOne(800, 500, 925, 155);
+        const spikes1 = new SpikesLvlOne(800, 500);
         this.add(spikes1);
 
-        const spikes2 = new SpikesLvlOne(2500, 500, 925, 155);
+        const spikes2 = new SpikesLvlOne(2500, 500);
         this.add(spikes2);
 
-        const spikes3 = new SpikesLvlOne(2965, 500, 925, 155);
+        const spikes3 = new SpikesLvlOne(2965, 500);
         this.add(spikes3);
 
-        const spikes4 = new SpikesLvlOne(3430, 500, 925, 155);
+        const spikes4 = new SpikesLvlOne(3430, 500);
         this.add(spikes4);
 
-        const spikes5 = new SpikesLvlOne(3895, 500, 925, 155);
+        const spikes5 = new SpikesLvlOne(3895, 500);
         this.add(spikes5);
 
-        const spikes6 = new SpikesLvlOne(4360, 500, 925, 155);
+        const spikes6 = new SpikesLvlOne(4360, 500);
         this.add(spikes6);
 
-        const spikes7 = new SpikesLvlOne(4825, 500, 925, 155);
+        const spikes7 = new SpikesLvlOne(4825, 500);
         this.add(spikes7);
 
         // const spikes8 = new Spikes(3895, 500, 925, 155);
@@ -140,28 +152,28 @@ export class LevelOne extends ex.Scene {
         // this.add(spikes8);
 
         //Flowers
-        const flower1 = new Flower(50, 280);
+        const flower1 = new Flower(50, 280, this.score);
         this.add(flower1);
 
-        const flower2 = new Flower(4200, 150);
+        const flower2 = new Flower(4200, 150, this.score);
         this.add(flower2);
 
-        const flower3 = new Flower(5000, 50);
+        const flower3 = new Flower(5000, 50, this.score);
         this.add(flower3);
 
-        const flower4 = new Flower(5550, 50);
+        const flower4 = new Flower(5550, 50, this.score);
         this.add(flower4);
 
-        const flower5 = new Flower(5650, 50);
+        const flower5 = new Flower(5650, 50, this.score);
         this.add(flower5);
 
-        const flower6 = new Flower(5750, 50);
+        const flower6 = new Flower(5750, 50, this.score);
         this.add(flower6);
 
-        const flower7 = new Flower(5850, 50);
+        const flower7 = new Flower(5850, 50, this.score);
         this.add(flower7);
 
-        const flower8 = new Flower(5950, 50);
+        const flower8 = new Flower(5950, 50, this.score);
         this.add(flower8);
 
         // Enemies
@@ -196,7 +208,7 @@ export class LevelOne extends ex.Scene {
         this.add(portal)
 
         // Adding bee to the game
-        const player = new Maincharacter()
+        const player = new Maincharacter(this.score)
         // player.anchor = new ex.Vector(5, 25)
         this.add(player)
     }

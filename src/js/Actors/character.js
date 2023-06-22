@@ -8,17 +8,14 @@ export class Maincharacter extends ex.Actor {
     jumped = false
     onGround = true
     x
-    y
+    flowers
 
-    constructor() {
+    constructor(flowers) {
         const circle = ex.Shape.Circle(110, ex.vec(5, 25)) // Makes the bee a round shape so it can roll
         super({
             collisionType: ex.CollisionType.Active, // Gives the bee a collision with the platforms
             collider: circle,
             displayMode: ex.DisplayMode.FitScreen,
-            // collisionType: ex.CollisionType.Active,
-            // collider: ex.Shape.Box(250, 250, ex.Vector.Half, ex.vec(0, 0)),
-            // displayMode: ex.DisplayMode.FitScreen,
         });
         this.graphics.use(Resources.Bee.toSprite()); // Bee picture
         this.health = 200;
@@ -28,6 +25,7 @@ export class Maincharacter extends ex.Actor {
         this.pointer.useGraphicsBounds = true;
         this.enableCapturePointer = true;
         this.body.gravity = true; //Gravity
+        this.flowers = flowers
 
     }
 
