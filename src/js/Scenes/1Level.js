@@ -36,6 +36,18 @@ export class LevelOne extends ex.Scene {
         const background = new BackgroundLvlOne(-550, -50, 200, 20, backgroundImage);
         this.add(background);
 
+        //Score label
+        this.scoreLabel = new ex.Label({
+            text: `Score: 0`,
+            pos: new ex.Vector(100, 100),
+            font: new ex.Font({
+                unit: ex.FontUnit.Px,
+                size: 20,
+                color: ex.Color.Black
+            })
+        })
+        this.add(this.scoreLabel)
+
 
         // Right invisible wall
         let leftWall = new ex.Actor({
@@ -140,28 +152,28 @@ export class LevelOne extends ex.Scene {
         // this.add(spikes8);
 
         //Flowers
-        const flower1 = new Flower(50, 280);
+        const flower1 = new Flower(50, 280, this.score);
         this.add(flower1);
 
-        const flower2 = new Flower(4200, 150);
+        const flower2 = new Flower(4200, 150, this.score);
         this.add(flower2);
 
-        const flower3 = new Flower(5000, 50);
+        const flower3 = new Flower(5000, 50, this.score);
         this.add(flower3);
 
-        const flower4 = new Flower(5550, 50);
+        const flower4 = new Flower(5550, 50, this.score);
         this.add(flower4);
 
-        const flower5 = new Flower(5650, 50);
+        const flower5 = new Flower(5650, 50, this.score);
         this.add(flower5);
 
-        const flower6 = new Flower(5750, 50);
+        const flower6 = new Flower(5750, 50, this.score);
         this.add(flower6);
 
-        const flower7 = new Flower(5850, 50);
+        const flower7 = new Flower(5850, 50, this.score);
         this.add(flower7);
 
-        const flower8 = new Flower(5950, 50);
+        const flower8 = new Flower(5950, 50, this.score);
         this.add(flower8);
 
         // Enemies
@@ -196,14 +208,14 @@ export class LevelOne extends ex.Scene {
         this.add(portal)
 
         // Adding bee to the game
-        const player = new Maincharacter()
+        const player = new Maincharacter(this.score)
         // player.anchor = new ex.Vector(5, 25)
         this.add(player)
     }
 
-    // onPreUpdate() {
-    //     this.scoreLabel.text = `Score: ${this.score.getScore()}`
-    // }
+    onPreUpdate() {
+        this.scoreLabel.text = `Score: ${this.score.getScore()}`
+    }
 
     onPostUpdate(_engine, _delta) {
         super.onPostUpdate(_engine, _delta);

@@ -47,7 +47,7 @@ export class Game extends ex.Engine {
 
         this.addScene("startCutscene", new StartCutscene)
 
-        const levelOne = new LevelOne()
+        const levelOne = new LevelOne(this.score)
         this.addScene("Levelone", levelOne)
         // this.goToScene("Levelone")
 
