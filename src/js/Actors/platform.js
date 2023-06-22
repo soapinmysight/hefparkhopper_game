@@ -17,11 +17,11 @@ export class PlatformLvlOne extends ex.Actor {
     }
 }
 export class PlatformLvlTwo extends ex.Actor {
-    constructor(x, y, width, height) {
+    constructor(x, y) {
         super({
             pos: new ex.Vector(x, y),
-            width: width,
-            height: height,
+            width: 925,
+            height: 155,
             anchor: ex.Vector.Zero, //Anchors the platforms
             collisionType: ex.CollisionType.Fixed, //Bee bounces against the platforms
             collisionGroup: ex.CollisionGroupManager.groupByName('platform'),//Make sure you bounce against all the platforms
