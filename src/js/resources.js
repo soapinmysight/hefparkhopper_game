@@ -83,8 +83,8 @@ const Resources = {
     HoneyBomb: new ImageSource(honeyBomb),
     BossWeb: new ImageSource(bossWeb),
     TempBossFloor: new ImageSource(bossFloorTemp),
-    BossBackground: new ImageSource(bossBackground)
-
+    BossBackground: new ImageSource(bossBackground),
+    BossPlatform: new ImageSource(bossPlatform)
 
 }
 const ResourceLoader = new Loader([
@@ -126,7 +126,8 @@ const ResourceLoader = new Loader([
     Resources.HoneyBomb,
     Resources.BossWeb,
     Resources.TempBossFloor,
-    Resources.BossBackground
+    Resources.BossBackground,
+    Resources.BossPlatform
 ])
 
 export { Resources, ResourceLoader }
