@@ -1,10 +1,17 @@
 import { ImageSource, Loader } from 'excalibur'
 
+// level one
 import backgroundImage from "../images/background2.png"
 import platformImage from "../images/platform.png"
 import spikeImage from "../images/spikes.png"
 
+// level two
 
+import backgroundLvTwoImg from "../images/bglvl2.png"
+import platformLvTwoImg from "../images/platformlvl2.png"
+import spikesLvlTwoImg from "../images/spikeslvl2.png"
+
+// characters
 import beeImage from "../images/bee2.png"
 import sadBee from "../images/sadBee.png"
 import madBee from "../images/madBee.png"
@@ -14,6 +21,7 @@ import spiderImage from "../images/spoeder.png"
 
 import flowerImage from "../images/flower.png"
 
+// buttons
 import buttonImage from "../images/button.png"
 import startBtnImage from "../images/startButton.png"
 import tryAgainBtnImage from "../images/tryAgain.png"
@@ -24,6 +32,7 @@ import logoImage from "../images/logo.png"
 
 import textBubbleImage from "../images/textBubble.png"
 
+// bossfight
 import boss from "../images/bossSpider.png"
 import bossHit from "../images/bossspiderhit.png"
 import honeyBomb from "../images/honeyBomb.png"
@@ -35,9 +44,20 @@ import portalImage from "../images/portal.png"
 
 const Resources = {
 
+    // lvl one
+
     Background: new ImageSource(backgroundImage),
     Platform: new ImageSource(platformImage),
     Spikes: new ImageSource(spikeImage),
+
+    // lvl two
+
+    BackgroundLvlTwo: new ImageSource(backgroundLvTwoImg),
+    PlatformLvlTwo: new ImageSource(platformLvTwoImg),
+    SpikesLvlTwo: new ImageSource(spikesLvlTwoImg),
+
+
+    // lvl three
 
     Bee: new ImageSource(beeImage),
     SadBee: new ImageSource(sadBee),
@@ -70,9 +90,19 @@ const Resources = {
 
 }
 const ResourceLoader = new Loader([
+
+    // lvl one
+
     Resources.Background,
     Resources.Platform,
     Resources.Spikes,
+
+    // lvl two
+    Resources.BackgroundLvlTwo,
+    Resources.PlatformLvlTwo,
+    Resources.SpikesLvlTwo,
+
+    // lvl three
 
     Resources.Bee,
     Resources.SadBee,
