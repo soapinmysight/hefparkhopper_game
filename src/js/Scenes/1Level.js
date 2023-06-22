@@ -6,7 +6,7 @@ import { PlatformLvlOne } from '../Actors/platform.js'
 import { BackgroundLvlOne } from '../Actors/Background.js'
 import { SpikesLvlOne } from "../Actors/spikes.js"
 import { Spider } from "../Actors/spiders.js"
-import { Portal } from "../Actors/portal.js"
+import {ClosedPortalClass, Portal} from "../Actors/portal.js"
 import { Flower } from "../Actors/flower.js"
 
 
@@ -272,14 +272,21 @@ export class LevelOne extends ex.Scene {
 
 
         //Portal
-        let portal = new Portal()
-        portal.pos = new ex.Vector(8300, 350)
+        let portal = new ClosedPortalClass(8300, 350)
         this.add(portal)
 
         // Adding bee to the game
         const player = new Maincharacter(this.score)
+        player.on('precollision',(event) => this.onPreCollision(event))
+
         // player.anchor = new ex.Vector(5, 25)
         this.add(player)
+    }
+    onPreCollision(event){
+        let otherActor = event.other
+        if(otherActor instanceof Portal) {
+            this.game.goToScene('VictoryTwo')
+        }
     }
 
     onPreUpdate() {
@@ -288,6 +295,23 @@ export class LevelOne extends ex.Scene {
 
     onPostUpdate(_engine, _delta) {
         super.onPostUpdate(_engine, _delta);
+        const allSpiders = this.actors.filter((actor) => actor instanceof Spider);
+        const allSpidersDead = allSpiders.every((egg) => egg.isKilled());
+
+        if (allSpidersDead === true) {
+            // Remove ClosedPortal if it exists
+            const closedPortal = this.actors.find((actor) => actor instanceof ClosedPortalClass);
+            if (closedPortal) {
+                closedPortal.kill();
+            }
+
+            // Add Portal if it doesn't exist
+            const portal = this.actors.find((actor) => actor instanceof Portal);
+            if (!portal) {
+                const newPortal = new Portal(8300, 350);
+                this.add(newPortal);
+            }
+        }
     }
 
 }

@@ -97,9 +97,9 @@ export class Maincharacter extends ex.Actor {
             console.log("you're on the floor");
             this.onGround = true;
         }
-        if (evt.other instanceof Portal) {
-            this.game.goToScene('VictoryOne')
-        }
+        // if (evt.other instanceof Portal) {
+        //     this.game.goToScene('VictoryOne')
+        // }
     }
 
     onPostUpdate(_engine, _delta) {

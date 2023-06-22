@@ -39,7 +39,6 @@ export class Spider extends ex.Actor {
             } else if (side === 'Right' || side === 'Left') {
                 otherActor.kill()
                 console.log(`character walked into spider and died`)
-                this.game.goToScene('FailOne')
             }
         }
 
