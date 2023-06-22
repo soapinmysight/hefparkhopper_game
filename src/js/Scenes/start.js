@@ -15,6 +15,8 @@ export class Start extends Scene {
         this.startScene()
     }
     startScene(){
+        this.actors.forEach((actor) => actor.kill());
+
         console.log('startscherm')
         let start = new StartButton()
         start.pos = new Vector(400, 500)
@@ -42,11 +44,5 @@ export class Start extends Scene {
             this.game.goToScene('LevelTwo')
         })
         this.add(levelTwo)
-    }
-
-    onDeactivate(_context) {
-        super.onDeactivate(_context);
-
-
     }
 }

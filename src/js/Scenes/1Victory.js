@@ -15,6 +15,7 @@ export class VictoryOne extends Scene {
         this.startVictoryOne()
     }
     startVictoryOne(){
+        this.actors.forEach((actor) => actor.kill());
         console.log('victory one')
         let tryAgain = new NextLvlButton()
         tryAgain.pos = new Vector(400, 500)
@@ -24,7 +25,4 @@ export class VictoryOne extends Scene {
         this.add(tryAgain)
     }
 
-    onDeactivate(_context) {
-        super.onDeactivate(_context);
-    }
 }

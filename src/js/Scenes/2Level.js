@@ -26,6 +26,9 @@ export class LevelTwo extends Scene {
     }
 
     startLevelTwo(){
+
+        this.actors.forEach((actor) => actor.kill());
+
         console.log('level two')
 
         const background = new BackgroundLvlTwo(0, 0)
@@ -82,7 +85,6 @@ export class LevelTwo extends Scene {
         if(otherActor instanceof Portal) {
             this.game.goToScene('VictoryTwo')
         }
-
      }
     onPostUpdate(_engine, _delta) {
         super.onPostUpdate(_engine, _delta);

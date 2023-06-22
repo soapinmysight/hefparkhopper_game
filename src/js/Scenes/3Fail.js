@@ -10,11 +10,16 @@ export class FailThree extends Scene {
         super.onInitialize(_engine);
         this.game = _engine
     }
+
     onActivate(_context) {
         super.onActivate(_context);
         this.startFailThree()
     }
+
     startFailThree(){
+
+        this.actors.forEach((actor) => actor.kill());
+
         console.log('fail two')
         let tryAgain = new TryAgainButton()
         tryAgain.pos = new Vector(400, 500)
@@ -22,9 +27,5 @@ export class FailThree extends Scene {
             this.game.goToScene('LevelThree')
         })
         this.add(tryAgain)
-    }
-
-    onDeactivate(_context) {
-        super.onDeactivate(_context);
     }
 }
