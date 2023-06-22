@@ -6,11 +6,13 @@ import { BossSpider } from "./boss";
 import { MaincharacterBoss } from "./bossCharacter";
 import { BackgroundBoss } from "./bossBackground";
 import { BossPlatform } from "./bossPlatform";
+import { UI } from "./allElementsOnScreen";
 
 
 export class BossFight extends Scene {
 
    character;
+   damage;
 
     constructor() {
 
@@ -27,6 +29,18 @@ export class BossFight extends Scene {
     addWebShot(webShoot){
         this.add(webShoot);
         webShoot.actions.meet(this.character, 300);
+    }
+
+    updateBossHealth(hitpoints){
+
+        this.damage = this.hitpoints - 200;
+        this.ui.bossDamaged(this.damage);
+    }
+
+    onActivate(ctx){
+        this.ui = new UI();
+        this.add(this.ui);
+        this.ui.pos = new Vector(10, 30)
     }
 
     onInitialize(engine) {

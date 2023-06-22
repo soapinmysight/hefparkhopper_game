@@ -6,7 +6,7 @@ import { SpiderWebShot } from "./bossAttack.js";
 
 export class BossSpider extends Actor {
 
-    health = 10000;
+    health = 300;
     timer;
     spriteTimer;
 
@@ -72,6 +72,7 @@ export class BossSpider extends Actor {
     hitBoss(amount){
 
         this.health -= amount;
+        this.scene.updateBossHealth(this.health);
 
         this.graphics.use('BossHit');
         this.spriteTimer.start();

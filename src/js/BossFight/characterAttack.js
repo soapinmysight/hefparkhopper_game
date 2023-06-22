@@ -39,7 +39,7 @@ export class HoneyBomber extends Actor {
     bomb(event){
 
         if(event.other instanceof BossSpider){
-            event.other.hitBoss(1000);
+            event.other.hitBoss(30);
             this.kill();
         }
 
