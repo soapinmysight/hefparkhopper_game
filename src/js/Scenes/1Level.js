@@ -7,6 +7,7 @@ import { BackgroundLvlOne } from '../Actors/Background.js'
 import { SpikesLvlOne } from "../Actors/spikes.js"
 import { Spider } from "../Actors/spiders.js"
 import { Portal } from "../Actors/portal.js"
+import { Flower } from "../Actors/flower.js"
 
 export class LevelOne extends ex.Scene {
     game
@@ -106,6 +107,9 @@ export class LevelOne extends ex.Scene {
         const platform16 = new PlatformLvlOne(4900, 130, 925, 155);
         this.add(platform16);
 
+        const platform17 = new PlatformLvlOne(5775, 130, 925, 155);
+        this.add(platform17);
+
         //Spikes
         const spikes1 = new SpikesLvlOne(800, 500, 925, 155);
         this.add(spikes1);
@@ -131,6 +135,31 @@ export class LevelOne extends ex.Scene {
         // const spikes8 = new Spikes(3895, 500, 925, 155);
         // spikes8.scale = new ex.Vector(0.5, 0.5)
         // this.add(spikes8);
+
+        //Flowers
+        const flower1 = new Flower(50, 280);
+        this.add(flower1);
+
+        const flower2 = new Flower(4200, 150);
+        this.add(flower2);
+
+        const flower3 = new Flower(5000, 50);
+        this.add(flower3);
+
+        const flower4 = new Flower(5550, 50);
+        this.add(flower4);
+
+        const flower5 = new Flower(5650, 50);
+        this.add(flower5);
+
+        const flower6 = new Flower(5750, 50);
+        this.add(flower6);
+
+        const flower7 = new Flower(5850, 50);
+        this.add(flower7);
+
+        const flower8 = new Flower(5950, 50);
+        this.add(flower8);
 
         // Enemies
         let spider1 = new Spider()

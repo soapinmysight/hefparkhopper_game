@@ -34,8 +34,5 @@ export class LevelTwo extends Scene {
 
     onDeactivate(_context) {
         super.onDeactivate(_context);
-
-
-
     }
 }
