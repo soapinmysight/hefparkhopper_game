@@ -24,6 +24,7 @@ import spiderImage from "../images/spoeder.png"
 import flowerImage from "../images/flower.png"
 
 import portalImage from "../images/portal.png"
+import closedPortalImage from "../images/closedPortal.png"
 
 // buttons
 import buttonImage from "../images/button.png"
@@ -69,6 +70,7 @@ const Resources = {
     Spider: new ImageSource(spiderImage),
     Flower: new ImageSource(flowerImage),
     Portal: new ImageSource(portalImage),
+    ClosedPortal: new ImageSource(closedPortalImage),
 
     // buttons
     Button: new ImageSource(buttonImage),
@@ -111,6 +113,7 @@ const ResourceLoader = new Loader([
     Resources.Spider,
     Resources.Flower,
     Resources.Portal,
+    Resources.ClosedPortal,
 
     // buttons
     Resources.Button,

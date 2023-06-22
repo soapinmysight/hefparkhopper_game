@@ -11,9 +11,9 @@ export class MainSpike extends ex.Actor {
     }
     onPreCollision(event) {
         const otherActor = event.other
-        // if(otherActor instanceof Maincharacter){
-        //     otherActor.kill();
-        // }
+        if (otherActor instanceof Maincharacter) {
+            otherActor.kill();
+        }
     }
 }
 

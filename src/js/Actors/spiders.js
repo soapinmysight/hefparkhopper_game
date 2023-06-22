@@ -25,6 +25,7 @@ export class Spider extends ex.Actor {
         super.onInitialize(_engine);
         this.body.collisionType = ex.CollisionType.Fixed
         this.on("precollision", (event) => this.onPreCollision(event))
+        this.game = _engine
 
     }
     onPreCollision(event) {
@@ -35,14 +36,12 @@ export class Spider extends ex.Actor {
             if (side === 'Top') {
                 console.log('character killed a spider')
                 this.kill()
-                //     } else if (side === 'Right' || side === 'Left') {
-                //         otherActor.kill()
-                //         console.log(`character walked into spider and died`)
-                //     }
-                // }
-
-
+            } else if (side === 'Right' || side === 'Left') {
+                otherActor.kill()
+                console.log(`character walked into spider and died`)
             }
         }
+
+
     }
 }
