@@ -21,9 +21,11 @@ import { SecondCutscene } from "./cutScene/secondScene.js";
 import { ThirdCutscene } from "./cutScene/thirdScene.js";
 import { BossFight } from "./BossFight/bossLevel.js";
 
+import { Score } from './Actors/score';
 
 
 export class Game extends ex.Engine {
+    score
     constructor() {
         super({
             width: 854,
@@ -35,6 +37,7 @@ export class Game extends ex.Engine {
         this.showDebug(true);
         // ex.Physics.useRealisticPhysics();
         ex.Physics.acc = new ex.vec(0, 300);
+        this.score = new Score()
     }
 
     startGame() {

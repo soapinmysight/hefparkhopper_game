@@ -201,9 +201,9 @@ export class LevelOne extends ex.Scene {
         this.add(player)
     }
 
-    onPreUpdate() {
-        this.scoreLabel.text = `Score: ${this.score.getScore()}`
-    }
+    // onPreUpdate() {
+    //     this.scoreLabel.text = `Score: ${this.score.getScore()}`
+    // }
 
     onPostUpdate(_engine, _delta) {
         super.onPostUpdate(_engine, _delta);
