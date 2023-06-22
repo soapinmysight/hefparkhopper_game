@@ -288,7 +288,7 @@ export class LevelOne extends ex.Scene {
     onPreCollision(event) {
         let otherActor = event.other
         if (otherActor instanceof Portal) {
-            this.game.goToScene('VictoryTwo')
+            this.game.goToScene('VictoryOne')
         }
     }
 
@@ -298,6 +298,12 @@ export class LevelOne extends ex.Scene {
 
     onPostUpdate(_engine, _delta) {
         super.onPostUpdate(_engine, _delta);
+        const mainCharacter = this.actors.find((actor) => actor instanceof Maincharacter);
+
+        if (!mainCharacter) {
+            this.game.goToScene('FailOne')
+        }
+
         const allSpiders = this.actors.filter((actor) => actor instanceof Spider);
         const allSpidersDead = allSpiders.every((egg) => egg.isKilled());
 

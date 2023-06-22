@@ -103,6 +103,12 @@ export class LevelTwo extends Scene {
                 this.add(newPortal);
             }
         }
+
+        const mainCharacter = this.actors.find((actor) => actor instanceof Maincharacter);
+
+        if (!mainCharacter) {
+            this.game.goToScene('FailTwo')
+        }
     }
 
     onDeactivate(_context) {
