@@ -1,26 +1,47 @@
-import { Actor, CollisionType, Vector } from "excalibur";
+import { Actor, CollisionType, Vector, Timer } from "excalibur";
 import { Resources } from '../resources.js'
 
-import { Maincharacter } from "../Actors/character.js";
 import { MaincharacterBoss } from "./bossCharacter.js";
+import { SpiderWebShot } from "./bossAttack.js";
 
 export class BossSpider extends Actor {
 
     health = 10000;
+    timer;
+    spriteTimer;
 
     constructor(){
+
         super({
-            width: Resources.Boss.width,
-            height: Resources.Boss.height
+            width: 200,
+            height: 200
         })
+
+        this.timer = new Timer({
+            fcn: () => this.webShot(),      
+            repeats: true,                   
+            interval: 4000,
+        })
+
+        this.spriteTimer = new Timer({
+            fcn: () => this.graphics.use('Boss'),
+            repeats: false,
+            interval: 300,
+        })
+
     }
 
-    onInitialize(){
+    onInitialize(engine){
+
+        this.game = engine
 
         this.body.collisionType = CollisionType.Fixed
 
-        this.graphics.add(Resources.Boss.toSprite());
-        this.scale = new Vector (1.3, 1.3)
+        this.graphics.add('Boss', Resources.Boss.toSprite());
+        this.graphics.add('BossHit', Resources.BossHit.toSprite());
+        this.scale = new Vector (1.3, 1.3);
+
+        this.graphics.use('Boss');
 
         this.actions.repeatForever((ctx) => {
 
@@ -30,6 +51,11 @@ export class BossSpider extends Actor {
 
         })
 
+        this.game.currentScene.add(this.spriteTimer); 
+
+        this.game.currentScene.add(this.timer);  
+        this.timer.start();
+
         this.on('collisionstart', (event) => { this.doDamage(event)});
 
     }
@@ -38,18 +64,31 @@ export class BossSpider extends Actor {
 
         if(event.other instanceof MaincharacterBoss){
             console.log("ouch!");
-            // event.other.takeDamage(50);                //does 50 damage to main character
+            event.other.takeDamage(50);                
         }
 
     }
 
-    getHit(amount){
+    hitBoss(amount){
 
         this.health -= amount;
 
+        this.graphics.use('BossHit');
+        this.spriteTimer.start();
+
         if(this.health < 1) {
+            this.timer.stop();
             this.kill();
+            console.log("Victory for you, whoo hoo")
         }
+
+    }
+
+    webShot() {
+
+        const webShoot = new SpiderWebShot();
+        webShoot.pos = this.pos.clone();
+        this.scene.addWebShot(webShoot)
 
     }
 }

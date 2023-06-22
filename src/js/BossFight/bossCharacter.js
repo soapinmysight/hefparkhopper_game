@@ -2,6 +2,7 @@ import { Actor, CollisionType, Vector, Shape, Input, Timer } from "excalibur";
 import { Resources } from '../resources.js';
 
 import { BossFloor } from "./bossBottomBorder.js";
+import { HoneyBomber } from "./characterAttack.js";
 
 export class MaincharacterBoss extends Actor {
 
@@ -9,7 +10,8 @@ export class MaincharacterBoss extends Actor {
     damage
     grounded
     timer
-
+    attackTimer
+    mayAttack
 
     constructor(){
 
@@ -25,7 +27,13 @@ export class MaincharacterBoss extends Actor {
             fcn: () => this.graphics.use('HappyBee'),      //dit is een timer waarmee ik de graphics van de bee weer terug naar
             repeats: false,                                //normaal zet na het aanvallen (tijdens aanval verandert de image naar madBee)
             interval: 1000,
-        })
+        });
+
+        this.attackTimer = new Timer({
+            fcn: () => this.mayAttack = true,
+            repeats: false,
+            interval: 1000,
+        });
     }
 
     // onActivate(ctx) {
@@ -50,9 +58,12 @@ export class MaincharacterBoss extends Actor {
 
         this.graphics.use('HappyBee');                              //de default graphics instellen
 
+        this.mayAttack = true;
+
         this.on('collisionstart', (event) => { this.isGrounded(event)} );   //checken of er collision is
 
-        this.game.currentScene.add(this.timer);                     //de timer toevoegen aan de scene
+        this.game.currentScene.add(this.timer); 
+        this.game.currentScene.add(this.attackTimer);                   //de timer toevoegen aan de scene
     }
 
     reset(){
@@ -104,16 +115,23 @@ export class MaincharacterBoss extends Actor {
             }
         }
 
-        // if(engine.input.keyboard.wasPressed(Input.Keys.L)) {
-        //     this.attack();                                              //attack, moet ik nog maken en dus is nog commented
-        //     this.graphics.use('MadBubbles');                            //keybind zal nog veranderen, is nog van mn oude code
-        //     this.timer.start();
-        // }
+        if(this.mayAttack){
+
+            if(engine.input.keyboard.wasPressed(Input.Keys.ShiftLeft)) {
+
+                this.honeyBomb();                                       //attack, moet ik nog maken en dus is nog commented
+                this.graphics.use('MadBee');                            //keybind zal nog veranderen, is nog van mn oude code
+                this.timer.start();
+                this.mayAttack = false;
+                this.attackTimer.start();
+            }
+
+        }
 
         this.vel = new Vector(
             xspeed ,                                 //de "nieuwe"/ current speed instellen/updaten
             this.vel.y + yspeed
-        )
+        );
 
     }
 
@@ -125,30 +143,29 @@ export class MaincharacterBoss extends Actor {
         this.graphics.use('SadBee');                 //hier word de sad bee graphics geactiveerd wanneer de bee geraakt word
         this.timer.start();                          //hier word de timer gestart om de graphics na een seconde weer terug te zetten naar normaal
 
-        if(this.health < 151) {                       //hier ga ik gebaseerd op de hoeveelheid health, een parameter meegeven aan de scene
-            this.scene.hearts(3);                    //wat word ontvangen in een hearts functie. deze zal weer een parameter meegeven
-        }                                            //aan een functie binnen een class die UI zal heten. hier in zullen de punten,
+        // if(this.health < 151) {                       //hier ga ik gebaseerd op de hoeveelheid health, een parameter meegeven aan de scene
+            // this.scene.hearts(3);                    //wat word ontvangen in een hearts functie. deze zal weer een parameter meegeven
+        // }                                            //aan een functie binnen een class die UI zal heten. hier in zullen de punten,
                                                      //de flowers en de hearts te zien zijn. gebaseerd op de parameters zullen er hearts
-        if(this.health < 101) {                       //worden verwijderd
-            this.scene.hearts(2);
-        }
+        // if(this.health < 101) {                       //worden verwijderd
+            // this.scene.hearts(2);
+        // }
 
-        if(this.health < 51) {
-            this.scene.hearts(1);
-        }
+        // if(this.health < 51) {
+            // this.scene.hearts(1);
+        // }
 
         if(this.health < 1 ){
-            console.log("oopsies, dead")             //hier ben je game over:'(
+            console.log("oopsies, dead");            //hier ben je game over:'(
             // this.game.goToScene('gameOver', new GameOver());
         }
     }
 
-    // attack(){
+    honeyBomb(){
 
-    //     const bubBullet = new BubBullets();       //code voor de attack
-    //     bubBullet.pos = this.pos.clone();
-    //     this.scene.add(bubBullet);
-
-    // }
+        const bomb = new HoneyBomber();       //code voor de attack
+        bomb.pos = this.pos.clone();
+        this.scene.add(bomb);
+    }
 
 }

@@ -4,10 +4,7 @@ import { Resources } from '../resources.js';
 export class BackgroundBoss extends Actor {
 
     constructor(){
-        super({
-            width: Resources.TempBossFloor.width,
-            height: Resources.TempBossFloor.height
-        })
+        super()
     }
 
     onInitialize(){

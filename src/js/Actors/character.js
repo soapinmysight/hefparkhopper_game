@@ -1,6 +1,6 @@
 import * as ex from "excalibur";
 import { Resources } from "../resources";
-import { Platform } from "./platform";
+import { PlatformLvlOne } from "./platform.js";
 
 export class Maincharacter extends ex.Actor {
     health
@@ -93,7 +93,7 @@ export class Maincharacter extends ex.Actor {
     }
 
     onCollisionStart(evt) {
-        if (evt.other instanceof Platform) { //Checking if there is collision with the platforms
+        if (evt.other instanceof PlatformLvlOne) { //Checking if there is collision with the platforms
             console.log("you're on the floor");
             this.onGround = true;
         }
