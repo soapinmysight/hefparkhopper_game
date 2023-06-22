@@ -4,7 +4,6 @@ import { Resources, ResourceLoader } from './resources.js'
 
 import { LevelOne } from './Scenes/1Level.js'
 import { Start } from "./Scenes/start.js";
-import { NepOne } from "./Scenes/nepOne.js";
 import { FailOne } from "./Scenes/1Fail.js";
 import { VictoryOne } from "./Scenes/1Victory.js";
 
@@ -48,11 +47,8 @@ export class Game extends ex.Engine {
         this.addScene("startCutscene", new StartCutscene)
 
         const levelOne = new LevelOne(this.score)
-        this.addScene("Levelone", levelOne)
+        this.addScene("LevelOne", levelOne)
         // this.goToScene("Levelone")
-
-        const levelOneTest = new NepOne()
-        this.addScene('LevelOne', levelOneTest)
 
         const failOne = new FailOne()
         this.addScene('FailOne', failOne)

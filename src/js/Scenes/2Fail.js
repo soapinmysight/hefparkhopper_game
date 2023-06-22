@@ -15,6 +15,9 @@ export class FailTwo extends Scene {
         this.startFailTwo()
     }
     startFailTwo(){
+
+        this.actors.forEach((actor) => actor.kill());
+
         console.log('fail two')
         let tryAgain = new TryAgainButton()
         tryAgain.pos = new Vector(400, 500)
@@ -24,7 +27,4 @@ export class FailTwo extends Scene {
         this.add(tryAgain)
     }
 
-    onDeactivate(_context) {
-        super.onDeactivate(_context);
-    }
 }

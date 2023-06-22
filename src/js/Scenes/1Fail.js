@@ -18,6 +18,7 @@ export class FailOne extends Scene {
         this.startFailOne()
     }
     startFailOne(){
+        this.actors.forEach((actor) => actor.kill());
         console.log('failOne')
         let tryAgain = new TryAgainButton()
         tryAgain.pos = new Vector(400, 500)

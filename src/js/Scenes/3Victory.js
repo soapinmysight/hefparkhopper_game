@@ -15,6 +15,9 @@ export class VictoryThree extends Scene {
         this.startVictoryTwo()
     }
     startVictoryTwo(){
+
+        this.actors.forEach((actor) => actor.kill());
+
         console.log('victory three')
         let nextLvlButton = new NextLvlButton()
         nextLvlButton.pos = new Vector(400, 500)
@@ -22,9 +25,5 @@ export class VictoryThree extends Scene {
             this.game.goToScene('thirdCutScene')
         })
         this.add(nextLvlButton)
-    }
-
-    onDeactivate(_context) {
-        super.onDeactivate(_context);
     }
 }

@@ -31,6 +31,7 @@ export class LevelOne extends ex.Scene {
     }
 
     startLevelOne() {
+        this.actors.forEach((actor) => actor.kill());
         //Background image
         const backgroundImage = Resources.Background.toSprite();
         const background = new BackgroundLvlOne(-550, -50, 200, 20, backgroundImage);
