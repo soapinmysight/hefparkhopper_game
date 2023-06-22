@@ -5,6 +5,7 @@ import { BossFloor } from "./bossBottomBorder";
 import { BossSpider } from "./boss";
 import { MaincharacterBoss } from "./bossCharacter";
 import { BackgroundBoss } from "./bossBackground";
+import { BossPlatform } from "./bossPlatform";
 
 
 export class BossFight extends Scene {
@@ -25,7 +26,7 @@ export class BossFight extends Scene {
 
     addWebShot(webShoot){
         this.add(webShoot);
-        webShoot.actions.meet(this.character, 200);
+        webShoot.actions.meet(this.character, 300);
     }
 
     onInitialize(engine) {
@@ -55,6 +56,10 @@ export class BossFight extends Scene {
         const floor = new BossFloor();
         this.add(floor);
         floor.pos = new Vector(427, 640);
+
+        const platformBoss = new BossPlatform();
+        this.add(platformBoss);
+        platformBoss.pos = new Vector(300, 400)
 
         this.character = new MaincharacterBoss();
         this.add(this.character);

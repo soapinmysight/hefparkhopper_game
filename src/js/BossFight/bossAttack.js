@@ -8,8 +8,8 @@ export class SpiderWebShot extends Actor {
 
     constructor(){
         super({
-            width: Resources.BossWeb.width,
-            height: Resources.BossWeb.height
+            width: 60,
+            height: 60
         })
     }
 
