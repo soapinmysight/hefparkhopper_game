@@ -104,10 +104,10 @@ export class LevelOne extends ex.Scene {
         const platform15 = new PlatformLvlOne(4900, 130, 925, 155);
         this.add(platform15);
 
-        const platform16 = new Platform(4900, 130, 925, 155);
+        const platform16 = new PlatformLvlOne(4900, 130, 925, 155);
         this.add(platform16);
 
-        const platform17 = new Platform(5775, 130, 925, 155);
+        const platform17 = new PlatformLvlOne(5775, 130, 925, 155);
         this.add(platform17);
 
         //Spikes
