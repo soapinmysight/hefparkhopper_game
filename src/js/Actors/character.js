@@ -54,7 +54,7 @@ export class Maincharacter extends ex.Actor {
         engine.input.keyboard.on("press", (evt) => {
             if (evt.key === keys.W || evt.key === keys.Up) { //Jumping
                 if (this.onGround === true) {
-                    this.vel.y = -600
+                    this.vel.y = -500
                     this.onGround = false
                     this.jumped = true
                     console.log('jump')
@@ -79,6 +79,17 @@ export class Maincharacter extends ex.Actor {
         // }
 
         engine.currentScene.camera.x = this.pos.x + 80 //Tracking the bee with the camera
+        // Commented code for speeding the bee up with A & D, just for programming ease
+        engine.input.keyboard.on("hold", (evt) => {
+            if (evt.key === ex.Input.Keys.A) {
+                this.vel.x = -800;
+            } else if (evt.key === ex.Input.Keys.D) {
+                this.vel.x = 800;
+            } else if (evt.key === ex.Input.Keys.W && this.onGround) {
+                this.jumped = true;
+                this.vel.y = -700;
+            }
+        })
     }
 
     onCollisionStart(evt) {
@@ -90,17 +101,7 @@ export class Maincharacter extends ex.Actor {
 
     onPostUpdate(_engine, _delta) {
         super.onPostUpdate(_engine, _delta);
-        // Makes sure you don't keep rolling when releasing A or D
-        // Commented code for speeding the bee up with A & D, just for programming ease
-        // _engine.input.keyboard.on("hold", (evt) => {
-        //     if (evt.key === ex.Input.Keys.A) {
-        //         this.vel.x = -800;
-        //     } else if (evt.key === ex.Input.Keys.D) {
-        //         this.vel.x = 800;
-        //     } else if (evt.key === ex.Input.Keys.W && this.onGround) {
-        //         this.jumped = true;
-        //         this.vel.y = -700;
-        //     }
-        // })
+
+
     }
 }
