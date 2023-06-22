@@ -6,7 +6,7 @@ import { PlatformLvlOne } from '../Actors/platform.js'
 import { BackgroundLvlOne } from '../Actors/Background.js'
 import { SpikesLvlOne } from "../Actors/spikes.js"
 import { Spider } from "../Actors/spiders.js"
-import {ClosedPortalClass, Portal} from "../Actors/portal.js"
+import { ClosedPortalClass, Portal } from "../Actors/portal.js"
 import { Flower } from "../Actors/flower.js"
 
 
@@ -35,18 +35,6 @@ export class LevelOne extends ex.Scene {
         const backgroundImage = Resources.Background.toSprite();
         const background = new BackgroundLvlOne(-550, -50, 200, 20, backgroundImage);
         this.add(background);
-
-        //Score label
-        this.scoreLabel = new ex.Label({
-            text: `Score: 0`,
-            pos: new ex.Vector(100, 100),
-            font: new ex.Font({
-                unit: ex.FontUnit.Px,
-                size: 20,
-                color: ex.Color.Black
-            })
-        })
-        this.add(this.scoreLabel)
 
         // Right invisible wall
         let leftWall = new ex.Actor({
@@ -277,14 +265,29 @@ export class LevelOne extends ex.Scene {
 
         // Adding bee to the game
         const player = new Maincharacter(this.score)
-        player.on('precollision',(event) => this.onPreCollision(event))
-
+        player.on('precollision', (event) => this.onPreCollision(event))
         // player.anchor = new ex.Vector(5, 25)
         this.add(player)
+
+
+        //Score label
+        this.scoreLabel = new ex.Label({
+            text: `Score: 0`,
+            // pos: player.pos.clone().add(new ex.Vector(player.width, 100)),
+            // zombie.pos = spawnZombie.pos.clone().add(new Vector(spawnZombie.width/2, spawnZombie.height/2))
+            pos: new ex.Vector(player.width, 100),
+            font: new ex.Font({
+                unit: ex.FontUnit.Px,
+                size: 20,
+                color: ex.Color.Black
+            })
+        })
+        this.add(this.scoreLabel)
     }
-    onPreCollision(event){
+
+    onPreCollision(event) {
         let otherActor = event.other
-        if(otherActor instanceof Portal) {
+        if (otherActor instanceof Portal) {
             this.game.goToScene('VictoryTwo')
         }
     }
