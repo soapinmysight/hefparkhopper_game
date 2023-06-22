@@ -114,25 +114,25 @@ export class LevelOne extends ex.Scene {
         this.add(platform17);
 
         //Spikes
-        const spikes1 = new SpikesLvlOne(800, 500, 925, 155);
+        const spikes1 = new SpikesLvlOne(800, 500);
         this.add(spikes1);
 
-        const spikes2 = new SpikesLvlOne(2500, 500, 925, 155);
+        const spikes2 = new SpikesLvlOne(2500, 500);
         this.add(spikes2);
 
-        const spikes3 = new SpikesLvlOne(2965, 500, 925, 155);
+        const spikes3 = new SpikesLvlOne(2965, 500);
         this.add(spikes3);
 
-        const spikes4 = new SpikesLvlOne(3430, 500, 925, 155);
+        const spikes4 = new SpikesLvlOne(3430, 500);
         this.add(spikes4);
 
-        const spikes5 = new SpikesLvlOne(3895, 500, 925, 155);
+        const spikes5 = new SpikesLvlOne(3895, 500);
         this.add(spikes5);
 
-        const spikes6 = new SpikesLvlOne(4360, 500, 925, 155);
+        const spikes6 = new SpikesLvlOne(4360, 500);
         this.add(spikes6);
 
-        const spikes7 = new SpikesLvlOne(4825, 500, 925, 155);
+        const spikes7 = new SpikesLvlOne(4825, 500);
         this.add(spikes7);
 
         // const spikes8 = new Spikes(3895, 500, 925, 155);
