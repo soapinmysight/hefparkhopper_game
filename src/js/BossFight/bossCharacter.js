@@ -25,8 +25,8 @@ export class MaincharacterBoss extends Actor {
         });
 
         this.timer = new Timer({
-            fcn: () => this.graphics.use('HappyBee'),      //dit is een timer waarmee ik de graphics van de bee weer terug naar
-            repeats: false,                                //normaal zet na het aanvallen (tijdens aanval verandert de image naar madBee)
+            fcn: () => this.graphics.use('HappyBee'),     
+            repeats: false,                               
             interval: 700,
         });
 
@@ -39,7 +39,7 @@ export class MaincharacterBoss extends Actor {
 
     // onActivate(ctx) {
 
-    //     this.MaincharacterBoss.pos = new Vector(10, 500);         //dit gaan we later nodig hebben met het resetten van de levels
+    //     this.MaincharacterBoss.pos = new Vector(10, 500);         
     //     this.MaincharacterBoss.reset();
     // }
 
@@ -51,32 +51,32 @@ export class MaincharacterBoss extends Actor {
 
         this.body.collisionType = CollisionType.Active;
 
-        this.graphics.add('HappyBee',Resources.Bee.toSprite());     //de sprite toevoegen voor de normale bee
-        this.graphics.add('MadBee',Resources.MadBee.toSprite());    //de sprite toevoegen voor de aanval bee
-        this.graphics.add('SadBee',Resources.SadBeeHit.toSprite());    //de sprite toevoegen voor de sad bee (wanneer hij damage neemt)
-        this.scale = new Vector (0.5,0.5);                                 //de verschillende sprites hebben jullie niet nodig aangezien
-                                                                           //jullie geen attack met "bullets" hebben
+        this.graphics.add('HappyBee',Resources.Bee.toSprite());    
+        this.graphics.add('MadBee',Resources.MadBee.toSprite());   
+        this.graphics.add('SadBee',Resources.SadBeeHit.toSprite());    
+        this.scale = new Vector (0.5,0.5);                                
+                                                                         
 
-        this.graphics.use('HappyBee');                              //de default graphics instellen
+        this.graphics.use('HappyBee');                            
 
         this.mayAttack = true;
 
-        this.on('collisionstart', (event) => { this.isGrounded(event)} );   //checken of er collision is
+        this.on('collisionstart', (event) => { this.isGrounded(event)} );  
 
         this.game.currentScene.add(this.timer); 
-        this.game.currentScene.add(this.attackTimer);                   //de timer toevoegen aan de scene
+        this.game.currentScene.add(this.attackTimer);                
     }
 
     reset(){
 
-        this.graphics.use('HappyBee');                              //de reset functie voor wanneer je het level opnieuw wilt doen
+        this.graphics.use('HappyBee');                             
         this.health = 300;
         
     }
 
     isGrounded(event){
 
-        if(event.other instanceof BossFloor){                       //checken of er collision is met de vloer
+        if(event.other instanceof BossFloor){                      
             console.log("you're on the floor");
             this.grounded = true;
         } 
@@ -90,22 +90,21 @@ export class MaincharacterBoss extends Actor {
 
     onPreUpdate(engine) {
 
-        let xspeed = 0;                                           //set de xspeed op 0
-        let yspeed = 0;                                           //set de yspeed op 0
+        let xspeed = 0;                                        
+        let yspeed = 0;                                         
 
 
-        if(engine.input.keyboard.isHeld(Input.Keys.D)) {          //voor uit bewegen met D
-           xspeed = 240;
+        if(engine.input.keyboard.isHeld(Input.Keys.D)) {          
         }
 
-        if(engine.input.keyboard.isHeld(Input.Keys.A)) {          //achter uit bewegen met A
+        if(engine.input.keyboard.isHeld(Input.Keys.A)) {          
             xspeed = -240;
         }
 
         //console.log(this.grounded)
         
         if(this.grounded) {
-            if(engine.input.keyboard.wasPressed(Input.Keys.W)) {       //springen met space
+            if(engine.input.keyboard.wasPressed(Input.Keys.W)) {      
                 yspeed = -650;
                 this.grounded = false;
             }
@@ -115,8 +114,8 @@ export class MaincharacterBoss extends Actor {
 
             if(engine.input.keyboard.wasPressed(Input.Keys.L)) {
 
-                this.honeyBomb();                                       //attack, moet ik nog maken en dus is nog commented
-                this.graphics.use('MadBee');                            //keybind zal nog veranderen, is nog van mn oude code
+                this.honeyBomb();                                       
+                this.graphics.use('MadBee');                            
                 this.timer.start();
                 this.mayAttack = false;
                 this.attackTimer.start();
@@ -125,41 +124,48 @@ export class MaincharacterBoss extends Actor {
         }
 
         this.vel = new Vector(
-            xspeed ,                                 //de "nieuwe"/ current speed instellen/updaten
+            xspeed ,                                
             this.vel.y + yspeed
         );
 
     }
 
-    takeDamage(amount){                              //de functie voor het nemen van damage
+    takeDamage(amount){                              
 
-        console.log("I take damage " + amount);      //hier word de hoeveelheid damage uit de paramaters van de totale health afgehaald
+        console.log("I take damage " + amount);      
         this.health -= amount;
 
-        this.graphics.use('SadBee');                 //hier word de sad bee graphics geactiveerd wanneer de bee geraakt word
-        this.timer.start();                          //hier word de timer gestart om de graphics na een seconde weer terug te zetten naar normaal
+        this.graphics.use('SadBee');                 
+        this.timer.start();                          
+        if(this.health < 251) {                     
+            this.scene.hearts(5);                    
+        }                                           
+                                                     
+        if(this.health < 201) {                       
+            this.scene.hearts(4);
+        }
 
-        // if(this.health < 151) {                       //hier ga ik gebaseerd op de hoeveelheid health, een parameter meegeven aan de scene
-            // this.scene.hearts(3);                    //wat word ontvangen in een hearts functie. deze zal weer een parameter meegeven
-        // }                                            //aan een functie binnen een class die UI zal heten. hier in zullen de punten,
-                                                     //de flowers en de hearts te zien zijn. gebaseerd op de parameters zullen er hearts
-        // if(this.health < 101) {                       //worden verwijderd
-            // this.scene.hearts(2);
-        // }
+        if(this.health < 151) {
+            this.scene.hearts(3);
+        }
 
-        // if(this.health < 51) {
-            // this.scene.hearts(1);
-        // }
+        if(this.health < 101) {
+            this.scene.hearts(2);
+        }
+
+        if(this.health < 51) {
+            this.scene.hearts(1);
+        }
 
         if(this.health < 1 ){
-            console.log("oopsies, dead");            //hier ben je game over:'(
+            console.log("oopsies, dead");           
             // this.game.goToScene('gameOver', new GameOver());
         }
     }
 
     honeyBomb(){
 
-        const bomb = new HoneyBomber();       //code voor de attack
+        const bomb = new HoneyBomber();       
         bomb.pos = this.pos.clone();
         this.scene.add(bomb);
     }
