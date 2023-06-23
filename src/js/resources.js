@@ -125,6 +125,7 @@ const ResourceLoader = new Loader([
     Resources.SadBeeHit,
     Resources.MadBee,
     Resources.HappiestBee,
+    Resources.BeeHeart,
     
     Resources.Spider,
     Resources.DeadSpider,

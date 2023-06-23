@@ -94,7 +94,8 @@ export class MaincharacterBoss extends Actor {
         let yspeed = 0;                                         
 
 
-        if(engine.input.keyboard.isHeld(Input.Keys.D)) {          
+        if(engine.input.keyboard.isHeld(Input.Keys.D)) {  
+            xspeed = 240;        
         }
 
         if(engine.input.keyboard.isHeld(Input.Keys.A)) {          
