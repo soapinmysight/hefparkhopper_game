@@ -1,6 +1,7 @@
 import * as ex from "excalibur";
 import { Resources } from "../resources.js";
 import { Maincharacter } from "./character.js";
+import {Actor, CollisionType} from "excalibur";
 
 export class Spider extends ex.Actor {
     x
@@ -28,6 +29,14 @@ export class Spider extends ex.Actor {
         this.game = _engine
 
     }
+    onPreKill(_scene) {
+        super.onPreKill(_scene);
+        const deadSpider = new DeadSpider()
+        deadSpider.pos = this.pos.clone()
+        this.scene.add(deadSpider)
+
+    }
+
     onPreCollision(event) {
         const side = event.side
         const otherActor = event.other
@@ -43,5 +52,41 @@ export class Spider extends ex.Actor {
         }
 
 
+    }
+}
+
+export class DeadSpider extends Actor {
+    constructor() {
+
+        super({
+            width: 100,
+            height: 80,
+        });
+        const spider = Resources.Spider.toSprite()
+        spider.width = 120
+        spider.height = 100
+        this.graphics.add(spider)
+        this.speed = 300
+    }
+    onInitialize(_engine) {
+        super.onInitialize(_engine);
+        this.body.collisionType = CollisionType.Passive
+    }
+    onPostUpdate(_engine, _delta) {
+        super.onPostUpdate(_engine, _delta);
+
+
+
+        // Roll 180 degrees
+        this.rotation += 0.05;
+
+        if(this.rotation >= Math.PI) {
+            this.rotation = Math.PI;
+            this.scale = this.scale.add(new ex.Vector(-0.04, -0.04));
+        }
+        if (this.width <= 0) {
+            // Time is up, kill the actor
+            this.kill();
+        }
     }
 }
