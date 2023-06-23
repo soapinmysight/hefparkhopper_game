@@ -36,7 +36,7 @@ export class BossFight extends Scene {
     }
 
     hearts(value){
-        this.ui.updateHealth(value);                         //deze functies houd de hoeveelheid hartjes bij 
+        this.ui.updateHealth(value);                         
     }
 
     onActivate(ctx){

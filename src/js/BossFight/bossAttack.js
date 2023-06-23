@@ -17,7 +17,6 @@ export class SpiderWebShot extends Actor {
 
         this.game = engine;
 
-        // this.body.collisionType = CollisionType.Active;
         this.body.useGravity = false;
 
         this.graphics.use(Resources.BossWeb.toSprite());
