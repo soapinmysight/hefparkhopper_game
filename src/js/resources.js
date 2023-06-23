@@ -12,6 +12,9 @@ import spikesLvlTwoImg from "../images/spikeslvl2.png"
 
 // level three
 import backgroundLvlThreeImg from "../images/backgroundlvl3.png"
+import platformLvlThreeImg from "../images/platformlvl3.png"
+import spikesLvlThreeImg from "../images/spikeslvl3.png"
+
 
 // characters and level elements
 import beeImage from "../images/bee2.png"
@@ -60,6 +63,9 @@ const Resources = {
 
     // lvl three
     BackgroundLvlThree: new ImageSource(backgroundLvlThreeImg),
+    PlatformLvlThree: new ImageSource(platformLvlThreeImg),
+    SpikesLvlThree: new ImageSource(spikesLvlThreeImg),
+
 
     // characters and level elements
     Bee: new ImageSource(beeImage),
@@ -103,6 +109,9 @@ const ResourceLoader = new Loader([
 
     // lvl three
     Resources.BackgroundLvlThree,
+    Resources.PlatformLvlThree,
+    Resources.SpikesLvlThree,
+
 
     // characters and level elements
     Resources.Bee,
