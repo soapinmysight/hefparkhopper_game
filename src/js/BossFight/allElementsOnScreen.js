@@ -69,27 +69,27 @@ export class UI extends ScreenElement {
                 },
                 {
                     graphic: Resources.BeeHeart.toSprite(),
-                    pos: new Vector(30, 50),
+                    pos: new Vector(71, 50),
                     scale: new Vector(0.1,0.1)
                 },
                 {
                     graphic: Resources.BeeHeart.toSprite(),
-                    pos: new Vector(10, 50),
+                    pos: new Vector(133, 50),
                     scale: new Vector(0.1,0.1)
                 },
                 {
                     graphic: Resources.BeeHeart.toSprite(),
-                    pos: new Vector(30, 50),
+                    pos: new Vector(194, 50),
                     scale: new Vector(0.1,0.1)
                 },
                 {
                     graphic: Resources.BeeHeart.toSprite(),
-                    pos: new Vector(10, 50),
+                    pos: new Vector(255, 50),
                     scale: new Vector(0.1,0.1)
                 },
                 {
                     graphic: Resources.BeeHeart.toSprite(),
-                    pos: new Vector(30, 50),
+                    pos: new Vector(316, 50),
                     scale: new Vector(0.1,0.1)
                 },
 
