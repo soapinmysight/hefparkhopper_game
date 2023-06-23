@@ -4,7 +4,7 @@
 // import { Maincharacter } from '../Actors/character.js'
 // import { PlatformLvlThree } from '../Actors/platform.js'
 // import { BackgroundLvlThree } from '../Actors/Background.js'
-// import { SpikesLvlOne } from "../Actors/spikes.js"
+// import { SpikesLvlThree } from "../Actors/spikes.js"
 // import { Spider } from "../Actors/spiders.js"
 // import { ClosedPortalClass, Portal } from "../Actors/portal.js"
 // import { Flower } from "../Actors/flower.js"
@@ -66,101 +66,101 @@
 //         this.add(rightWall)
 
 //         // Platform on the bottom
-//         const platform1 = new PlatformLvlOne(0, 580, 10000, 20, ex.Color.Green);
+//         const platform1 = new PlatformLvlThree(0, 580, 10000, 20, ex.Color.Green);
 //         platform1.scale = new ex.Vector(10.9, 1)
 //         this.add(platform1);
 
 //         // Flying platform (small)
-//         const platform2 = new PlatformLvlOne(0, 380, 925, 155);
+//         const platform2 = new PlatformLvlThree(0, 380, 925, 155);
 //         this.add(platform2);
 
-//         const platform4 = new PlatformLvlOne(500, 280, 925, 155);
+//         const platform4 = new PlatformLvlThree(500, 280, 925, 155);
 //         this.add(platform4);
 
-//         const platform5 = new PlatformLvlOne(1000, 180, 925, 155);
+//         const platform5 = new PlatformLvlThree(1000, 180, 925, 155);
 //         this.add(platform5);
 
-//         const platform6 = new PlatformLvlOne(1500, 280, 925, 155);
+//         const platform6 = new PlatformLvlThree(1500, 280, 925, 155);
 //         this.add(platform6);
 
-//         const platform7 = new PlatformLvlOne(1775, 280, 925, 155);
+//         const platform7 = new PlatformLvlThree(1775, 280, 925, 155);
 //         this.add(platform7);
 
-//         const platform8 = new PlatformLvlOne(2100, 480, 925, 155);
+//         const platform8 = new PlatformLvlThree(2100, 480, 925, 155);
 //         this.add(platform8);
 
-//         const platform9 = new PlatformLvlOne(2500, 430, 925, 155);
+//         const platform9 = new PlatformLvlThree(2500, 430, 925, 155);
 //         this.add(platform9);
 
-//         const platform10 = new PlatformLvlOne(2900, 380, 925, 155);
+//         const platform10 = new PlatformLvlThree(2900, 380, 925, 155);
 //         this.add(platform10);
 
-//         const platform11 = new PlatformLvlOne(3300, 330, 925, 155);
+//         const platform11 = new PlatformLvlThree(3300, 330, 925, 155);
 //         this.add(platform11);
 
-//         const platform12 = new PlatformLvlOne(3700, 280, 925, 155);
+//         const platform12 = new PlatformLvlThree(3700, 280, 925, 155);
 //         this.add(platform12);
 
-//         const platform13 = new PlatformLvlOne(4100, 230, 925, 155);
+//         const platform13 = new PlatformLvlThree(4100, 230, 925, 155);
 //         this.add(platform13);
 
-//         const platform14 = new PlatformLvlOne(4500, 180, 925, 155);
+//         const platform14 = new PlatformLvlThree(4500, 180, 925, 155);
 //         this.add(platform14);
 
-//         const platform15 = new PlatformLvlOne(4900, 130, 925, 155);
+//         const platform15 = new PlatformLvlThree(4900, 130, 925, 155);
 //         this.add(platform15);
 
-//         const platform16 = new PlatformLvlOne(5500, 130, 925, 155);
+//         const platform16 = new PlatformLvlThree(5500, 130, 925, 155);
 //         this.add(platform16);
 
-//         const platform17 = new PlatformLvlOne(5775, 130, 925, 155);
+//         const platform17 = new PlatformLvlThree(5775, 130, 925, 155);
 //         this.add(platform17);
 
-//         let platform18 = new PlatformLvlOne(6500, 130, 925, 155)
+//         let platform18 = new PlatformLvlThree(6500, 130, 925, 155)
 //         platform18.actions.repeatForever((repeatCtx) => {
 //             repeatCtx.moveTo(6500, 130, 100)
 //             repeatCtx.moveTo(6500, 540, 100)
 //         })
 //         this.add(platform18)
 
-//         let platform20 = new PlatformLvlOne(7100, 130, 925, 155)
+//         let platform20 = new PlatformLvlThree(7100, 130, 925, 155)
 //         this.add(platform20)
 
-//         let platform21 = new PlatformLvlOne(7375, 130, 925, 155)
+//         let platform21 = new PlatformLvlThree(7375, 130, 925, 155)
 //         this.add(platform21)
 
-//         let platform22 = new PlatformLvlOne(7650, 130, 925, 155)
+//         let platform22 = new PlatformLvlThree(7650, 130, 925, 155)
 //         this.add(platform22)
 
-//         let platform24 = new PlatformLvlOne(7100, 330, 925, 155)
+//         let platform24 = new PlatformLvlThree(7100, 330, 925, 155)
 //         this.add(platform24)
 
-//         let platform25 = new PlatformLvlOne(7375, 330, 925, 155)
+//         let platform25 = new PlatformLvlThree(7375, 330, 925, 155)
 //         this.add(platform25)
 
-//         let platform26 = new PlatformLvlOne(7650, 330, 925, 155)
+//         let platform26 = new PlatformLvlThree(7650, 330, 925, 155)
 //         this.add(platform26)
 
 //         //Spikes
-//         const spikes1 = new SpikesLvlOne(800, 500);
+//         const spikes1 = new SpikesLvlThree(800, 500);
 //         this.add(spikes1);
 
-//         const spikes2 = new SpikesLvlOne(2500, 500);
+//         const spikes2 = new SpikesLvlThree(2500, 500);
 //         this.add(spikes2);
 
-//         const spikes3 = new SpikesLvlOne(2965, 500);
+//         const spikes3 = new SpikesLvlThree(2965, 500);
 //         this.add(spikes3);
 
-//         const spikes4 = new SpikesLvlOne(3430, 500);
+//         const spikes4 = new SpikesLvlThree(3430, 500);
 //         this.add(spikes4);
 
-//         const spikes5 = new SpikesLvlOne(3895, 500);
+//         const spikes5 = new SpikesLvlThree(3895, 500);
 //         this.add(spikes5);
 
-//         const spikes6 = new SpikesLvlOne(4360, 500);
+//         const spikes6 = new SpikesLvlThree(4360, 500);
 //         this.add(spikes6);
 
-//         const spikes7 = new SpikesLvlOne(4825, 500);
+//         const spikes7 = new SpikesLvlThree(4825, 500);
 //         this.add(spikes7);
 
 //         // const spikes8 = new Spikes(3895, 500, 925, 155);
@@ -289,7 +289,7 @@
 //     onPreCollision(event) {
 //         let otherActor = event.other
 //         if (otherActor instanceof Portal) {
-//             this.game.goToScene('VictoryOne')
+//             this.game.goToScene('VictoryThree')
 //         }
 //     }
 
@@ -303,7 +303,7 @@
 //         const mainCharacter = this.actors.find((actor) => actor instanceof Maincharacter);
 
 //         if (!mainCharacter) {
-//             this.game.goToScene('FailOne')
+//             this.game.goToScene('FailThree')
 //         }
 
 //         const allSpiders = this.actors.filter((actor) => actor instanceof Spider);
@@ -327,3 +327,45 @@
 
 // }
 
+// // import {Scene} from "excalibur";
+// // import {Scene, Vector} from "excalibur";
+// // import {GameOverButton, NextLvlButton} from "../Actors/button.js";
+
+// // export class LevelThree extends Scene {
+// //     game
+// //     constructor() {
+// //         super();
+// //     }
+// //     onInitialize(_engine) {
+// //         super.onInitialize(_engine);
+// //         this.game = _engine
+// //     }
+// //     onActivate(_context) {
+// //         super.onActivate(_context);
+// //         this.startLevelThree()
+// //     }
+// //     startLevelThree(){
+// //         console.log('level three')
+
+// //         let gameOverButton = new GameOverButton()
+// //         gameOverButton.pos = new Vector(400, 500)
+// //         gameOverButton.on('pointerup', () => {
+// //             this.game.goToScene('FailThree')
+// //         })
+// //         this.add(gameOverButton)
+
+// //         let nextLvlButton = new NextLvlButton()
+// //         nextLvlButton.pos = new Vector(600, 500)
+// //         nextLvlButton.on('pointerup', () => {
+// //             this.game.goToScene('VictoryThree')
+// //         })
+// //         this.add(nextLvlButton)
+// //     }
+
+// //     onDeactivate(_context) {
+// //         super.onDeactivate(_context);
+
+
+
+// //     }
+// // } 
