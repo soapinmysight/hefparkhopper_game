@@ -19,10 +19,12 @@ import spikesLvlThreeImg from "../images/spikeslvl3.png"
 // characters and level elements
 import beeImage from "../images/bee2.png"
 import sadBee from "../images/sadBee.png"
+import sadBeeHit from "../images/sadBeeHit.png"
 import madBee from "../images/madBee.png"
 import happiestBee from "../images/happiestBee.png"
 
 import spiderImage from "../images/spoeder.png"
+import deadSpiderImg from "../images/deadspider.png"
 
 import flowerImage from "../images/flower.png"
 
@@ -70,10 +72,12 @@ const Resources = {
     // characters and level elements
     Bee: new ImageSource(beeImage),
     SadBee: new ImageSource(sadBee),
+    SadBeeHit: new ImageSource(sadBeeHit),
     MadBee: new ImageSource(madBee),
     HappiestBee: new ImageSource(happiestBee),
 
     Spider: new ImageSource(spiderImage),
+    DeadSpider: new ImageSource(deadSpiderImg),
     Flower: new ImageSource(flowerImage),
     Portal: new ImageSource(portalImage),
     ClosedPortal: new ImageSource(closedPortalImage),
@@ -116,10 +120,12 @@ const ResourceLoader = new Loader([
     // characters and level elements
     Resources.Bee,
     Resources.SadBee,
+    Resources.SadBeeHit,
     Resources.MadBee,
     Resources.HappiestBee,
     
     Resources.Spider,
+    Resources.DeadSpider,
     Resources.Flower,
     Resources.Portal,
     Resources.ClosedPortal,

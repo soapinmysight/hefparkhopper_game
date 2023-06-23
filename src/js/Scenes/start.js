@@ -44,5 +44,12 @@ export class Start extends Scene {
             this.game.goToScene('LevelTwo')
         })
         this.add(levelTwo)
+
+        let levelThree = new NextLvlButton()
+        levelThree.pos = new Vector(800, 150)
+        levelThree.on('pointerup', () => {
+            this.game.goToScene('LevelThree')
+        })
+        this.add(levelThree)
     }
 }
