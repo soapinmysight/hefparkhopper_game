@@ -6,8 +6,12 @@ import {Maincharacter} from "../Actors/character.js";
 
 export class LevelThree extends Scene {
     game
-    constructor() {
-        super();
+    health
+    score
+    character
+    constructor(score) {
+        super({});
+        this.score = score
     }
     onInitialize(_engine) {
         super.onInitialize(_engine);
