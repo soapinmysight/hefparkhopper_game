@@ -7,7 +7,7 @@ import { BossPlatform } from "./bossPlatform.js";
 
 export class MaincharacterBoss extends Actor {
 
-    health = 200;
+    health = 300;
     damage
     grounded
     timer
@@ -27,13 +27,13 @@ export class MaincharacterBoss extends Actor {
         this.timer = new Timer({
             fcn: () => this.graphics.use('HappyBee'),      //dit is een timer waarmee ik de graphics van de bee weer terug naar
             repeats: false,                                //normaal zet na het aanvallen (tijdens aanval verandert de image naar madBee)
-            interval: 1000,
+            interval: 700,
         });
 
         this.attackTimer = new Timer({
             fcn: () => this.mayAttack = true,
             repeats: false,
-            interval: 1000,
+            interval: 800,
         });
     }
 
@@ -53,7 +53,7 @@ export class MaincharacterBoss extends Actor {
 
         this.graphics.add('HappyBee',Resources.Bee.toSprite());     //de sprite toevoegen voor de normale bee
         this.graphics.add('MadBee',Resources.MadBee.toSprite());    //de sprite toevoegen voor de aanval bee
-        this.graphics.add('SadBee',Resources.SadBee.toSprite());    //de sprite toevoegen voor de sad bee (wanneer hij damage neemt)
+        this.graphics.add('SadBee',Resources.SadBeeHit.toSprite());    //de sprite toevoegen voor de sad bee (wanneer hij damage neemt)
         this.scale = new Vector (0.5,0.5);                                 //de verschillende sprites hebben jullie niet nodig aangezien
                                                                            //jullie geen attack met "bullets" hebben
 
@@ -70,7 +70,7 @@ export class MaincharacterBoss extends Actor {
     reset(){
 
         this.graphics.use('HappyBee');                              //de reset functie voor wanneer je het level opnieuw wilt doen
-        this.health = 200;
+        this.health = 300;
         
     }
 
@@ -105,20 +105,15 @@ export class MaincharacterBoss extends Actor {
         //console.log(this.grounded)
         
         if(this.grounded) {
-            if(engine.input.keyboard.wasPressed(Input.Keys.Space)) {       //springen met space
-                yspeed = -500;
-                this.grounded = false;
-            }
-        
-            if(engine.input.keyboard.wasPressed(Input.Keys.B)) {           //dubbel jump voor het geval je die wilt toevoegen
-                yspeed = -650;                                             //zo niet kan je gwn deleten:)
+            if(engine.input.keyboard.wasPressed(Input.Keys.W)) {       //springen met space
+                yspeed = -650;
                 this.grounded = false;
             }
         }
 
         if(this.mayAttack){
 
-            if(engine.input.keyboard.wasPressed(Input.Keys.ShiftLeft)) {
+            if(engine.input.keyboard.wasPressed(Input.Keys.L)) {
 
                 this.honeyBomb();                                       //attack, moet ik nog maken en dus is nog commented
                 this.graphics.use('MadBee');                            //keybind zal nog veranderen, is nog van mn oude code

@@ -8,8 +8,8 @@ export class SpiderWebShot extends Actor {
 
     constructor(){
         super({
-            width: 60,
-            height: 60
+            width: 90,
+            height: 90
         })
     }
 
@@ -28,7 +28,7 @@ export class SpiderWebShot extends Actor {
     spiderWeb(event){
 
         if(event.other instanceof MaincharacterBoss){
-            event.other.takeDamage(25);
+            event.other.takeDamage(50);
             this.kill();
         }
 
