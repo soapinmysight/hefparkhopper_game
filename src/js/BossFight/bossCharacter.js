@@ -37,11 +37,11 @@ export class MaincharacterBoss extends Actor {
         });
     }
 
-    // onActivate(ctx) {
+    onActivate(ctx) {
 
-    //     this.MaincharacterBoss.pos = new Vector(10, 500);         
-    //     this.MaincharacterBoss.reset();
-    // }
+        this.MaincharacterBoss.pos = new Vector(10, 500);         
+        this.MaincharacterBoss.reset();
+    }
 
     onInitialize(engine){
 
@@ -102,7 +102,6 @@ export class MaincharacterBoss extends Actor {
             xspeed = -240;
         }
 
-        //console.log(this.grounded)
         
         if(this.grounded) {
             if(engine.input.keyboard.wasPressed(Input.Keys.W)) {      
