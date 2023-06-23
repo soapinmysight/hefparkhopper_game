@@ -9,7 +9,7 @@ export class HoneyBomber extends Actor {
 
     constructor(x, y){
 
-        const circle = Shape.Circle(30);
+        const circle = Shape.Circle(40);
 
         super({
             // width: Resources.HoneyBomb.width,
