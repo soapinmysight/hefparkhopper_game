@@ -15,6 +15,12 @@ export class UI extends ScreenElement {
             color: Color.Red,
         });
 
+        this.border = new Rectangle({
+            width: 300,
+            height: 40,
+            color: Color.fromRGB(255,255,255,0.4)
+        });
+
         // this.graphics.use(this.healthbar);
     }
 
@@ -52,6 +58,10 @@ export class UI extends ScreenElement {
                     pos: new Vector(10, 30),
                 },
                 {
+                    graphic: this.border,
+                    pos: new Vector(800, 200),
+                },
+                {
                     graphic: this.healthbar,
                     pos: new Vector(800, 200),
                 },
@@ -64,9 +74,9 @@ export class UI extends ScreenElement {
         this.healthbar.width = 300;
     }
 
-    bossDamaged(damage) {
+    bossDamaged(currentHealth) {
 
-        this.healthbar.width = this.healthbar.width - damage;
+        this.healthbar.width = currentHealth;
         
         if (this.healthbar.width <= 0) {
             console.log("congrasjulashions");

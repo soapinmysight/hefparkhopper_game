@@ -32,9 +32,7 @@ export class BossFight extends Scene {
     }
 
     updateBossHealth(hitpoints){
-
-        this.damage = this.hitpoints - 200;
-        this.ui.bossDamaged(this.damage);
+        this.ui.bossDamaged(hitpoints);
     }
 
     onActivate(ctx){
