@@ -19,6 +19,7 @@ import spikesLvlThreeImg from "../images/spikeslvl3.png"
 // characters and level elements
 import beeImage from "../images/bee2.png"
 import sadBee from "../images/sadBee.png"
+import sadBeeHit from "../images/sadBeeHit.png"
 import madBee from "../images/madBee.png"
 import happiestBee from "../images/happiestBee.png"
 
@@ -71,6 +72,7 @@ const Resources = {
     // characters and level elements
     Bee: new ImageSource(beeImage),
     SadBee: new ImageSource(sadBee),
+    SadBeeHit: new ImageSource(sadBeeHit),
     MadBee: new ImageSource(madBee),
     HappiestBee: new ImageSource(happiestBee),
 
@@ -118,6 +120,7 @@ const ResourceLoader = new Loader([
     // characters and level elements
     Resources.Bee,
     Resources.SadBee,
+    Resources.SadBeeHit,
     Resources.MadBee,
     Resources.HappiestBee,
     
