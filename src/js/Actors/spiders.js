@@ -78,7 +78,7 @@ export class DeadSpider extends Actor {
 
 
         // Roll 180 degrees
-        this.rotation += 0.05;
+        this.rotation += 0.08;
 
         if(this.rotation >= Math.PI) {
             this.rotation = Math.PI;
