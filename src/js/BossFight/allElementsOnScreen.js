@@ -113,7 +113,7 @@ export class UI extends ScreenElement {
 
     updateHealth(hearts){
         console.log(hearts);                                       
-        if(hearts <= 5){
+        if(hearts === 5){
             this.group.members.pop();
         }
     }
