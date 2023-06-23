@@ -22,6 +22,7 @@ import sadBee from "../images/sadBee.png"
 import sadBeeHit from "../images/sadBeeHit.png"
 import madBee from "../images/madBee.png"
 import happiestBee from "../images/happiestBee.png"
+import beeHeart from "../images/characterHeart.png"
 
 import spiderImage from "../images/spoeder.png"
 import deadSpiderImg from "../images/deadspider.png"
@@ -75,6 +76,7 @@ const Resources = {
     SadBeeHit: new ImageSource(sadBeeHit),
     MadBee: new ImageSource(madBee),
     HappiestBee: new ImageSource(happiestBee),
+    BeeHeart: new ImageSource(beeHeart),
 
     Spider: new ImageSource(spiderImage),
     DeadSpider: new ImageSource(deadSpiderImg),
@@ -123,6 +125,7 @@ const ResourceLoader = new Loader([
     Resources.SadBeeHit,
     Resources.MadBee,
     Resources.HappiestBee,
+    Resources.BeeHeart,
     
     Resources.Spider,
     Resources.DeadSpider,
