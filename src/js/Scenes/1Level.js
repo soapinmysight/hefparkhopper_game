@@ -14,6 +14,7 @@ export class LevelOne extends ex.Scene {
     game
     health
     score
+    character
     constructor(score) {
         super({});
         this.score = score
@@ -265,10 +266,10 @@ export class LevelOne extends ex.Scene {
         this.add(portal)
 
         // Adding bee to the game
-        const player = new Maincharacter(this.score)
-        player.on('precollision', (event) => this.onPreCollision(event))
+        this.character = new Maincharacter(this.score)
+        this.character.on('precollision', (event) => this.onPreCollision(event))
         // player.anchor = new ex.Vector(5, 25)
-        this.add(player)
+        this.add(this.character)
 
 
         //Score label
@@ -276,7 +277,6 @@ export class LevelOne extends ex.Scene {
             text: `Score: 0`,
             // pos: player.pos.clone().add(new ex.Vector(player.width, 100)),
             // zombie.pos = spawnZombie.pos.clone().add(new Vector(spawnZombie.width/2, spawnZombie.height/2))
-            pos: new ex.Vector(player.width, 100),
             font: new ex.Font({
                 unit: ex.FontUnit.Px,
                 size: 20,
@@ -299,6 +299,7 @@ export class LevelOne extends ex.Scene {
 
     onPostUpdate(_engine, _delta) {
         super.onPostUpdate(_engine, _delta);
+        this.scoreLabel.pos = this.character.pos.clone().add(new ex.Vector(this.character.width, -80))
         const mainCharacter = this.actors.find((actor) => actor instanceof Maincharacter);
 
         if (!mainCharacter) {

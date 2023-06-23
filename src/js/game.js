@@ -1,6 +1,6 @@
 import '../css/style.css'
 import * as ex from "excalibur"
-import { Resources, ResourceLoader } from './resources.js'
+import { ResourceLoader } from './resources.js'
 
 import { LevelOne } from './Scenes/1Level.js'
 import { Start } from "./Scenes/start.js";
