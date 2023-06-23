@@ -22,7 +22,7 @@ import sadBee from "../images/sadBee.png"
 import sadBeeHit from "../images/sadBeeHit.png"
 import madBee from "../images/madBee.png"
 import happiestBee from "../images/happiestBee.png"
-import beeHeart from "../characterHeart.png"
+import beeHeart from "../images/characterHeart.png"
 
 import spiderImage from "../images/spoeder.png"
 import deadSpiderImg from "../images/deadspider.png"
