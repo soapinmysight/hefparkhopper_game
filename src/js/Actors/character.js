@@ -80,16 +80,16 @@ export class Maincharacter extends ex.Actor {
 
         engine.currentScene.camera.x = this.pos.x + 80 //Tracking the bee with the camera
         // Commented code for speeding the bee up with A & D, just for programming ease
-        engine.input.keyboard.on("hold", (evt) => {
-            if (evt.key === ex.Input.Keys.A) {
-                this.vel.x = -800;
-            } else if (evt.key === ex.Input.Keys.D) {
-                this.vel.x = 800;
-            } else if (evt.key === ex.Input.Keys.W && this.onGround) {
-                this.jumped = true;
-                this.vel.y = -700;
-            }
-        })
+        //     engine.input.keyboard.on("hold", (evt) => {
+        //         if (evt.key === ex.Input.Keys.A) {
+        //             this.vel.x = -800;
+        //         } else if (evt.key === ex.Input.Keys.D) {
+        //             this.vel.x = 800;
+        //         } else if (evt.key === ex.Input.Keys.W && this.onGround) {
+        //             this.jumped = true;
+        //             this.vel.y = -700;
+        //         }
+        //     })
     }
 
     onCollisionStart(evt) {
