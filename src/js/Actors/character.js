@@ -1,6 +1,8 @@
 import * as ex from "excalibur";
 import { Resources } from "../resources";
 import { PlatformLvlOne } from "./platform.js";
+import { PlatformLvlTwo } from "./platform.js";
+import { PlatformLvlThree } from "./platform.js";
 import { Portal } from "./portal";
 import { Spider } from "./spiders";
 
@@ -93,7 +95,9 @@ export class Maincharacter extends ex.Actor {
     }
 
     onCollisionStart(evt) {
-        if (evt.other instanceof PlatformLvlOne) { //Checking if there is collision with the platforms
+        if (evt.other instanceof PlatformLvlOne && 
+            evt.other instanceof PlatformLvlTwo &&
+            evt.other instanceof PlatformLvlThree) { //Checking if there is collision with the platforms
             console.log("you're on the floor");
             this.onGround = true;
         }

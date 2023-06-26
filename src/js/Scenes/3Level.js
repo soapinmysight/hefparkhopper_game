@@ -35,7 +35,7 @@ export class LevelThree extends ex.Scene {
         this.actors.forEach((actor) => actor.kill());
         //Background image
         const backgroundthreeImage = Resources.BackgroundLvlThree.toSprite();
-        const backgroundlvl3 = new BackgroundLvlThree(-550, -50, 200, 20, backgroundthreeImage);
+        const backgroundlvl3 = new BackgroundLvlThree(-550, 0, 200, 20, backgroundthreeImage);
         this.add(backgroundlvl3);
 
         // Right invisible wall
