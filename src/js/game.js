@@ -11,7 +11,7 @@ import { LevelTwo } from "./Scenes/2Level.js";
 import { FailTwo } from "./Scenes/2Fail.js";
 import { VictoryTwo } from "./Scenes/2Victory.js";
 
-// import { LevelThree } from "./Scenes/3Level.js";
+import { LevelThree } from "./Scenes/3Level.js";
 import { FailThree } from "./Scenes/3Fail.js";
 import { VictoryThree } from "./Scenes/3Victory.js";
 import { FirstCutscene } from "./cutScene/firstScene.js";
@@ -69,8 +69,8 @@ export class Game extends ex.Engine {
 
         this.addScene("secondCutscene", new SecondCutscene)
 
-        // const levelThree = new LevelThree()
-        // this.addScene("LevelThree", levelThree)
+        const levelThree = new LevelThree()
+        this.addScene("LevelThree", levelThree)
 
         const failThree = new FailThree()
         this.addScene("FailThree", failThree)
