@@ -3,7 +3,6 @@ import { Resources, ResourceLoader } from '../resources';
 import { Maincharacter } from "./character.js";
 
 export class MainSpike extends ex.Actor {
-
     onInitialize(engine) {
         super.onInitialize(engine);
         this.body.collisionType = ex.CollisionType.Fixed;

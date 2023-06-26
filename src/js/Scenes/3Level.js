@@ -117,7 +117,7 @@ export class LevelThree extends ex.Scene {
         this.add(spikes7);
 
         const spikes8 = new SpikesLvlThree(6775, 200);
-        spikes8.scale = new ex.Vector(0.084, 0.084)
+        // spikes8.scale = new ex.Vector(0.084, 0.084)
         spikes8.rotation = Math.PI
         spikes8.actions.repeatForever((repeatCtx) => {
             repeatCtx.moveTo(6775, 200, 100)
