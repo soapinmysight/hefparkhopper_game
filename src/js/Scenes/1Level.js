@@ -8,7 +8,7 @@ import { SpikesLvlOne } from "../Actors/spikes.js"
 import { Spider } from "../Actors/spiders.js"
 import { ClosedPortalClass, Portal } from "../Actors/portal.js"
 import { Flower } from "../Actors/flower.js"
-import { Keys } from "excalibur/build/dist/Input/Keyboard.js"
+// import { Keys } from "excalibur/build/dist/Input/Keyboard.js"
 
 
 export class LevelOne extends ex.Scene {
