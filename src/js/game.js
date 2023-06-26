@@ -21,9 +21,9 @@ import { ThirdCutscene } from "./cutScene/thirdScene.js";
 import { BossFight } from "./BossFight/bossLevel.js";
 
 import { Score } from './Actors/score';
-import {FailBoss} from "./BossFight/bossFail.js";
-import {VictoryBoss} from "./BossFight/bossVictory.js";
-import {BossScene} from "./cutScene/bossScene.js";
+import { FailBoss } from "./BossFight/bossFail.js";
+import { VictoryBoss } from "./BossFight/bossVictory.js";
+import { BossScene } from "./cutScene/bossScene.js";
 
 
 export class Game extends ex.Engine {
@@ -36,7 +36,7 @@ export class Game extends ex.Engine {
             maxFps: 60
         });
         this.start(ResourceLoader).then(() => this.startGame());
-        // this.showDebug(true);
+        this.showDebug(true);
         // ex.Physics.useRealisticPhysics();
         ex.Physics.acc = new ex.vec(0, 300);
         this.score = new Score()
@@ -55,13 +55,13 @@ export class Game extends ex.Engine {
 
         this.addScene("firstCutscene", new FirstCutscene)
 
-        this.addScene("LevelTwo", new LevelTwo)
+        this.addScene("LevelTwo", new LevelTwo(this.score))
         this.addScene("FailTwo", new FailTwo)
         this.addScene('VictoryTwo', new VictoryTwo)
 
         this.addScene("secondCutscene", new SecondCutscene)
 
-        const levelThree = new LevelThree()
+        const levelThree = new LevelThree((this.score))
         this.addScene("LevelThree", levelThree)
 
         this.addScene("FailThree", new FailThree)
