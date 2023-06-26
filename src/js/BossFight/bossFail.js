@@ -1,7 +1,7 @@
 import {Scene, Vector} from "excalibur";
-import {NextLvlButton, StartButton} from "../Actors/button.js";
+import {TryAgainButton} from "../Actors/button.js";
 
-export class BossScene extends Scene {
+export class FailBoss extends Scene {
     game
     constructor() {
         super();
@@ -10,24 +10,22 @@ export class BossScene extends Scene {
         super.onInitialize(_engine);
         this.game = _engine
     }
+
     onActivate(_context) {
         super.onActivate(_context);
-        this.startCutScene()
+        this.startFailBoss()
     }
-    startCutScene(){
+
+    startFailBoss(){
+
         this.actors.forEach((actor) => actor.kill());
-        console.log('victory boss cutscene')
-        let tryAgain = new NextLvlButton()
+
+        console.log('fail boss')
+        let tryAgain = new TryAgainButton()
         tryAgain.pos = new Vector(400, 500)
         tryAgain.on('pointerup', () => {
-            this.game.goToScene('bossVictory')
+            this.game.goToScene('bossFight')
         })
         this.add(tryAgain)
-    }
-
-    onDeactivate(_context) {
-        super.onDeactivate(_context);
-
-
     }
 }
