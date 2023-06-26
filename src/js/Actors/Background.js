@@ -29,3 +29,18 @@ export class BackgroundLvlTwo extends ex.Actor {
         this.graphics.add(sprite);
     }
 }
+
+export class BackgroundLvlThree extends ex.Actor {
+    constructor(x, y) {
+        super({
+            pos: new ex.Vector(x, y),
+            height: 600,
+            width: 9101,
+            anchor: ex.Vector.Zero,
+        });
+        const sprite = Resources.BackgroundLvlThree.toSprite();
+        sprite.height = 600
+        sprite.width = 9101
+        this.graphics.add(sprite);
+    }
+}

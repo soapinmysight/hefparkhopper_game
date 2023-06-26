@@ -35,6 +35,10 @@ export class BossFight extends Scene {
         this.ui.bossDamaged(hitpoints);
     }
 
+    hearts(value){
+        this.ui.updateHealth(value);                         
+    }
+
     onActivate(ctx){
         this.ui = new UI();
         this.add(this.ui);
@@ -71,7 +75,7 @@ export class BossFight extends Scene {
 
         const platformBoss = new BossPlatform();
         this.add(platformBoss);
-        platformBoss.pos = new Vector(300, 400)
+        platformBoss.pos = new Vector(310, 350)
 
         this.character = new MaincharacterBoss();
         this.add(this.character);

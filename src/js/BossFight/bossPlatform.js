@@ -13,7 +13,7 @@ export class BossPlatform extends Actor {
     onInitialize() {
 
         this.graphics.add(Resources.BossPlatform.toSprite());
-        this.scale = new Vector(0.3, 0.3);
+        this.scale = new Vector(0.25, 0.25);
 
         this.body.collisionType = CollisionType.Fixed;
     }

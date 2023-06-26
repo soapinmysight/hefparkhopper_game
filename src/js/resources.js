@@ -12,14 +12,20 @@ import spikesLvlTwoImg from "../images/spikeslvl2.png"
 
 // level three
 import backgroundLvlThreeImg from "../images/backgroundlvl3.png"
+import platformLvlThreeImg from "../images/platformlvl3.png"
+import spikesLvlThreeImg from "../images/spikeslvl3.png"
+
 
 // characters and level elements
 import beeImage from "../images/bee2.png"
 import sadBee from "../images/sadBee.png"
+import sadBeeHit from "../images/sadBeeHit.png"
 import madBee from "../images/madBee.png"
 import happiestBee from "../images/happiestBee.png"
+import beeHeart from "../images/characterHeart.png"
 
 import spiderImage from "../images/spoeder.png"
+import deadSpiderImg from "../images/deadspider.png"
 
 import flowerImage from "../images/flower.png"
 
@@ -60,14 +66,20 @@ const Resources = {
 
     // lvl three
     BackgroundLvlThree: new ImageSource(backgroundLvlThreeImg),
+    PlatformLvlThree: new ImageSource(platformLvlThreeImg),
+    SpikesLvlThree: new ImageSource(spikesLvlThreeImg),
+
 
     // characters and level elements
     Bee: new ImageSource(beeImage),
     SadBee: new ImageSource(sadBee),
+    SadBeeHit: new ImageSource(sadBeeHit),
     MadBee: new ImageSource(madBee),
     HappiestBee: new ImageSource(happiestBee),
+    BeeHeart: new ImageSource(beeHeart),
 
     Spider: new ImageSource(spiderImage),
+    DeadSpider: new ImageSource(deadSpiderImg),
     Flower: new ImageSource(flowerImage),
     Portal: new ImageSource(portalImage),
     ClosedPortal: new ImageSource(closedPortalImage),
@@ -103,14 +115,20 @@ const ResourceLoader = new Loader([
 
     // lvl three
     Resources.BackgroundLvlThree,
+    Resources.PlatformLvlThree,
+    Resources.SpikesLvlThree,
+
 
     // characters and level elements
     Resources.Bee,
     Resources.SadBee,
+    Resources.SadBeeHit,
     Resources.MadBee,
     Resources.HappiestBee,
+    Resources.BeeHeart,
     
     Resources.Spider,
+    Resources.DeadSpider,
     Resources.Flower,
     Resources.Portal,
     Resources.ClosedPortal,
