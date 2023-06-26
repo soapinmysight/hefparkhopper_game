@@ -21,6 +21,9 @@ import { ThirdCutscene } from "./cutScene/thirdScene.js";
 import { BossFight } from "./BossFight/bossLevel.js";
 
 import { Score } from './Actors/score';
+import {FailBoss} from "./BossFight/bossFail.js";
+import {VictoryBoss} from "./BossFight/bossVictory.js";
+import {BossScene} from "./cutScene/bossScene.js";
 
 
 export class Game extends ex.Engine {
@@ -40,47 +43,35 @@ export class Game extends ex.Engine {
     }
 
     startGame() {
-        const start = new Start()
-        this.addScene('Start', start)
+
+        this.addScene('Start', new Start)
         this.goToScene('Start')
 
         this.addScene("startCutscene", new StartCutscene)
 
-        const levelOne = new LevelOne(this.score)
-        this.addScene("LevelOne", levelOne)
-        // this.goToScene("Levelone")
-
-        const failOne = new FailOne()
-        this.addScene('FailOne', failOne)
-
-        const victoryOne = new VictoryOne()
-        this.addScene("VictoryOne", victoryOne)
+        this.addScene("LevelOne", new LevelOne(this.score))
+        this.addScene('FailOne', new FailOne)
+        this.addScene("VictoryOne", new VictoryOne)
 
         this.addScene("firstCutscene", new FirstCutscene)
 
-        const levelTwo = new LevelTwo()
-        this.addScene("LevelTwo", levelTwo)
-
-        const failTwo = new FailTwo()
-        this.addScene("FailTwo", failTwo)
-
-        const victoryTwo = new VictoryTwo()
-        this.addScene('VictoryTwo', victoryTwo)
+        this.addScene("LevelTwo", new LevelTwo)
+        this.addScene("FailTwo", new FailTwo)
+        this.addScene('VictoryTwo', new VictoryTwo)
 
         this.addScene("secondCutscene", new SecondCutscene)
 
-        // const levelThree = new LevelThree()
-        // this.addScene("LevelThree", levelThree)
+        // this.addScene("LevelThree", new LevelThree)
 
-        const failThree = new FailThree()
-        this.addScene("FailThree", failThree)
-
-        const victoryThree = new VictoryThree()
-        this.addScene("VictoryThree", victoryThree)
+        this.addScene("FailThree", new FailThree)
+        this.addScene("VictoryThree", new VictoryThree)
 
         this.addScene("thirdCutScene", new ThirdCutscene)
 
         this.addScene("bossFight", new BossFight)
+        this.addScene("bossFail", new FailBoss)
+        this.addScene("bossCutscene", new BossScene)
+        this.addScene("bossVictory", new VictoryBoss)
     }
 }
 

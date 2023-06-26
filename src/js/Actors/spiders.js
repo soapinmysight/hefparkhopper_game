@@ -62,11 +62,11 @@ export class DeadSpider extends Actor {
             width: 100,
             height: 80,
         });
-        const spider = Resources.Spider.toSprite()
+        const spider = Resources.DeadSpider.toSprite()
         spider.width = 120
         spider.height = 100
         this.graphics.add(spider)
-        this.speed = 300
+
     }
     onInitialize(_engine) {
         super.onInitialize(_engine);
@@ -75,14 +75,13 @@ export class DeadSpider extends Actor {
     onPostUpdate(_engine, _delta) {
         super.onPostUpdate(_engine, _delta);
 
-
-
         // Roll 180 degrees
         this.rotation += 0.08;
 
         if (this.rotation >= Math.PI) {
             this.rotation = Math.PI;
             this.scale = this.scale.add(new ex.Vector(-0.04, -0.04));
+            this.vel = new ex.Vector(0, 10)
         }
         if (this.width <= 0) {
             // Time is up, kill the actor
