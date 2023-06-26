@@ -1,7 +1,7 @@
 import * as ex from "excalibur";
 import { Resources } from "../resources.js";
 import { Maincharacter } from "./character.js";
-import {Actor, CollisionType} from "excalibur";
+import { Actor, CollisionType } from "excalibur";
 
 export class Spider extends ex.Actor {
     x
@@ -11,8 +11,8 @@ export class Spider extends ex.Actor {
     constructor(x, y) {
 
         super({
-            width: 100,
-            height: 80,
+            width: 90,
+            height: 75,
             pos: new ex.Vector(x, y)
         });
         const spider = Resources.Spider.toSprite()
@@ -78,7 +78,7 @@ export class DeadSpider extends Actor {
         // Roll 180 degrees
         this.rotation += 0.08;
 
-        if(this.rotation >= Math.PI) {
+        if (this.rotation >= Math.PI) {
             this.rotation = Math.PI;
             this.scale = this.scale.add(new ex.Vector(-0.04, -0.04));
             this.vel = new ex.Vector(0, 10)

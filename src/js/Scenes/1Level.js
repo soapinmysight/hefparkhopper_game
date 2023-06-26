@@ -71,7 +71,7 @@ export class LevelOne extends ex.Scene {
         this.add(platform1);
 
         // Flying platform (small)
-        const platform2 = new PlatformLvlOne(0, 380, 925, 155);
+        const platform2 = new PlatformLvlOne(0, 420, 925, 155);
         this.add(platform2);
 
         const platform4 = new PlatformLvlOne(500, 280, 925, 155);
@@ -163,12 +163,21 @@ export class LevelOne extends ex.Scene {
         const spikes7 = new SpikesLvlOne(4825, 500);
         this.add(spikes7);
 
+        const spikes8 = new SpikesLvlOne(6775, 200);
+        spikes8.scale = new ex.Vector(0.084, 0.084)
+        spikes8.rotation = Math.PI
+        spikes8.actions.repeatForever((repeatCtx) => {
+            repeatCtx.moveTo(6775, 200, 100)
+            repeatCtx.moveTo(6775, 610, 100)
+        })
+        this.add(spikes8);
+
         // const spikes8 = new Spikes(3895, 500, 925, 155);
         // spikes8.scale = new ex.Vector(0.5, 0.5)
         // this.add(spikes8);
 
         //Flowers
-        const flower1 = new Flower(50, 280, this.score);
+        const flower1 = new Flower(100, 350, this.score);
         this.add(flower1);
 
         const flower2 = new Flower(4200, 150, this.score);
@@ -268,15 +277,12 @@ export class LevelOne extends ex.Scene {
         // Adding bee to the game
         this.character = new Maincharacter(this.score)
         this.character.on('precollision', (event) => this.onPreCollision(event))
-        // player.anchor = new ex.Vector(5, 25)
         this.add(this.character)
 
 
         //Score label
         this.scoreLabel = new ex.Label({
             text: `Score: 0`,
-            // pos: player.pos.clone().add(new ex.Vector(player.width, 100)),
-            // zombie.pos = spawnZombie.pos.clone().add(new Vector(spawnZombie.width/2, spawnZombie.height/2))
             font: new ex.Font({
                 unit: ex.FontUnit.Px,
                 size: 20,
