@@ -83,12 +83,12 @@ export class LevelThree extends ex.Scene {
         const platform6 = new PlatformLvlThree(1500, 280, 925, 155);
         this.add(platform6);
 
-        let platform18 = new PlatformLvlThree(6500, 130, 925, 155)
-        platform18.actions.repeatForever((repeatCtx) => {
-            repeatCtx.moveTo(6500, 130, 100)
-            repeatCtx.moveTo(6500, 540, 100)
-        })
-        this.add(platform18)
+        // let platform18 = new PlatformLvlThree(6500, 130, 925, 155)
+        // platform18.actions.repeatForever((repeatCtx) => {
+        //     repeatCtx.moveTo(6500, 130, 100)
+        //     repeatCtx.moveTo(6500, 540, 100)
+        // })
+        // this.add(platform18)
 
         let platform20 = new PlatformLvlThree(7100, 130, 925, 155)
         this.add(platform20)
@@ -114,6 +114,15 @@ export class LevelThree extends ex.Scene {
 
         const spikes7 = new SpikesLvlThree(4825, 500);
         this.add(spikes7);
+
+        const spikes8 = new SpikesLvlThree(6775, 200);
+        spikes8.scale = new ex.Vector(0.084, 0.084)
+        spikes8.rotation = Math.PI
+        spikes8.actions.repeatForever((repeatCtx) => {
+            repeatCtx.moveTo(6775, 200, 100)
+            repeatCtx.moveTo(6775, 610, 100)
+        })
+        this.add(spikes8);
 
         // const spikes8 = new Spikes(3895, 500, 925, 155);
         // spikes8.scale = new ex.Vector(0.5, 0.5)
