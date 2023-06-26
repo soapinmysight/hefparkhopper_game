@@ -5,6 +5,7 @@ import { Maincharacter } from '../Actors/character.js'
 import { PlatformLvlThree } from '../Actors/platform.js'
 import { BackgroundLvlThree } from '../Actors/Background.js'
 import { SpikesLvlThree } from "../Actors/spikes.js"
+import { MainSpike } from "../Actors/spikes.js"
 import { Spider } from "../Actors/spiders.js"
 import { ClosedPortalClass, Portal } from "../Actors/portal.js"
 import { Flower } from "../Actors/flower.js"
