@@ -8,7 +8,6 @@ import { SpikesLvlOne } from "../Actors/spikes.js"
 import { Spider } from "../Actors/spiders.js"
 import { ClosedPortalClass, Portal } from "../Actors/portal.js"
 import { Flower } from "../Actors/flower.js"
-// import { Keys } from "excalibur/build/dist/Input/Keyboard.js"
 
 
 export class LevelOne extends ex.Scene {
@@ -22,13 +21,15 @@ export class LevelOne extends ex.Scene {
     }
 
     onInitialize(_engine) {
-        // const movementtext = new ex.Label({
-        //     text: "Move with WASD or arrow Keys",
-        //     pos: new ex.Vector(100, 100),
-        //     font: new ex.Font({
-        //         size: 30
-        //     })
-        // })
+        const movementtext = new ex.Label({
+            text: "Move with WASD or arrow Keys",
+            pos: new ex.Vector(100, 100),
+            font: new ex.Font({
+                size: 30
+            })
+        })
+        this.add(movementtext)
+
         super.onInitialize(_engine);
         this.game = _engine
         this.health = 2
