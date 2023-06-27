@@ -48,9 +48,30 @@ import bossFloorTemp from "../images/tempFloorBoss.png"
 import bossBackground from "../images/bossBackground.png"
 import bossPlatform from "../images/bossPlatform.png"
 
-// other
-import logoImage from "../images/logo.png"
+// cutscenes
+import startAndFinalSceneBgImg from "../images/cutscenes/startendscene.png"
+import cutsceneOneBgImg from "../images/cutscenes/cutscene1.png"
+import cutsceneTwoBgImg from "../images/cutscenes/cutscene2.png"
+import cutsceneThreeBgImg from "../images/cutscenes/cutscene3.png"
+import cutsceneBossBgImg from "../images/cutscenes/cutsceneboss.png"
+
+import bushImg from "../images/cutscenes/bush.png"
+import deadCutsceneSpiderImg from "../images/cutscenes/bossspiderded.png"
+
+import beeTextImg from "../images/cutscenes/textbee.png"
+import spiderTextImg from "../images/cutscenes/textspider.png"
+
+// fail victory screens
+import failVicOneBgImg from "../images/cutscenes/failvic1.png"
+import failVicTwoBgImg from "../images/cutscenes/failvic2.png"
+import failVicThreeBgImg from "../images/cutscenes/failvic3.png"
+import failVicBossBgImg from "../images/cutscenes/failvicboss.png"
+import failText from "../images/cutscenes/fail.png"
+import vicText from "../images/cutscenes/victory.png"
+
 import textBubbleImage from "../images/textBubble.png"
+
+import logoImage from "../images/logo.png"
 
 const Resources = {
 
@@ -98,7 +119,32 @@ const Resources = {
     BossWeb: new ImageSource(bossWeb),
     TempBossFloor: new ImageSource(bossFloorTemp),
     BossBackground: new ImageSource(bossBackground),
-    BossPlatform: new ImageSource(bossPlatform)
+    BossPlatform: new ImageSource(bossPlatform),
+
+    // cutscenes
+    StartAndFinalSceneBg: new ImageSource(startAndFinalSceneBgImg),
+    CutsceneOneBg: new ImageSource(cutsceneOneBgImg),
+    CutsceneTwoBg: new ImageSource(cutsceneTwoBgImg),
+    CutsceneThreeBg: new ImageSource(cutsceneThreeBgImg),
+    CutsceneBossBg: new ImageSource(cutsceneBossBgImg),
+
+    Bush: new ImageSource(bushImg),
+    DeadCutsceneSpider: new ImageSource(deadCutsceneSpiderImg),
+
+    BeeText: new ImageSource(beeTextImg),
+    SpiderText: new ImageSource(spiderTextImg),
+
+    // fail victory screens
+
+    FailVicOneBg: new ImageSource(failVicOneBgImg),
+    FailVicTwoBg: new ImageSource(failVicTwoBgImg),
+    FailVicThreeBg: new ImageSource(failVicThreeBgImg),
+    FailVicBossBg: new ImageSource(failVicBossBgImg),
+
+    FailText: new ImageSource(failText),
+    VictoryText: new ImageSource(vicText),
+    TextBubble: new ImageSource(textBubbleImage)
+
 
 }
 const ResourceLoader = new Loader([
@@ -148,7 +194,31 @@ const ResourceLoader = new Loader([
     Resources.BossWeb,
     Resources.TempBossFloor,
     Resources.BossBackground,
-    Resources.BossPlatform
+    Resources.BossPlatform,
+
+    //cutscenes
+    Resources.StartAndFinalSceneBg,
+    Resources.CutsceneOneBg,
+    Resources.CutsceneTwoBg,
+    Resources.CutsceneThreeBg,
+    Resources.CutsceneBossBg,
+
+    Resources.Bush,
+    Resources.DeadCutsceneSpider,
+
+    Resources.BeeText,
+    Resources.SpiderText,
+
+
+    // fail victory screens
+    Resources.FailVicOneBg,
+    Resources.FailVicTwoBg,
+    Resources.FailVicThreeBg,
+    Resources.FailVicBossBg,
+
+    Resources.FailText,
+    Resources.VictoryText,
+    Resources.TextBubble,
 ])
 
 export { Resources, ResourceLoader }

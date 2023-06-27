@@ -158,8 +158,8 @@ export class MaincharacterBoss extends Actor {
         }
 
         if(this.health < 1 ){
-            console.log("oopsies, dead");           
-            // this.game.goToScene('gameOver', new GameOver());
+            console.log("oopsies, dead");     
+            this.game.goToScene('bossFail');     
         }
     }
 
