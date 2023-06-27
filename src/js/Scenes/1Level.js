@@ -74,6 +74,7 @@ export class LevelOne extends ex.Scene {
     }
 
     onActivate(_context) {
+        this.bgMusic.stop()
         super.onActivate(_context);
         this.bgMusic = new Audio(music)
         this.bgMusic.loop = true
