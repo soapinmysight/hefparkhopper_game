@@ -15,15 +15,54 @@ export class LevelOne extends ex.Scene {
     health
     score
     character
+    righttext
+    lefttext
+    jumptext
     constructor(score) {
         super({});
         this.score = score
+
     }
 
     onInitialize(_engine) {
         super.onInitialize(_engine);
         this.game = _engine
         this.health = 2
+
+        _engine.input.keyboard.enabled = true; //Keyboard binds
+        const keys = ex.Input.Keys; //Keys input
+        _engine.input.keyboard.on("press", (evt) => {
+            if (evt.key === keys.D && this.righttext != false || evt.key === keys.Right && this.righttext != false) {
+                setTimeout(() => {
+                    this.righttext.kill()
+                    this.righttext = false
+                    console.log(this.righttext)
+                }, 500)
+            }
+        })
+
+
+        _engine.input.keyboard.on("press", (evt) => {
+            if (evt.key === keys.A && this.righttext == false && this.lefttext != false || evt.key === keys.Left && this.righttext == false && this.lefttext != false) {
+                setTimeout(() => {
+                    this.lefttext.kill()
+                    this.lefttext = false
+                    console.log(this.lefttext)
+                }, 500)
+            }
+        })
+
+        _engine.input.keyboard.on("press", (evt) => {
+            if (evt.key === keys.W && this.lefttext == false && this.jumptext != false || evt.key === keys.Up && this.lefttext == false && this.jumptext != false) {
+                setTimeout(() => {
+                    this.jumptext.kill()
+                    this.jumptext = false
+                    console.log(this.jumptext)
+                }, 500)
+            }
+        })
+
+
     }
 
     onActivate(_context) {
@@ -33,32 +72,48 @@ export class LevelOne extends ex.Scene {
 
     startLevelOne(_engine) {
 
+        this.righttext = new ex.Label({
+            text: "Move right with right arrow or D",
+            pos: new ex.Vector(40, 250),
+            font: new ex.Font({
+                size: 40,
+                color: ex.Color.Black,
+                unit: ex.FontUnit.Px,
+                // family: 'Roboto'
+            })
+        })
+
+        this.lefttext = new ex.Label({
+            text: "Move left with left arrow or A",
+            pos: new ex.Vector(40, 250),
+            font: new ex.Font({
+                size: 40,
+                color: ex.Color.Black,
+                unit: ex.FontUnit.Px,
+                // family: 'Roboto'
+            })
+        })
+
+        this.jumptext = new ex.Label({
+            text: "Jump with up arrow or W",
+            pos: new ex.Vector(40, 250),
+            font: new ex.Font({
+                size: 40,
+                color: ex.Color.Black,
+                unit: ex.FontUnit.Px,
+                // family: 'Roboto'
+            })
+        })
+
         this.actors.forEach((actor) => actor.kill());
         //Background image
         const backgroundImage = Resources.Background.toSprite();
         const background = new BackgroundLvlOne(-550, -50, 200, 20, backgroundImage);
         this.add(background);
 
-        // _engine.input.keyboard.enabled = true; //Keyboard binds
 
-        const keys = ex.Input.Keys; //Keys input
-
-        this.astext = new ex.Label({
-            text: "Move with WASD or arrow Keys",
-            pos: new ex.Vector(100, 200),
-            font: new ex.Font({
-                size: 30,
-                color: ex.Color.Black,
-                unit: ex.FontUnit.Px,
-            })
-        })
-        this.add(this.astext)
-
-        // _engine.input.keyboard.on("press", (evt) => {
-        //     if (evt.key === keys.D || evt.key === keys.Right) { //Jumping
-        //         this.astext.kill()
-        //     }
-        // })
+        //Tutorial text moving right
+        this.add(this.righttext)
 
         // Right invisible wall
         let leftWall = new ex.Actor({
@@ -323,6 +378,15 @@ export class LevelOne extends ex.Scene {
 
     onPreUpdate() {
         this.scoreLabel.text = `Score: ${this.score.getScore()}`
+        //Tutorial text moving left
+        if (this.righttext == false && this.lefttext != false) {
+            this.add(this.lefttext)
+        }
+
+        if (this.lefttext == false && this.jumptext != false) {
+            this.add(this.jumptext)
+        }
+
     }
 
     onPostUpdate(_engine, _delta) {
@@ -352,6 +416,5 @@ export class LevelOne extends ex.Scene {
             }
         }
     }
-
 }
 
