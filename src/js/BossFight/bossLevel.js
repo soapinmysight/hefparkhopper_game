@@ -7,15 +7,12 @@ import { MaincharacterBoss } from "./bossCharacter";
 import { BackgroundBoss } from "./bossBackground";
 import { BossPlatform } from "./bossPlatform";
 import { UI } from "./allElementsOnScreen";
-import * as ex from "excalibur";
-import {Maincharacter} from "../Actors/character.js";
-import {Spider} from "../Actors/spiders.js";
-import {ClosedPortalClass, Portal} from "../Actors/portal.js";
 
 
 export class BossFight extends Scene {
 
    character;
+   boss;
    damage;
 
     constructor() {
@@ -32,7 +29,7 @@ export class BossFight extends Scene {
 
     addWebShot(webShoot){
         this.add(webShoot);
-        webShoot.actions.meet(this.character, 300);
+        webShoot.actions.meet(this.character, 380);
     }
 
     updateBossHealth(hitpoints){
@@ -44,6 +41,13 @@ export class BossFight extends Scene {
     }
 
     onActivate(ctx){
+
+        this.character.pos = new Vector(400, 0);
+        this.boss.pos = new Vector(1000, 480)
+
+        this.character.reset();
+        this.boss.bossReset();
+
         this.ui = new UI();
         this.add(this.ui);
         this.ui.pos = new Vector(10, 30)
@@ -85,28 +89,12 @@ export class BossFight extends Scene {
         this.add(this.character);
         this.character.pos = new Vector(400, 0);
 
-        const boss = new BossSpider();
-        this.add(boss);
-        boss.pos = new Vector(1000, 480);
+        this.boss = new BossSpider();
+        this.add(this.boss);
+        this.boss.pos = new Vector(1000, 480);
     }
 
-    // onPostUpdate(_engine, _delta) {
-    //     super.onPostUpdate(_engine, _delta);
-
-    // als main character dood is, ga naar fail
-    //     const mainCharacter = this.actors.find((actor) => actor instanceof Maincharacter);
-    //
-    //     if (!mainCharacter) {
-    //         this.game.goToScene('bossFail')
-    //     }
-    //
-    //     const bossSpider = this.actors.filter((actor) => actor instanceof BossSpider);
-    //
-    // als boss dood is ga naar bosscutscene
-    //     if (!bossSpider) {
-    //         this.game.goToScene('bossCutscene')
-    //
-    //
-    //     }
-    // }
+    onDeactivate() {
+        this.ui.kill();                         
+    }
 }

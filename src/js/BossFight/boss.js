@@ -31,6 +31,12 @@ export class BossSpider extends Actor {
 
     }
 
+    onActivate(ctx){
+
+        this.bossReset.bossReset();
+        
+    }
+
     onInitialize(engine){
 
         this.game = engine
@@ -60,6 +66,10 @@ export class BossSpider extends Actor {
 
     }
 
+    bossReset(){
+        this.health = 300;
+    }
+
     doDamage(event){
 
         if(event.other instanceof MaincharacterBoss){
@@ -80,6 +90,7 @@ export class BossSpider extends Actor {
         if(this.health < 1) {
             this.timer.stop();
             this.kill();
+            this.game.goToScene('bossCutscene');
             console.log("Victory for you, whoo hoo")
         }
 
