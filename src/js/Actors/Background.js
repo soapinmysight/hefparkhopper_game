@@ -20,12 +20,12 @@ export class BackgroundLvlTwo extends ex.Actor {
         super({
             pos: new ex.Vector(x, y),
             height: 600,
-            width: 9101,
+            width: 10000,
             anchor: ex.Vector.Zero,
         });
         const sprite = Resources.BackgroundLvlTwo.toSprite();
         sprite.height = 600
-        sprite.width = 9101
+        sprite.width = 10000
         this.graphics.add(sprite);
     }
 }
