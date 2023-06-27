@@ -1,46 +1,49 @@
-import * as ex from 'excalibur';
-import {Resources} from "../resources.js";
+import {Actor, Vector} from 'excalibur';
+import {Resources} from "/src/js/resources.js";
 
-// export class BaseBackground extends ex.Actor {
-//     constructor(x, y, width, height, image) {
-//         super({
-//             pos: new ex.Vector(x, y),
-//             width: width,
-//             height: height,
-//             anchor: ex.Vector.Zero,
-//         });
-//
-//         const sprite = new ex.Sprite(image);
-//         this.graphics.use(sprite);
-//     }
-// }
-//
-// export class BackgroundLvlTwo extends ex.Actor {
-//     constructor(x, y) {
-//         super({
-//             pos: new ex.Vector(x, y),
-//             height: 600,
-//             width: 10000,
-//             anchor: ex.Vector.Zero,
-//         });
-//         const sprite = Resources.BackgroundLvlTwo.toSprite();
-//         sprite.height = 600
-//         sprite.width = 10000
-//         this.graphics.add(sprite);
-//     }
-// }
-//
-// export class BackgroundLvlThree extends ex.Actor {
-//     constructor(x, y) {
-//         super({
-//             pos: new ex.Vector(x, y),
-//             height: 600,
-//             width: 9101,
-//             anchor: ex.Vector.Zero,
-//         });
-//         const sprite = Resources.BackgroundLvlThree.toSprite();
-//         sprite.height = 600
-//         sprite.width = 9101
-//         this.graphics.add(sprite);
-//     }
-// }
+export class BaseBackground extends Actor {
+    constructor(x, y) {
+        super({
+            pos: new Vector(x, y),
+            anchor: Vector.Zero,
+        });
+    }
+}
+
+export class CutsceneStartEndBackground extends BaseBackground {
+    constructor() {
+        super();
+        const sprite = Resources.StartAndFinalSceneBg.toSprite();
+        this.graphics.add(sprite);
+    }
+}
+
+export class CutsceneOneBackground extends BaseBackground {
+    constructor() {
+        super(        );
+        const sprite = Resources.CutsceneOneBg.toSprite();
+        this.graphics.add(sprite);
+    }
+}
+
+export class CutsceneTwoBackground extends BaseBackground {
+    constructor() {
+        super();
+        const sprite = Resources.CutsceneTwoBg.toSprite();
+        this.graphics.add(sprite);
+    }
+}
+export class CutsceneThreeBackground extends BaseBackground {
+    constructor() {
+        super();
+        const sprite = Resources.CutsceneThreeBg.toSprite();
+        this.graphics.add(sprite);
+    }
+}
+export class CutsceneBossBackground extends BaseBackground {
+    constructor() {
+        super();
+        const sprite = Resources.CutsceneBossBg.toSprite();
+        this.graphics.add(sprite);
+    }
+}
