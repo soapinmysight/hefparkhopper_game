@@ -216,12 +216,20 @@ export class LevelThree extends ex.Scene {
         const spikes8 = new SpikesLvlThree(8150, 150);
         this.add(spikes8);
 
-        // let platform18 = new PlatformLvlThree(6500, 130, 925, 155)
+        // let platform18 = new PlatformLvlOne(6500, 130, 925, 155)
         // platform18.actions.repeatForever((repeatCtx) => {
         //     repeatCtx.moveTo(6500, 130, 100)
         //     repeatCtx.moveTo(6500, 540, 100)
         // })
         // this.add(platform18)
+        // const spikes30 = new SpikesLvlThree(6775, 200);
+        // // spikes8.scale = new ex.Vector(0.084, 0.084)
+        // spikes30.rotation = Math.PI
+        // spikes30.actions.repeatForever((repeatCtx) => {
+        //     repeatCtx.moveTo(6775, 200, 100)
+        //     repeatCtx.moveTo(6775, 610, 100)
+        // })
+        // this.add(spikes30);
 
 
         const spikes30 = new SpikesLvlThree(6775, 200);
