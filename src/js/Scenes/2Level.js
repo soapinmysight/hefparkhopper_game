@@ -231,9 +231,9 @@ export class LevelTwo extends Scene {
         const platform15 = new PlatformLvlTwo(3900, 400)
         this.add(platform15)
 
-        const platform16 = new PlatformLvlTwo(4100, 450)
+        const platform16 = new PlatformLvlTwo(4200, 450)
         platform16.actions.repeatForever(repeatContext => {
-            repeatContext.moveTo(4100,450,150)
+            repeatContext.moveTo(4200,450,150)
             repeatContext.moveTo(5000, 450, 150)
         })
         this.add(platform16)
