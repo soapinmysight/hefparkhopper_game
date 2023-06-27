@@ -21,15 +21,6 @@ export class LevelOne extends ex.Scene {
     }
 
     onInitialize(_engine) {
-        const movementtext = new ex.Label({
-            text: "Move with WASD or arrow Keys",
-            pos: new ex.Vector(100, 100),
-            font: new ex.Font({
-                size: 30
-            })
-        })
-        this.add(movementtext)
-
         super.onInitialize(_engine);
         this.game = _engine
         this.health = 2
@@ -40,12 +31,34 @@ export class LevelOne extends ex.Scene {
         this.startLevelOne()
     }
 
-    startLevelOne() {
+    startLevelOne(_engine) {
+
         this.actors.forEach((actor) => actor.kill());
         //Background image
         const backgroundImage = Resources.Background.toSprite();
         const background = new BackgroundLvlOne(-550, -50, 200, 20, backgroundImage);
         this.add(background);
+
+        // _engine.input.keyboard.enabled = true; //Keyboard binds
+
+        const keys = ex.Input.Keys; //Keys input
+
+        this.astext = new ex.Label({
+            text: "Move with WASD or arrow Keys",
+            pos: new ex.Vector(100, 200),
+            font: new ex.Font({
+                size: 30,
+                color: ex.Color.Black,
+                unit: ex.FontUnit.Px,
+            })
+        })
+        this.add(this.astext)
+
+        // _engine.input.keyboard.on("press", (evt) => {
+        //     if (evt.key === keys.D || evt.key === keys.Right) { //Jumping
+        //         this.astext.kill()
+        //     }
+        // })
 
         // Right invisible wall
         let leftWall = new ex.Actor({
