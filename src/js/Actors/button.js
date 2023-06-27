@@ -15,7 +15,7 @@ export class MainButton extends Actor {
 
 export class StartButton extends MainButton {
     constructor() {
-        super(200, 150);
+        super(200, 120);
         const btn = Resources.StartBtn.toSprite()
         btn.width = 200
         btn.height = 120
@@ -25,18 +25,18 @@ export class StartButton extends MainButton {
 
 export class GameOverButton extends MainButton {
     constructor() {
-        super(200, 150);
+        super(350, 120);
         const btn = Resources.GameOverBtn.toSprite()
-        btn.width = 200
+        btn.width = 350
         btn.height = 120
         this.graphics.add(btn)
     }
 }
 export class NextLvlButton extends MainButton {
     constructor() {
-        super(200, 150);
+        super(350, 120);
         const btn = Resources.NextLvlBtn.toSprite()
-        btn.width = 200
+        btn.width = 350
         btn.height = 120
         this.graphics.add(btn)
     }
@@ -44,10 +44,10 @@ export class NextLvlButton extends MainButton {
 
 export class TryAgainButton extends MainButton {
     constructor() {
-        super(200, 150);
+        super(350, 200);
         const btn = Resources.TryAgainBtn.toSprite()
-        btn.width = 200
-        btn.height = 120
+        btn.width = 350
+        btn.height = 200
         this.graphics.add(btn)
     }
 }

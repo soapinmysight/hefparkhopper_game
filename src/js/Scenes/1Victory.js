@@ -1,6 +1,7 @@
 import {Scene, Vector, Font, Label, FontUnit, Color} from "excalibur";
 import {NextLvlButton, TryAgainButton} from "../Actors/button.js";
 import {OneFailVicBackground} from "./failVictoryActors/background.js";
+import {VictoryText} from "./failVictoryActors/text.js";
 
 export class VictoryOne extends Scene {
     game
@@ -24,9 +25,12 @@ export class VictoryOne extends Scene {
         this.add(background)
         console.log(background)
 
+        let victory = new VictoryText(screen.width/2-100, 150)
+        this.add(victory)
+
         let label2 = new Label({
             text: `Score: ${this.score}`,
-            pos: new Vector(615, 200),
+            pos: new Vector(500, 400),
             font: new Font({
                 family: 'impact',
                 size: 35,
@@ -37,7 +41,7 @@ export class VictoryOne extends Scene {
         this.add(label2)
 
         let nextLvlButton = new NextLvlButton()
-        nextLvlButton.pos = new Vector(400, 500)
+        nextLvlButton.pos = new Vector(650, 500)
         nextLvlButton.on('pointerup', () => {
             this.game.goToScene('firstCutscene')
         })

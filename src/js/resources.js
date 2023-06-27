@@ -33,7 +33,7 @@ import portalImage from "../images/portal.png"
 import closedPortalImage from "../images/closedPortal.png"
 
 // buttons
-import buttonImage from "../images/button.png"
+
 import startBtnImage from "../images/startButton.png"
 import tryAgainBtnImage from "../images/tryAgain.png"
 import nextLvlBtnImage from "../images/nextLevelButton.png"
@@ -106,7 +106,7 @@ const Resources = {
     ClosedPortal: new ImageSource(closedPortalImage),
 
     // buttons
-    Button: new ImageSource(buttonImage),
+
     StartBtn: new ImageSource(startBtnImage),
     TryAgainBtn: new ImageSource(tryAgainBtnImage),
     NextLvlBtn: new ImageSource(nextLvlBtnImage),
@@ -180,7 +180,7 @@ const ResourceLoader = new Loader([
     Resources.ClosedPortal,
 
     // buttons
-    Resources.Button,
+
     Resources.StartBtn,
     Resources.TryAgainBtn,
     Resources.NextLvlBtn,
