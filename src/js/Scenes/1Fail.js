@@ -1,6 +1,8 @@
 
 import {Scene, Vector} from "excalibur"
 import {StartButton, TryAgainButton} from "../Actors/button.js";
+import {CutsceneOneBackground} from "../cutScene/actors/background.js";
+import {OneFailVicBackground} from "./failVictoryActors/background.js";
 
 
 export class FailOne extends Scene {
@@ -20,6 +22,10 @@ export class FailOne extends Scene {
     startFailOne(){
         this.actors.forEach((actor) => actor.kill());
         console.log('failOne')
+        let background = new OneFailVicBackground(-100,0)
+        this.add(background)
+
+
         let tryAgain = new TryAgainButton()
         tryAgain.pos = new Vector(400, 500)
         tryAgain.on('pointerup', () => {

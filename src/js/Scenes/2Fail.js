@@ -1,5 +1,6 @@
 import {Scene, Vector} from "excalibur";
 import {TryAgainButton} from "../Actors/button.js";
+import {OneFailVicBackground, TwoFailVicBackground} from "./failVictoryActors/background.js";
 
 export class FailTwo extends Scene {
     game
@@ -17,6 +18,8 @@ export class FailTwo extends Scene {
     startFailTwo(){
 
         this.actors.forEach((actor) => actor.kill());
+        let background = new TwoFailVicBackground(0,0)
+        this.add(background)
 
         console.log('fail two')
         let tryAgain = new TryAgainButton()

@@ -1,5 +1,6 @@
 import {Scene, Vector} from "excalibur";
 import {NextLvlButton, StartButton} from "../Actors/button.js";
+import {CutsceneOneBackground} from "./actors/background.js";
 
 export class BossScene extends Scene {
     game
@@ -17,6 +18,10 @@ export class BossScene extends Scene {
     startCutScene(){
         this.actors.forEach((actor) => actor.kill());
         console.log('victory boss cutscene')
+        let background = new CutsceneOneBackground(-100,0)
+        this.add(background)
+        console.log(background)
+
         let tryAgain = new NextLvlButton()
         tryAgain.pos = new Vector(400, 500)
         tryAgain.on('pointerup', () => {

@@ -1,10 +1,13 @@
-import {Scene, Vector} from "excalibur";
+import {Scene, Vector, Font, Label, FontUnit, Color} from "excalibur";
 import {NextLvlButton, TryAgainButton} from "../Actors/button.js";
+import {OneFailVicBackground} from "./failVictoryActors/background.js";
 
 export class VictoryOne extends Scene {
     game
-    constructor() {
+    score
+    constructor(score) {
         super();
+        this.score = score
     }
     onInitialize(_engine) {
         super.onInitialize(_engine);
@@ -17,12 +20,28 @@ export class VictoryOne extends Scene {
     startVictoryOne(){
         this.actors.forEach((actor) => actor.kill());
         console.log('victory one')
-        let tryAgain = new NextLvlButton()
-        tryAgain.pos = new Vector(400, 500)
-        tryAgain.on('pointerup', () => {
+        let background = new OneFailVicBackground(-100,0)
+        this.add(background)
+        console.log(background)
+
+        let label2 = new Label({
+            text: `Score: ${this.score}`,
+            pos: new Vector(615, 200),
+            font: new Font({
+                family: 'impact',
+                size: 35,
+                unit: FontUnit.Px,
+                color: Color.White
+            })
+        })
+        this.add(label2)
+
+        let nextLvlButton = new NextLvlButton()
+        nextLvlButton.pos = new Vector(400, 500)
+        nextLvlButton.on('pointerup', () => {
             this.game.goToScene('firstCutscene')
         })
-        this.add(tryAgain)
+        this.add(nextLvlButton)
     }
 
 }
