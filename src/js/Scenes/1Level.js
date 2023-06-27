@@ -8,6 +8,7 @@ import { SpikesLvlOne } from "../Actors/spikes.js"
 import { Spider } from "../Actors/spiders.js"
 import { ClosedPortalClass, Portal } from "../Actors/portal.js"
 import { Flower } from "../Actors/flower.js"
+import music from "../../images/bee..mp3"
 
 
 export class LevelOne extends ex.Scene {
@@ -18,6 +19,8 @@ export class LevelOne extends ex.Scene {
     righttext
     lefttext
     jumptext
+    bgMusic
+    // sound
     constructor(score) {
         super({});
         this.score = score
@@ -39,6 +42,10 @@ export class LevelOne extends ex.Scene {
                     console.log(this.righttext)
                 }, 500)
             }
+            // const sound = new Sound('./path/to/my.mp3', './path/to/fallback.wav');
+            // const loader = new Loader([sound]);
+            // await game.start(loader);
+            // sound.play(0.5);
         })
 
 
@@ -63,10 +70,14 @@ export class LevelOne extends ex.Scene {
         })
 
 
+
     }
 
     onActivate(_context) {
         super.onActivate(_context);
+        this.bgMusic = new Audio(music)
+        this.bgMusic.loop = true
+        this.bgMusic.play()
         this.startLevelOne()
     }
 
@@ -108,7 +119,8 @@ export class LevelOne extends ex.Scene {
         this.actors.forEach((actor) => actor.kill());
         //Background image
         const backgroundImage = Resources.Background.toSprite();
-        const background = new BackgroundLvlOne(-550, -50, 200, 20, backgroundImage);
+        const background = new BackgroundLvlOne(-550, -50, 100, 20, backgroundImage);
+        background.scale = new ex.Vector(0.60, 0.63)
         this.add(background);
 
 
@@ -348,7 +360,7 @@ export class LevelOne extends ex.Scene {
 
 
         //Portal
-        let portal = new ClosedPortalClass(8300, 350)
+        let portal = new ClosedPortalClass(8400, 350)
         this.add(portal)
 
         // Adding bee to the game
@@ -411,7 +423,7 @@ export class LevelOne extends ex.Scene {
             // Add Portal if it doesn't exist
             const portal = this.actors.find((actor) => actor instanceof Portal);
             if (!portal) {
-                const newPortal = new Portal(8300, 350);
+                const newPortal = new Portal(8600, 350);
                 this.add(newPortal);
             }
         }
