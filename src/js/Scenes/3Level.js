@@ -5,6 +5,7 @@ import { Maincharacter } from '../Actors/character.js'
 import { PlatformLvlThree } from '../Actors/platform.js'
 import { BackgroundLvlThree } from '../Actors/Background.js'
 import { SpikesLvlThree } from "../Actors/spikes.js"
+import { MainSpike } from "../Actors/spikes.js"
 import { Spider } from "../Actors/spiders.js"
 import { ClosedPortalClass, Portal } from "../Actors/portal.js"
 import { Flower } from "../Actors/flower.js"
@@ -35,7 +36,7 @@ export class LevelThree extends ex.Scene {
         this.actors.forEach((actor) => actor.kill());
         //Background image
         const backgroundthreeImage = Resources.BackgroundLvlThree.toSprite();
-        const backgroundlvl3 = new BackgroundLvlThree(-550, -50, 200, 20, backgroundthreeImage);
+        const backgroundlvl3 = new BackgroundLvlThree(-550, 0, 200, 20, backgroundthreeImage);
         this.add(backgroundlvl3);
 
         // Right invisible wall
@@ -70,67 +71,127 @@ export class LevelThree extends ex.Scene {
         platform1.scale = new ex.Vector(10.9, 1)
         this.add(platform1);
 
-        // Flying platform (small)
-        const platform2 = new PlatformLvlThree(0, 380, 925, 155);
+//information for making a level
+        //width spikes = 465
+        
+        // const platform5 = new PlatformLvlOne(0, 50, 925, 155);
+        // this.add(platform5);
+        // let spider1 = new Spider()
+        // spider1.pos = new ex.Vector(100, 0)
+        // spider1.actions.repeatForever((repeatCtx) => {
+        //     repeatCtx.moveTo(50, 0, 100)
+        //     repeatCtx.moveTo(230, 0, 100)
+        // })
+        // this.add(spider1)
+
+        // game route
+        const platform2 = new PlatformLvlThree(0, 200, 925, 155);
         this.add(platform2);
 
-        const platform4 = new PlatformLvlThree(500, 280, 925, 155);
+        let spider1 = new Spider()
+        spider1.pos = new ex.Vector(100, 150)
+        spider1.actions.repeatForever((repeatCtx) => {
+            repeatCtx.moveTo(50, 150, 100)
+            repeatCtx.moveTo(230, 150, 100)
+        })
+        this.add(spider1)
+
+        const platform4 = new PlatformLvlThree(200, 400, 925, 155);
         this.add(platform4);
 
-        const platform5 = new PlatformLvlThree(1000, 180, 925, 155);
+        const flower1 = new Flower(200, 400, this.score);
+        this.add(flower1);
+
+        const platform5 = new PlatformLvlThree(400, 200, 925, 155);
         this.add(platform5);
 
-        const platform6 = new PlatformLvlThree(1500, 280, 925, 155);
-        this.add(platform6);
+        const spikes1 = new SpikesLvlThree(800, 500);
+        this.add(spikes1);
 
-        let platform18 = new PlatformLvlThree(6500, 130, 925, 155)
-        platform18.actions.repeatForever((repeatCtx) => {
-            repeatCtx.moveTo(6500, 130, 100)
-            repeatCtx.moveTo(6500, 540, 100)
-        })
-        this.add(platform18)
+        const platform7 = new PlatformLvlThree(1000, 250, 925, 155);
+        this.add(platform7);
+
+        const spikes2 = new SpikesLvlThree(1265, 500);
+        this.add(spikes2);
+
+        const platform8 = new PlatformLvlThree(1600, 300, 925, 155);
+        this.add(platform8);
+
+        const spikes3 = new SpikesLvlThree(1730, 500);
+        this.add(spikes3);
+
+        const platform9 = new PlatformLvlThree(2200, 350, 925, 155);
+        this.add(platform9);
+
+        const spikes4 = new SpikesLvlThree(2195, 500);
+        this.add(spikes4);
+
+        const platform10 = new PlatformLvlThree(2800, 350, 925, 155);
+        this.add(platform10);
+
+        const platform11 = new PlatformLvlThree(3000, 200, 925, 155);
+        this.add(platform11);
+
+        const platform12 = new PlatformLvlThree(3200, 50, 925, 155);
+        this.add(platform12);
+
+        const spikes5 = new SpikesLvlThree(3200, 500);
+        this.add(spikes5);
+
+        const spikes6 = new SpikesLvlThree(3665, 500);
+        this.add(spikes6);
+
+        const platform13 = new PlatformLvlThree(3800, 350, 925, 155);
+        platform13.rotation = (20 * Math.PI / 180); // Rotate by 180 degrees
+        this.add(platform13);
+
+        const spikes7 = new SpikesLvlThree(4130, 500);
+        this.add(spikes7);
+
+        const platform14 = new PlatformLvlThree(4400, 450, 925, 155);
+        this.add(platform14);
+
+        const platform15 = new PlatformLvlThree(4550, 400, 925, 155);
+        this.add(platform15);
+
+        const platform16 = new PlatformLvlThree(4700, 350, 925, 155);
+        this.add(platform16);
+        
+        const platform17 = new PlatformLvlThree(4850, 300, 925, 155);
+        this.add(platform17);
+
+        const platform18 = new PlatformLvlThree(5775, 300, 925, 155);
+        this.add(platform18);
+
+        // const platform19 = new PlatformLvlThree(6700, 300, 925, 155);
+        // this.add(platform19);
+
+        // const platform19 = new PlatformLvlThree(6700, 300, 925, 155);
+        // this.add(platform19);
+
+        // const platform19 = new PlatformLvlThree(6700, 300, 925, 155);
+        // this.add(platform19);
+
+//2 more maybe
+        // let platform18 = new PlatformLvlThree(6500, 130, 925, 155)
+        // platform18.actions.repeatForever((repeatCtx) => {
+        //     repeatCtx.moveTo(6500, 130, 100)
+        //     repeatCtx.moveTo(6500, 540, 100)
+        // })
+        // this.add(platform18)
 
         let platform20 = new PlatformLvlThree(7100, 130, 925, 155)
         this.add(platform20)
 
-        //Spikes
-        const spikes1 = new SpikesLvlThree(800, 500);
-        this.add(spikes1);
-
-        const spikes2 = new SpikesLvlThree(2500, 500);
-        this.add(spikes2);
-
-        const spikes3 = new SpikesLvlThree(2965, 500);
-        this.add(spikes3);
-
-        const spikes4 = new SpikesLvlThree(3430, 500);
-        this.add(spikes4);
-
-        const spikes5 = new SpikesLvlThree(3895, 500);
-        this.add(spikes5);
-
-        const spikes6 = new SpikesLvlThree(4360, 500);
-        this.add(spikes6);
-
-        const spikes7 = new SpikesLvlThree(4825, 500);
-        this.add(spikes7);
-
-        // const spikes8 = new Spikes(3895, 500, 925, 155);
-        // spikes8.scale = new ex.Vector(0.5, 0.5)
-        // this.add(spikes8);
-
-        //Flowers
-        const flower1 = new Flower(50, 280, this.score);
-        this.add(flower1);
-
-        // Enemies
-        let spider1 = new Spider()
-        spider1.pos = new ex.Vector(1100, 130)
-        spider1.actions.repeatForever((repeatCtx) => {
-            repeatCtx.moveTo(1050, 130, 100)
-            repeatCtx.moveTo(1230, 130, 100)
+        const spikes8 = new SpikesLvlThree(6775, 200);
+        // spikes8.scale = new ex.Vector(0.084, 0.084)
+        spikes8.rotation = Math.PI
+        spikes8.actions.repeatForever((repeatCtx) => {
+            repeatCtx.moveTo(6775, 200, 100)
+            repeatCtx.moveTo(6775, 610, 100)
         })
-        this.add(spider1)
+        this.add(spikes8);
+
 
         //Portal
         let portal = new ClosedPortalClass(8300, 350)

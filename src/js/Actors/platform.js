@@ -22,12 +22,16 @@ export class PlatformLvlTwo extends ex.Actor {
             pos: new ex.Vector(x, y),
             width: 925,
             height: 155,
-            anchor: ex.Vector.Zero, //Anchors the platforms
+            anchor: new ex.Vector(0,0),//Anchors the platforms
             collisionType: ex.CollisionType.Fixed, //Bee bounces against the platforms
             collisionGroup: ex.CollisionGroupManager.groupByName('platform'),//Make sure you bounce against all the platforms
         });
-        this.graphics.use(Resources.Platform.toSprite()); //Image of platform
+        const platform = Resources.PlatformLvlTwo.toSprite()
+        platform.width = 925
+        platform.height = 155
+        this.graphics.add(platform)
         this.scale = new ex.Vector(0.3, 0.3)
+
     }
 }
 
