@@ -9,6 +9,7 @@ import { MainSpike } from "../Actors/spikes.js"
 import { Spider } from "../Actors/spiders.js"
 import { ClosedPortalClass, Portal } from "../Actors/portal.js"
 import { Flower } from "../Actors/flower.js"
+import music from "../../sounds/bee..mp3"
 
 
 export class LevelThree extends ex.Scene {
@@ -29,6 +30,9 @@ export class LevelThree extends ex.Scene {
 
     onActivate(_context) {
         super.onActivate(_context);
+        this.bgMusic = new Audio(music)
+        this.bgMusic.loop = true
+        this.bgMusic.play()
         this.startLevelThree()
     }
 
@@ -71,9 +75,9 @@ export class LevelThree extends ex.Scene {
         platform1.scale = new ex.Vector(10.9, 1)
         this.add(platform1);
 
-//information for making a level
+        //information for making a level
         //width spikes = 465
-        
+
         // const platform5 = new PlatformLvlOne(0, 50, 925, 155);
         // this.add(platform5);
         // let spider1 = new Spider()
@@ -162,12 +166,12 @@ export class LevelThree extends ex.Scene {
         const spikes7 = new SpikesLvlThree(4130, 500);
         this.add(spikes7);
 
-        const platform131= new PlatformLvlThree(4130, 350, 925, 155);
+        const platform131 = new PlatformLvlThree(4130, 350, 925, 155);
         platform131.actions.rotateBy(Math.PI / 2, Math.PI, ex.RotationType.CounterClockwise);
         // platform13.rotation = (20 * Math.PI / 180); // Rotate by 180 degrees
         this.add(platform131);
 
-        const platform132= new PlatformLvlThree(4300, 350, 925, 155);
+        const platform132 = new PlatformLvlThree(4300, 350, 925, 155);
         platform132.actions.rotateBy(Math.PI / 2, Math.PI, ex.RotationType.CounterClockwise);
         // platform13.rotation = (20 * Math.PI / 180); // Rotate by 180 degrees
         this.add(platform132);
@@ -175,12 +179,12 @@ export class LevelThree extends ex.Scene {
         const spikes71 = new SpikesLvlThree(4595, 500);
         this.add(spikes71);
 
-        const platform133= new PlatformLvlThree(4650, 350, 925, 155);
+        const platform133 = new PlatformLvlThree(4650, 350, 925, 155);
         platform133.actions.rotateBy(Math.PI / 2, Math.PI, ex.RotationType.CounterClockwise);
         // platform13.rotation = (20 * Math.PI / 180); // Rotate by 180 degrees
         this.add(platform133);
 
-        const platform134= new PlatformLvlThree(4850, 400, 925, 155);
+        const platform134 = new PlatformLvlThree(4850, 400, 925, 155);
         platform134.actions.rotateBy(Math.PI / 2, Math.PI, ex.RotationType.CounterClockwise);
         // platform13.rotation = (20 * Math.PI / 180); // Rotate by 180 degrees
         this.add(platform134);
@@ -193,7 +197,7 @@ export class LevelThree extends ex.Scene {
 
         const platform16 = new PlatformLvlThree(5700, 350, 925, 155);
         this.add(platform16);
-        
+
         const platform17 = new PlatformLvlThree(5850, 300, 925, 155);
         this.add(platform17);
 
@@ -205,7 +209,7 @@ export class LevelThree extends ex.Scene {
 
         const platform20 = new PlatformLvlThree(6300, 150, 925, 155);
         this.add(platform20);
-        
+
         const platform21 = new PlatformLvlThree(7225, 150, 925, 155);
         this.add(platform21);
 
@@ -257,6 +261,7 @@ export class LevelThree extends ex.Scene {
         let otherActor = event.other
         if (otherActor instanceof Portal) {
             this.game.goToScene('VictoryThree')
+            this.bgMusic.pause()
         }
     }
 
@@ -271,6 +276,7 @@ export class LevelThree extends ex.Scene {
 
         if (!mainCharacter) {
             this.game.goToScene('FailThree')
+            this.bgMusic.pause()
         }
 
         const allSpiders = this.actors.filter((actor) => actor instanceof Spider);

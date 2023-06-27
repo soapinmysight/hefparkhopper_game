@@ -1,13 +1,14 @@
-import {CollisionType, Scene, Vector, Actor} from "excalibur";
-import {GameOverButton, NextLvlButton} from "../Actors/button.js";
-import {BackgroundLvlTwo} from "../Actors/Background.js";
-import {Maincharacter} from "../Actors/character.js";
-import {Spider} from "../Actors/spiders.js";
-import {ClosedPortalClass, Portal} from "../Actors/portal.js";
+import { CollisionType, Scene, Vector, Actor } from "excalibur";
+import { GameOverButton, NextLvlButton } from "../Actors/button.js";
+import { BackgroundLvlTwo } from "../Actors/Background.js";
+import { Maincharacter } from "../Actors/character.js";
+import { Spider } from "../Actors/spiders.js";
+import { ClosedPortalClass, Portal } from "../Actors/portal.js";
 import * as ex from "excalibur";
-import {PlatformLvlOne, PlatformLvlTwo} from "../Actors/platform.js";
-import {SpikesLvlTwo} from "../Actors/spikes.js";
-import {Flower} from "../Actors/flower.js";
+import { PlatformLvlOne, PlatformLvlTwo } from "../Actors/platform.js";
+import { SpikesLvlTwo } from "../Actors/spikes.js";
+import { Flower } from "../Actors/flower.js";
+import music from "../../sounds/bee..mp3"
 
 
 export class LevelTwo extends Scene {
@@ -28,10 +29,13 @@ export class LevelTwo extends Scene {
 
     onActivate(_context) {
         super.onActivate(_context);
+        this.bgMusic = new Audio(music)
+        this.bgMusic.loop = true
+        this.bgMusic.play()
         this.startLevelTwo()
     }
 
-    startLevelTwo(){
+    startLevelTwo() {
 
         this.actors.forEach((actor) => actor.kill());
 
@@ -81,70 +85,70 @@ export class LevelTwo extends Scene {
 
         const character = new Maincharacter(this.score)
         this.add(character)
-        character.on('precollision',(event) => this.onPreCollision(event))
+        character.on('precollision', (event) => this.onPreCollision(event))
 
         const flower1 = new Flower(340, 520, this.score)
         this.add(flower1)
         const flower2 = new Flower(240, 520, this.score)
         this.add(flower2)
 
-        const spikes2 = new SpikesLvlTwo(480,550)
+        const spikes2 = new SpikesLvlTwo(480, 550)
         this.add(spikes2)
-        const spikes3 = new SpikesLvlTwo(750,550)
+        const spikes3 = new SpikesLvlTwo(750, 550)
         this.add(spikes3)
-        const spikes4 = new SpikesLvlTwo(1020,550)
+        const spikes4 = new SpikesLvlTwo(1020, 550)
         this.add(spikes4)
-        const spikes5 = new SpikesLvlTwo(1290,550)
+        const spikes5 = new SpikesLvlTwo(1290, 550)
         this.add(spikes5)
-        const spikes6 = new SpikesLvlTwo(1560,550)
+        const spikes6 = new SpikesLvlTwo(1560, 550)
         this.add(spikes6)
-        const spikes7 = new SpikesLvlTwo(1830,550)
+        const spikes7 = new SpikesLvlTwo(1830, 550)
         this.add(spikes7)
-        const spikes8 = new SpikesLvlTwo(2100,550)
+        const spikes8 = new SpikesLvlTwo(2100, 550)
         this.add(spikes8)
-        const spikes9 = new SpikesLvlTwo(2370,550)
+        const spikes9 = new SpikesLvlTwo(2370, 550)
         this.add(spikes9)
-        const spikes10 = new SpikesLvlTwo(2640,550)
+        const spikes10 = new SpikesLvlTwo(2640, 550)
         this.add(spikes10)
-        const spikes11 = new SpikesLvlTwo(2910,550)
+        const spikes11 = new SpikesLvlTwo(2910, 550)
         this.add(spikes11)
-        const spikes12 = new SpikesLvlTwo(3180,550)
+        const spikes12 = new SpikesLvlTwo(3180, 550)
         this.add(spikes12)
-        const spikes13 = new SpikesLvlTwo(3450,550)
+        const spikes13 = new SpikesLvlTwo(3450, 550)
         this.add(spikes13)
-        const spikes14 = new SpikesLvlTwo(3720,550)
+        const spikes14 = new SpikesLvlTwo(3720, 550)
         this.add(spikes14)
-        const spikes15 = new SpikesLvlTwo(3990,550)
+        const spikes15 = new SpikesLvlTwo(3990, 550)
         this.add(spikes15)
-        const spikes16 = new SpikesLvlTwo(4260,550)
+        const spikes16 = new SpikesLvlTwo(4260, 550)
         this.add(spikes16)
-        const spikes17 = new SpikesLvlTwo(4530,550)
+        const spikes17 = new SpikesLvlTwo(4530, 550)
         this.add(spikes17)
-        const spikes18 = new SpikesLvlTwo(4800,550)
+        const spikes18 = new SpikesLvlTwo(4800, 550)
         this.add(spikes18)
-        const spikes19 = new SpikesLvlTwo(5070,550)
+        const spikes19 = new SpikesLvlTwo(5070, 550)
         this.add(spikes19)
-        const spikes20 = new SpikesLvlTwo(5340,550)
+        const spikes20 = new SpikesLvlTwo(5340, 550)
         this.add(spikes20)
-        const spikes21 = new SpikesLvlTwo(5610,550)
+        const spikes21 = new SpikesLvlTwo(5610, 550)
         this.add(spikes21)
-        const spikes22 = new SpikesLvlTwo(5880,550)
+        const spikes22 = new SpikesLvlTwo(5880, 550)
         this.add(spikes22)
-        const spikes23 = new SpikesLvlTwo(6150,550)
+        const spikes23 = new SpikesLvlTwo(6150, 550)
         this.add(spikes23)
-        const spikes24 = new SpikesLvlTwo(6420,550)
+        const spikes24 = new SpikesLvlTwo(6420, 550)
         this.add(spikes24)
-        const spikes25 = new SpikesLvlTwo(6690,550)
+        const spikes25 = new SpikesLvlTwo(6690, 550)
         this.add(spikes25)
-        const spikes26 = new SpikesLvlTwo(6960,550)
+        const spikes26 = new SpikesLvlTwo(6960, 550)
         this.add(spikes26)
-        const spikes27 = new SpikesLvlTwo(7230,550)
+        const spikes27 = new SpikesLvlTwo(7230, 550)
         this.add(spikes27)
-        const spikes28 = new SpikesLvlTwo(7500,550)
+        const spikes28 = new SpikesLvlTwo(7500, 550)
         this.add(spikes28)
-        const spikes29 = new SpikesLvlTwo(7770,550)
+        const spikes29 = new SpikesLvlTwo(7770, 550)
         this.add(spikes29)
-        const spikes30 = new SpikesLvlTwo(8040,550)
+        const spikes30 = new SpikesLvlTwo(8040, 550)
         this.add(spikes30)
 
         const platform3 = new PlatformLvlTwo(600, 400)
@@ -184,7 +188,7 @@ export class LevelTwo extends Scene {
         const flower5 = new Flower(1680, 340, this.score)
         this.add(flower5)
 
-        const platform7 = new PlatformLvlTwo(1050,200)
+        const platform7 = new PlatformLvlTwo(1050, 200)
         this.add(platform7)
 
         const platform8 = new PlatformLvlTwo(1400, 200)
@@ -199,19 +203,19 @@ export class LevelTwo extends Scene {
 
         const platform10 = new PlatformLvlTwo(2400, 350)
         this.add(platform10)
-        const spider4 = new Spider(2440,310)
+        const spider4 = new Spider(2440, 310)
         spider4.actions.repeatForever(repeatContext => {
             repeatContext.moveTo(2440, 310, 100)
-            repeatContext.moveTo(2640,310,100)
+            repeatContext.moveTo(2640, 310, 100)
         })
         this.add(spider4)
 
         const platform11 = new PlatformLvlTwo(2900, 350)
         this.add(platform11)
-        const spider5 = new Spider(2940,310)
+        const spider5 = new Spider(2940, 310)
         spider5.actions.repeatForever(repeatContext => {
             repeatContext.moveTo(2940, 310, 100)
-            repeatContext.moveTo(3140,310,100)
+            repeatContext.moveTo(3140, 310, 100)
         })
         this.add(spider5)
 
@@ -233,14 +237,14 @@ export class LevelTwo extends Scene {
 
         const platform16 = new PlatformLvlTwo(4200, 450)
         platform16.actions.repeatForever(repeatContext => {
-            repeatContext.moveTo(4200,450,150)
+            repeatContext.moveTo(4200, 450, 150)
             repeatContext.moveTo(5000, 450, 150)
         })
         this.add(platform16)
 
         const platform17 = new PlatformLvlTwo(5300, 200)
         platform17.actions.repeatForever(repeatContext => {
-            repeatContext.moveTo(5300,100,130)
+            repeatContext.moveTo(5300, 100, 130)
             repeatContext.moveTo(5300, 500, 130)
         })
         this.add(platform17)
@@ -272,12 +276,13 @@ export class LevelTwo extends Scene {
         this.add(closedPortal)
 
     }
-    onPreCollision(event){
+    onPreCollision(event) {
         let otherActor = event.other
-        if(otherActor instanceof Portal) {
+        if (otherActor instanceof Portal) {
             this.game.goToScene('VictoryTwo')
+            this.bgMusic.pause()
         }
-     }
+    }
     onPostUpdate(_engine, _delta) {
         super.onPostUpdate(_engine, _delta);
         const allSpiders = this.actors.filter((actor) => actor instanceof Spider);
@@ -302,6 +307,7 @@ export class LevelTwo extends Scene {
 
         if (!mainCharacter) {
             this.game.goToScene('FailTwo')
+            this.bgMusic.pause()
         }
     }
 

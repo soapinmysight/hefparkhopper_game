@@ -82,31 +82,31 @@ export class Maincharacter extends ex.Actor {
 
         engine.currentScene.camera.x = this.pos.x + 80 //Tracking the bee with the camera
         // Commented code for speeding the bee up with A & D, just for programming ease
-        engine.input.keyboard.on("hold", (evt) => {
-            if (evt.key === ex.Input.Keys.A) {
-                this.vel.x = -800;
-            } else if (evt.key === ex.Input.Keys.D) {
-                this.vel.x = 800;
-            } else if (evt.key === ex.Input.Keys.W && this.onGround) {
-                this.jumped = true;
-                this.vel.y = -700;
-            }
-        })
+        // engine.input.keyboard.on("hold", (evt) => {
+        //     if (evt.key === ex.Input.Keys.A) {
+        //         this.vel.x = -800;
+        //     } else if (evt.key === ex.Input.Keys.D) {
+        //         this.vel.x = 800;
+        //     } else if (evt.key === ex.Input.Keys.W && this.onGround) {
+        //         this.jumped = true;
+        //         this.vel.y = -700;
+        //     }
+        // })
     }
 
     onCollisionStart(evt) {
-        if (evt.other instanceof PlatformLvlOne){ //Checking if there is collision with the platforms
+        if (evt.other instanceof PlatformLvlOne) { //Checking if there is collision with the platforms
             console.log("you're on the floor");
             this.onGround = true;
         }
-        if(evt.other instanceof PlatformLvlTwo){
+        if (evt.other instanceof PlatformLvlTwo) {
             console.log("you're on the floor");
-            this.onGround = true;                             
-        } 
-        if(evt.other instanceof PlatformLvlThree){
+            this.onGround = true;
+        }
+        if (evt.other instanceof PlatformLvlThree) {
             console.log("you're on the floor");
-            this.onGround = true;                             
-        } 
+            this.onGround = true;
+        }
 
     }
 
