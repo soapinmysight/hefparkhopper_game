@@ -31,6 +31,12 @@ export class BossSpider extends Actor {
 
     }
 
+    onActivate(ctx){
+
+        this.bossReset.bossReset();
+        
+    }
+
     onInitialize(engine){
 
         this.game = engine
@@ -58,6 +64,10 @@ export class BossSpider extends Actor {
 
         this.on('collisionstart', (event) => { this.doDamage(event)});
 
+    }
+
+    bossReset(){
+        this.health = 300;
     }
 
     doDamage(event){
