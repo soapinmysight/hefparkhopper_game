@@ -1,5 +1,6 @@
 import {Scene, Vector} from "excalibur";
 import {StartButton} from "../Actors/button.js";
+import {CutsceneThreeBackground, CutsceneTwoBackground} from "./actors/background.js";
 
 export class SecondCutscene extends Scene {
     game
@@ -17,6 +18,10 @@ export class SecondCutscene extends Scene {
     startSecondCutScene(){
 
         console.log('cutscene 2nd')
+        let background = new CutsceneThreeBackground(-50,0)
+        this.add(background)
+        console.log(background)
+
         let start = new StartButton()
         start.pos = new Vector(400, 500)
         start.on('pointerup', () => {

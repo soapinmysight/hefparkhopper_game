@@ -1,9 +1,10 @@
 import {Scene, Vector} from "excalibur";
 import {StartButton} from "../Actors/button.js";
-import {CutsceneStartEndBackground} from "./actors/background.js";
+import {CutsceneOneBackground, CutsceneStartEndBackground} from "./actors/background.js";
 
 export class StartCutscene extends Scene {
     game
+
     constructor() {
         super();
     }
@@ -17,8 +18,11 @@ export class StartCutscene extends Scene {
     }
     startCutScene(){
         console.log('cutscene start')
-        let background = new CutsceneStartEndBackground(0,0)
+        this.actors.forEach((actor) => actor.kill());
+
+        let background = new CutsceneOneBackground(-100,0)
         this.add(background)
+        console.log(background)
 
         let start = new StartButton()
         start.pos = new Vector(400, 500)
@@ -26,6 +30,12 @@ export class StartCutscene extends Scene {
             this.game.goToScene('LevelOne')
         })
         this.add(start)
+
+
+
+    }
+    onPostUpdate(_engine, _delta) {
+        super.onPostUpdate(_engine, _delta);
 
     }
 
