@@ -7,13 +7,14 @@ import { MaincharacterBoss } from "./bossCharacter";
 import { BackgroundBoss } from "./bossBackground";
 import { BossPlatform } from "./bossPlatform";
 import { UI } from "./allElementsOnScreen";
+import music from "../../sounds/boss.mp3"
 
 
 export class BossFight extends Scene {
 
-   character;
-   boss;
-   damage;
+    character;
+    boss;
+    damage;
 
     constructor() {
 
@@ -27,26 +28,29 @@ export class BossFight extends Scene {
 
     }
 
-    addWebShot(webShoot){
+    addWebShot(webShoot) {
 
         this.add(webShoot);
         webShoot.actions.meet(this.character, 380);
 
     }
 
-    updateBossHealth(hitpoints){
+    updateBossHealth(hitpoints) {
 
         this.ui.bossDamaged(hitpoints);
 
     }
 
-    hearts(value){
+    hearts(value) {
 
-        this.ui.updateHealth(value);   
-                              
+        this.ui.updateHealth(value);
+
     }
 
-    onActivate(ctx){
+    onActivate(ctx) {
+        this.bgMusic = new Audio(music)
+        this.bgMusic.loop = true
+        this.bgMusic.play()
 
         this.character.pos = new Vector(400, 0);
         this.boss.pos = new Vector(1000, 480)
@@ -102,7 +106,7 @@ export class BossFight extends Scene {
 
     onDeactivate() {
 
-        this.ui.kill();   
-
+        this.ui.kill();
+        this.bgMusic.pause()
     }
 }

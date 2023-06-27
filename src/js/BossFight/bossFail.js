@@ -1,7 +1,8 @@
-import {Scene, Vector} from "excalibur";
-import {TryAgainButton} from "../Actors/button.js";
-import {BossFailVicBackground} from "../Scenes/failVictoryActors/background.js";
-import {FailText} from "../Scenes/failVictoryActors/text.js";
+import { Scene, Vector } from "excalibur";
+import { TryAgainButton } from "../Actors/button.js";
+import { BossFailVicBackground } from "../Scenes/failVictoryActors/background.js";
+import { FailText } from "../Scenes/failVictoryActors/text.js";
+import failMusic from "../../sounds/sad.mp3"
 
 export class FailBoss extends Scene {
     game
@@ -15,17 +16,20 @@ export class FailBoss extends Scene {
 
     onActivate(_context) {
         super.onActivate(_context);
+        this.failMusic = new Audio(failMusic)
+        this.failMusic.loop = true
+        this.failMusic.play()
         this.startFailBoss()
     }
 
-    startFailBoss(){
+    startFailBoss() {
 
         this.actors.forEach((actor) => actor.kill());
 
-        let background = new BossFailVicBackground(0,0)
+        let background = new BossFailVicBackground(0, 0)
         this.add(background)
 
-        let fail = new FailText(screen.width/2-100, 150)
+        let fail = new FailText(screen.width / 2 - 100, 150)
         this.add(fail)
 
         console.log('fail boss')
@@ -33,6 +37,7 @@ export class FailBoss extends Scene {
         tryAgain.pos = new Vector(670, 450)
         tryAgain.on('pointerup', () => {
             this.game.goToScene('bossFight')
+            this.failMusic.pause()
         })
         this.add(tryAgain)
     }

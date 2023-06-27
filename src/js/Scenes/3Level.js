@@ -9,6 +9,7 @@ import { MainSpike } from "../Actors/spikes.js"
 import { Spider } from "../Actors/spiders.js"
 import { ClosedPortalClass, Portal } from "../Actors/portal.js"
 import { Flower } from "../Actors/flower.js"
+import music from "../../sounds/bee..mp3"
 
 
 export class LevelThree extends ex.Scene {
@@ -29,6 +30,9 @@ export class LevelThree extends ex.Scene {
 
     onActivate(_context) {
         super.onActivate(_context);
+        this.bgMusic = new Audio(music)
+        this.bgMusic.loop = true
+        this.bgMusic.play()
         this.startLevelThree()
     }
 
@@ -388,6 +392,7 @@ export class LevelThree extends ex.Scene {
         let otherActor = event.other
         if (otherActor instanceof Portal) {
             this.game.goToScene('VictoryThree')
+            this.bgMusic.pause()
         }
     }
 
@@ -402,6 +407,7 @@ export class LevelThree extends ex.Scene {
 
         if (!mainCharacter) {
             this.game.goToScene('FailThree')
+            this.bgMusic.pause()
         }
 
         const allSpiders = this.actors.filter((actor) => actor instanceof Spider);
