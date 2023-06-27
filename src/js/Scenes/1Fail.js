@@ -3,6 +3,7 @@ import {Scene, Vector} from "excalibur"
 import {StartButton, TryAgainButton} from "../Actors/button.js";
 import {CutsceneOneBackground} from "../cutScene/actors/background.js";
 import {OneFailVicBackground} from "./failVictoryActors/background.js";
+import {FailText} from "./failVictoryActors/text.js";
 
 
 export class FailOne extends Scene {
@@ -25,9 +26,12 @@ export class FailOne extends Scene {
         let background = new OneFailVicBackground(-100,0)
         this.add(background)
 
+        let fail = new FailText(screen.width/2-100, 150)
+        this.add(fail)
+
 
         let tryAgain = new TryAgainButton()
-        tryAgain.pos = new Vector(400, 500)
+        tryAgain.pos = new Vector(670, 450)
         tryAgain.on('pointerup', () => {
             this.game.goToScene('LevelOne')
         })
