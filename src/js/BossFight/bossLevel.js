@@ -29,7 +29,7 @@ export class BossFight extends Scene {
 
     addWebShot(webShoot){
         this.add(webShoot);
-        webShoot.actions.meet(this.character, 300);
+        webShoot.actions.meet(this.character, 380);
     }
 
     updateBossHealth(hitpoints){
