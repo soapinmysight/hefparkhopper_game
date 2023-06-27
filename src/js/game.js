@@ -46,6 +46,7 @@ export class Game extends ex.Engine {
     }
 
     startGame() {
+
         this.addScene('Start', new Start)
         this.goToScene('Start')
 
