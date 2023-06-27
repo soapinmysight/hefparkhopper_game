@@ -36,7 +36,7 @@ export class SpikesLvlTwo extends MainSpike {
             pos: new ex.Vector(x, y),
             width: 270,
             height: 46,
-            anchor: new ex.Vector(0,0), //Anchors the platforms
+            anchor: new ex.Vector(0, 0), //Anchors the platforms
             // collisionType: ex.CollisionType.Fixed, //Bee bounces against the platforms
             // collisionGroup: ex.CollisionGroupManager.groupByName('spikes'),//Make sure you bounce against all the platforms
         });
@@ -51,8 +51,8 @@ export class SpikesLvlThree extends MainSpike {
     constructor(x, y, width, height) {
         super({
             pos: new ex.Vector(x, y),
-            width: width,
-            height: height,
+            width: 930,
+            height: 100,
             anchor: ex.Vector.Zero, //Anchors the platforms
             // collisionType: ex.CollisionType.Fixed, //Bee bounces against the platforms
             // collisionGroup: ex.CollisionGroupManager.groupByName('spikes'),//Make sure you bounce against all the platforms
