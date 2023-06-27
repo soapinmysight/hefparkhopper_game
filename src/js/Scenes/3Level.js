@@ -71,19 +71,30 @@ export class LevelThree extends ex.Scene {
         platform1.scale = new ex.Vector(10.9, 1)
         this.add(platform1);
 
-        // Flying platform (small)
+//information for making a level
+        //width spikes = 465
+        
+        // const platform5 = new PlatformLvlOne(0, 50, 925, 155);
+        // this.add(platform5);
+        // let spider1 = new Spider()
+        // spider1.pos = new ex.Vector(100, 0)
+        // spider1.actions.repeatForever((repeatCtx) => {
+        //     repeatCtx.moveTo(50, 0, 100)
+        //     repeatCtx.moveTo(230, 0, 100)
+        // })
+        // this.add(spider1)
+
+        // game route
         const platform2 = new PlatformLvlThree(0, 200, 925, 155);
         this.add(platform2);
 
         let spider1 = new Spider()
-        spider1.pos = new ex.Vector(50, 100)
+        spider1.pos = new ex.Vector(100, 150)
         spider1.actions.repeatForever((repeatCtx) => {
-            repeatCtx.moveTo(0, 100, 100)
-            repeatCtx.moveTo(100, 100, 100)
+            repeatCtx.moveTo(50, 150, 100)
+            repeatCtx.moveTo(230, 150, 100)
         })
         this.add(spider1)
-
-        //width spikes 465
 
         const platform4 = new PlatformLvlThree(200, 400, 925, 155);
         this.add(platform4);
@@ -152,8 +163,14 @@ export class LevelThree extends ex.Scene {
         const platform18 = new PlatformLvlThree(5775, 300, 925, 155);
         this.add(platform18);
 
-        const platform19 = new PlatformLvlThree(6700, 300, 925, 155);
-        this.add(platform19);
+        // const platform19 = new PlatformLvlThree(6700, 300, 925, 155);
+        // this.add(platform19);
+
+        // const platform19 = new PlatformLvlThree(6700, 300, 925, 155);
+        // this.add(platform19);
+
+        // const platform19 = new PlatformLvlThree(6700, 300, 925, 155);
+        // this.add(platform19);
 
 //2 more maybe
         // let platform18 = new PlatformLvlThree(6500, 130, 925, 155)
