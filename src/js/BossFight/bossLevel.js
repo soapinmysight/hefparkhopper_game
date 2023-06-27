@@ -28,16 +28,22 @@ export class BossFight extends Scene {
     }
 
     addWebShot(webShoot){
+
         this.add(webShoot);
         webShoot.actions.meet(this.character, 380);
+
     }
 
     updateBossHealth(hitpoints){
+
         this.ui.bossDamaged(hitpoints);
+
     }
 
     hearts(value){
-        this.ui.updateHealth(value);                         
+
+        this.ui.updateHealth(value);   
+                              
     }
 
     onActivate(ctx){
@@ -95,6 +101,8 @@ export class BossFight extends Scene {
     }
 
     onDeactivate() {
-        this.ui.kill();                         
+
+        this.ui.kill();   
+
     }
 }
