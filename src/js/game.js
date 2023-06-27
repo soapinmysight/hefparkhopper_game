@@ -54,13 +54,13 @@ export class Game extends ex.Engine {
 
         this.addScene("LevelOne", new LevelOne(this.score))
         this.addScene('FailOne', new FailOne)
-        this.addScene("VictoryOne", new VictoryOne)
+        this.addScene("VictoryOne", new VictoryOne(this.score))
 
         this.addScene("firstCutscene", new FirstCutscene)
 
         this.addScene("LevelTwo", new LevelTwo(this.score))
         this.addScene("FailTwo", new FailTwo)
-        this.addScene('VictoryTwo', new VictoryTwo)
+        this.addScene('VictoryTwo', new VictoryTwo(this.score))
 
         this.addScene("secondCutscene", new SecondCutscene)
 
@@ -68,14 +68,14 @@ export class Game extends ex.Engine {
         this.addScene("LevelThree", levelThree)
 
         this.addScene("FailThree", new FailThree)
-        this.addScene("VictoryThree", new VictoryThree)
+        this.addScene("VictoryThree", new VictoryThree(this.score))
 
         this.addScene("thirdCutScene", new ThirdCutscene)
 
         this.addScene("bossFight", new BossFight)
         this.addScene("bossFail", new FailBoss)
         this.addScene("bossCutscene", new BossScene)
-        this.addScene("bossVictory", new VictoryBoss)
+        this.addScene("bossVictory", new VictoryBoss(this.score))
     }
 }
 
