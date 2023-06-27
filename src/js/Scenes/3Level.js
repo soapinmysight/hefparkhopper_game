@@ -84,6 +84,11 @@ export class LevelThree extends ex.Scene {
         // })
         // this.add(spider1)
 
+        // const platform2 = new PlatformLvlOne(0, 70, 925, 155);
+        // this.add(platform2);
+        // const flower1 = new Flower(100, 0, this.score);
+        // this.add(flower1);
+
         // game route
         const platform2 = new PlatformLvlThree(0, 200, 925, 155);
         this.add(platform2);
@@ -99,11 +104,19 @@ export class LevelThree extends ex.Scene {
         const platform4 = new PlatformLvlThree(200, 400, 925, 155);
         this.add(platform4);
 
-        const flower1 = new Flower(200, 400, this.score);
+        const flower1 = new Flower(300, 330, this.score);
         this.add(flower1);
 
         const platform5 = new PlatformLvlThree(400, 200, 925, 155);
         this.add(platform5);
+
+        let spider2 = new Spider()
+        spider2.pos = new ex.Vector(100, 150)
+        spider2.actions.repeatForever((repeatCtx) => {
+            repeatCtx.moveTo(50, 150, 100)
+            repeatCtx.moveTo(230, 150, 100)
+        })
+        this.add(spider2)
 
         const spikes1 = new SpikesLvlThree(800, 500);
         this.add(spikes1);
