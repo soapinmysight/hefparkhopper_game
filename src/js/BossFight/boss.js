@@ -80,6 +80,7 @@ export class BossSpider extends Actor {
         if(this.health < 1) {
             this.timer.stop();
             this.kill();
+            this.game.goToScene('bossCutscene');
             console.log("Victory for you, whoo hoo")
         }
 
