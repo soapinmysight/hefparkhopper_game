@@ -44,10 +44,10 @@ export class NextLvlButton extends MainButton {
 
 export class TryAgainButton extends MainButton {
     constructor() {
-        super(350, 120);
+        super(350, 200);
         const btn = Resources.TryAgainBtn.toSprite()
         btn.width = 350
-        btn.height = 120
+        btn.height = 200
         this.graphics.add(btn)
     }
 }
