@@ -259,10 +259,6 @@ export class LevelOne extends ex.Scene {
         })
         this.add(spikes8);
 
-        // const spikes8 = new Spikes(3895, 500, 925, 155);
-        // spikes8.scale = new ex.Vector(0.5, 0.5)
-        // this.add(spikes8);
-
         //Flowers
         const flower1 = new Flower(100, 350, this.score);
         this.add(flower1);
