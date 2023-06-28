@@ -37,6 +37,8 @@ export class StartCutscene extends Scene {
         let babyBee = new CsBeeBaby(300, 400)
         this.add(babyBee)
 
+        // let spider =
+
         let start = new StartButton()
         start.pos = new Vector(400, 500)
         start.on('pointerup', () => {
