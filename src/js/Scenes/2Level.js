@@ -14,6 +14,7 @@ import music from "../../sounds/bee..mp3"
 export class LevelTwo extends Scene {
     game
     score
+    character
     constructor(score) {
         super({
             width: 854,
@@ -84,9 +85,9 @@ export class LevelTwo extends Scene {
         })
         this.add(platform2)
 
-        const character = new Maincharacter(this.score)
-        this.add(character)
-        character.on('precollision', (event) => this.onPreCollision(event))
+        this.character = new Maincharacter(this.score)
+        this.add(this.character)
+        this.character.on('precollision', (event) => this.onPreCollision(event))
 
         const flower1 = new Flower(340, 520, this.score)
         this.add(flower1)
@@ -299,7 +300,7 @@ export class LevelTwo extends Scene {
     }
     onPostUpdate(_engine, _delta) {
         super.onPostUpdate(_engine, _delta);
-        // this.scoreLabel.pos = this.character.pos.clone().add(new Vector(this.character.width, -80))
+        this.scoreLabel.pos = this.character.pos.clone().add(new Vector(this.character.width, -80));
         const allSpiders = this.actors.filter((actor) => actor instanceof Spider);
         const allSpidersDead = allSpiders.every((egg) => egg.isKilled());
 

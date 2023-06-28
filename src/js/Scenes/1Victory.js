@@ -47,7 +47,7 @@ export class VictoryOne extends Scene {
         let nextLvlButton = new NextLvlButton()
         nextLvlButton.pos = new Vector(650, 500)
         nextLvlButton.on('pointerup', () => {
-            this.game.goToScene('startScene')
+            this.game.goToScene('firstCutscene')
             this.victoryMusic.pause()
         })
         this.add(nextLvlButton)
