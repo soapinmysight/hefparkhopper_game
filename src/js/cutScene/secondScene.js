@@ -31,6 +31,9 @@ export class SecondCutscene extends Scene {
         bee.flipHorizontal = true;
         this.add(bee)
 
+        let textSecondScene = new CsTextBox(Resources.textSecondScene.toSprite())
+        this.add(textSecondScene)
+
         let start = new StartButton()
         start.pos = new Vector(400, 500)
         start.on('pointerup', () => {

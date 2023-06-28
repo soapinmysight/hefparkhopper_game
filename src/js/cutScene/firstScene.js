@@ -27,6 +27,9 @@ export class FirstCutscene extends Scene {
         bee.pos = new Vector(400, 300)
         this.add(bee)
 
+        let textFirstScene = new CsTextBox(Resources.textFirstScene.toSprite())
+        this.add(textFirstScene)
+
         console.log('cutscene 1st')
         let start = new StartButton()
         start.pos = new Vector(400, 500)
