@@ -62,11 +62,28 @@ import deadCutsceneSpiderImg from "../images/cutscenes/bossspiderded.png"
 import beeTextImg from "../images/cutscenes/textbee.png"
 import spiderTextImg from "../images/cutscenes/textspider.png"
 
+// startscene
+import textCsStartOneImg from "../images/cutsceneText/CSstart1.png"
+import textCsStartTwoImg from "../images/cutsceneText/CSstart2.png"
+import textCsStartThreeImg from "../images/cutsceneText/CSstart3.png"
+import textCsStartFourImg from "../images/cutsceneText/CSstart4.png"
+import textCsStartFiveImg from "../images/cutsceneText/CSstart5.png"
+
         //firstscene
 import textFirstSceneImg from "../images/cutsceneText/CSlevel1.png"
 
         //secondscene
 import textSecondSceneImg from "../images/cutsceneText/CSlevel2.png"
+
+// third scene
+import textCsThirdOneImg from "../images/cutsceneText/CSthree1.png"
+import textCsThirdTwoImg from "../images/cutsceneText/CSthree2.png"
+import textCsThirdThreeImg from "../images/cutsceneText/CSthree3.png"
+import textCsThirdFourImg from "../images/cutsceneText/CSthree4.png"
+
+// boss scene
+import textCsBossOneImg from "../images/cutsceneText/CSboss1.png"
+import textCsBossTwoImg from "../images/cutsceneText/CSboss2.png"
 
 // fail victory screens
 import failVicOneBgImg from "../images/cutscenes/failvic1.png"
@@ -141,13 +158,28 @@ const Resources = {
 
     BeeText: new ImageSource(beeTextImg),
     SpiderText: new ImageSource(spiderTextImg),
+    // startscene
+    CsStartOne: new ImageSource(textCsStartOneImg),
+    CsStartTwo: new ImageSource(textCsStartTwoImg),
+    CsStartThree: new ImageSource(textCsStartThreeImg),
+    CsStartFour: new ImageSource(textCsStartFourImg),
+    CsStartFive: new ImageSource(textCsStartFiveImg),
 
-            //firstscene
+    //firstscene
     textFirstScene: new ImageSource(textFirstSceneImg),
 
-            //secondscene
+    //secondscene
     textSecondScene: new ImageSource(textSecondSceneImg),
 
+    // third scene
+    CsThirdOne: new ImageSource(textCsThirdOneImg),
+    CsThirdTwo: new ImageSource(textCsThirdTwoImg),
+    CsThirdThree: new ImageSource(textCsThirdThreeImg),
+    CsThirdFour: new ImageSource(textCsThirdFourImg),
+
+    // boss scene
+    CsBossOne: new ImageSource(textCsBossOneImg),
+    CsBossTwo: new ImageSource(textCsBossTwoImg),
 
     // fail victory screens
 

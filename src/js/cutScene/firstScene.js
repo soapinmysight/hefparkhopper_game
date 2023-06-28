@@ -3,6 +3,8 @@ import {StartButton} from "../Actors/button.js";
 import { Resources, ResourceLoader } from '../resources.js'
 import {CutsceneOneBackground, CutsceneTwoBackground} from "./actors/background.js";
 import {CsBeeHappy} from "./actors/characters.js"
+import {CsTextBox} from "./actors/text.js"
+
 
 export class FirstCutscene extends Scene {
     game
@@ -24,7 +26,7 @@ export class FirstCutscene extends Scene {
         console.log(background)
 
         const bee = new CsBeeHappy()
-        bee.pos = new Vector(400, 300)
+        bee.pos = new Vector(300, 100)
         this.add(bee)
 
         let textFirstScene = new CsTextBox(Resources.textFirstScene.toSprite())
@@ -32,7 +34,7 @@ export class FirstCutscene extends Scene {
 
         console.log('cutscene 1st')
         let start = new StartButton()
-        start.pos = new Vector(400, 500)
+        start.pos = new Vector(1100, 510)
         start.on('pointerup', () => {
             this.game.goToScene('LevelTwo')
         })
