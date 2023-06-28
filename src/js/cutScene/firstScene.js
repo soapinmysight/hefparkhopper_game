@@ -1,5 +1,6 @@
 import {Scene, Vector} from "excalibur";
 import {StartButton} from "../Actors/button.js";
+import { Resources, ResourceLoader } from '../resources.js'
 import {CutsceneOneBackground, CutsceneTwoBackground} from "./actors/background.js";
 
 export class FirstCutscene extends Scene {
@@ -21,6 +22,11 @@ export class FirstCutscene extends Scene {
         this.add(background)
         console.log(background)
 
+        const bee = new BeePicture()
+        bee.graphics.use(Resources.MadBee.toSprite())
+        bee.pos = new Vector(400, 300)
+        this.add(bee)
+
         console.log('cutscene 1st')
         let start = new StartButton()
         start.pos = new Vector(400, 500)
@@ -28,6 +34,8 @@ export class FirstCutscene extends Scene {
             this.game.goToScene('LevelTwo')
         })
         this.add(start)
+
+
     }
 
     onDeactivate(_context) {
