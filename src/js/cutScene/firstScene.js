@@ -4,10 +4,12 @@ import { Resources, ResourceLoader } from '../resources.js'
 import {CutsceneOneBackground, CutsceneTwoBackground} from "./actors/background.js";
 import {CsBeeHappy} from "./actors/characters.js"
 import {CsTextBox} from "./actors/text.js"
+import * as ex from "excalibur";
 
 
 export class FirstCutscene extends Scene {
     game
+    texts
     constructor() {
         super();
     }
@@ -29,23 +31,40 @@ export class FirstCutscene extends Scene {
         bee.pos = new Vector(300, 100)
         this.add(bee)
 
-        let textFirstScene = new CsTextBox(Resources.textFirstScene.toSprite())
-        this.add(textFirstScene)
 
-        console.log('cutscene 1st')
-        let start = new StartButton()
-        start.pos = new Vector(1100, 510)
-        start.on('pointerup', () => {
-            this.game.goToScene('LevelTwo')
+        this.texts = [
+            new CsTextBox(Resources.textFirstScene.toSprite()),
+            // Add more text instances as needed
+        ];
+        this.currentTextIndex = 0;
+        this.add(this.texts[this.currentTextIndex]);
+
+        const keys = ex.Input.Keys;
+
+
+        this.game.input.keyboard.on("press", (evt) => {
+            if (evt.key === keys.Space) { //Jumping
+                this.changeElements()
+            }
         })
-        this.add(start)
 
 
     }
-
-    onDeactivate(_context) {
-        super.onDeactivate(_context);
-
-
+    changeElements() {
+        if (this.currentTextIndex < this.texts.length - 1) {
+            this.texts[this.currentTextIndex].kill();
+            this.currentTextIndex++;
+            this.add(this.texts[this.currentTextIndex]);
+        } else if (this.currentTextIndex === this.texts.length - 1) {
+            this.texts[this.currentTextIndex].kill();
+            this.currentTextIndex++;
+            let start = new StartButton();
+            start.pos = new Vector(screen.width / 2 - 100, 500);
+            start.on("pointerup", () => {
+                this.game.goToScene('LevelTwo')
+            });
+            this.add(start);
+        }
     }
+
 }

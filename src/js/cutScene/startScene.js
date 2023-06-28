@@ -1,18 +1,15 @@
 import {Scene, Vector} from "excalibur";
 import {StartButton} from "../Actors/button.js";
 import {CutsceneOneBackground} from "./actors/background.js";
-import {CsBee, CsBeeBaby, CsBeeHappy, CsBeeMad, CsBeeSad, CsSpider, CsSpiderDead} from "./actors/characters.js";
+import {CsBeeBaby, CsBeeHappy, CsBeeMad, CsSpider} from "./actors/characters.js";
 import {CsTextBox} from "./actors/text.js";
 import {Resources} from "../resources.js";
-import jumpSound from "../../sounds/Jump.mp4";
 import * as ex from "excalibur";
 
 export class StartCutscene extends Scene {
     game
     texts
 
-
-    beeSad
     beeHappy
     beeMad
     beeBabyOne
