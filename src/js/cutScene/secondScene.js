@@ -22,12 +22,13 @@ export class SecondCutscene extends Scene {
 
         console.log('cutscene 2nd')
         let background = new CutsceneThreeBackground(-50,0)
+
         this.add(background)
         console.log(background)
 
         const bee = new CsBeeMad()
-        bee.graphics.use(Resources.HappiestBee.toSprite())
         bee.pos = new Vector(400, 300)
+        bee.flipHorizontal = true;
         this.add(bee)
 
         let start = new StartButton()
