@@ -8,6 +8,8 @@ export class ShortcutSecond extends Actor {
             width: Resources.ShortcutTwo.width,
             height: Resources.ShortcutTwo.height
         })
+        this.enableCapturePointer = true
+        this.pointer.useGraphicsBounds = true
     }
 
     onInitialize(){
