@@ -270,7 +270,16 @@ export class LevelTwo extends Scene {
         const platform22 = new PlatformLvlTwo(8100, 200)
         this.add(platform22)
 
-
+        //Score label
+        this.scoreLabel = new ex.Label({
+            text: `Score: 0`,
+            font: new ex.Font({
+                unit: ex.FontUnit.Px,
+                size: 20,
+                color: ex.Color.Black
+            })
+        })
+        this.add(this.scoreLabel)
 
 
         const closedPortal = new ClosedPortalClass(8500, 350)
@@ -284,8 +293,13 @@ export class LevelTwo extends Scene {
             this.bgMusic.pause()
         }
     }
+
+    onPreUpdate() {
+        this.scoreLabel.text = `Score: ${this.score.getScore()}`
+    }
     onPostUpdate(_engine, _delta) {
         super.onPostUpdate(_engine, _delta);
+        // this.scoreLabel.pos = this.character.pos.clone().add(new Vector(this.character.width, -80))
         const allSpiders = this.actors.filter((actor) => actor instanceof Spider);
         const allSpidersDead = allSpiders.every((egg) => egg.isKilled());
 
