@@ -5,6 +5,7 @@ import { PlatformLvlTwo } from "./platform.js";
 import { PlatformLvlThree } from "./platform.js";
 import { Portal } from "./portal";
 import { Spider } from "./spiders";
+import jumpSound from "../../sounds/Jump.mp4"
 
 export class Maincharacter extends ex.Actor {
     health
@@ -56,6 +57,8 @@ export class Maincharacter extends ex.Actor {
         engine.input.keyboard.on("press", (evt) => {
             if (evt.key === keys.W || evt.key === keys.Up) { //Jumping
                 if (this.onGround === true) {
+                    this.jumpSound = new Audio(jumpSound)
+                    this.jumpSound.play(100)
                     this.vel.y = -500
                     this.onGround = false
                     this.jumped = true
