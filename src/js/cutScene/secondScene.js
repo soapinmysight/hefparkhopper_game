@@ -22,6 +22,11 @@ export class SecondCutscene extends Scene {
         this.add(background)
         console.log(background)
 
+        const bee = new BeePicture()
+        bee.graphics.use(Resources.HappiestBee.toSprite())
+        bee.pos = new Vector(400, 300)
+        this.add(bee)
+
         let start = new StartButton()
         start.pos = new Vector(400, 500)
         start.on('pointerup', () => {
