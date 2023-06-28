@@ -1,6 +1,7 @@
 import {Scene, Vector} from "excalibur";
 import {StartButton} from "../Actors/button.js";
 import {CutsceneThreeBackground, CutsceneTwoBackground} from "./actors/background.js";
+import { Resources, ResourceLoader } from '../resources.js'
 import {CsBeeMad} from "./actors/characters.js"
 
 
