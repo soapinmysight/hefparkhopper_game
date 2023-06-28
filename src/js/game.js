@@ -39,7 +39,7 @@ export class Game extends ex.Engine {
         });
 
         this.start(ResourceLoader).then(() => this.startGame());
-        this.showDebug(true);
+        // this.showDebug(true);
         // ex.Physics.useRealisticPhysics();
         ex.Physics.acc = new ex.vec(0, 300);
         this.score = new Score()
