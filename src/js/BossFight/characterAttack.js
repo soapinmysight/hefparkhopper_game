@@ -39,7 +39,7 @@ export class HoneyBomber extends Actor {
     bomb(event) {
 
         if (event.other instanceof BossSpider) {
-            event.other.hitBoss(30);
+            event.other.hitBoss(15);
             this.kill();
             this.BossdamageSound = new Audio(BossdamageSound)
             this.BossdamageSound.play()

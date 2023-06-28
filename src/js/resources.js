@@ -80,6 +80,11 @@ import textBubbleImage from "../images/textBubble.png"
 
 import logoImage from "../images/logo.png"
 
+import shortcutOne from "../images/levelOneShortcut.png"
+import shortcutTwo from "../images/levelTwoShortcut.png"
+import shortcutThree from "../images/levelThreeShortcut.png"
+import shortcutFour from "../images/levelFourShortcut.png"
+
 const Resources = {
 
     // lvl one
@@ -158,7 +163,14 @@ const Resources = {
 
     FailText: new ImageSource(failText),
     VictoryText: new ImageSource(vicText),
-    TextBubble: new ImageSource(textBubbleImage)
+    TextBubble: new ImageSource(textBubbleImage),
+
+    LogoImage: new ImageSource(logoImage),
+
+    ShortcutOne: new ImageSource(shortcutOne),
+    ShortcutTwo: new ImageSource(shortcutTwo),
+    ShortcutThree: new ImageSource(shortcutThree),
+    ShortcutFour: new ImageSource(shortcutFour)
 
 
 }
@@ -239,6 +251,12 @@ const ResourceLoader = new Loader([
     Resources.FailText,
     Resources.VictoryText,
     Resources.TextBubble,
+
+    Resources.LogoImage,
+    Resources.ShortcutOne,
+    Resources.ShortcutTwo,
+    Resources.ShortcutThree,
+    Resources.ShortcutFour
 ])
 
 export { Resources, ResourceLoader }
