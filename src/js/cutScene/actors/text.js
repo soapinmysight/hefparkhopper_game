@@ -4,14 +4,14 @@ export class CsTextBox extends Actor {
     constructor(image) {
         super({
             pos: new Vector(650, 450),
-            width: 900,
-            height: 227,
+            width: 800,
+            height: 201,
             anchor: new Vector(0.5,0.5),
         });
 
         const sprite = new Sprite(image);
-        sprite.width = 900
-        sprite.height = 227
+        sprite.width = 800
+        sprite.height = 201
         this.graphics.use(sprite);
     }
 }

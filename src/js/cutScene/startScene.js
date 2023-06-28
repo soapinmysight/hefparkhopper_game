@@ -4,9 +4,12 @@ import {CutsceneOneBackground, CutsceneStartEndBackground} from "./actors/backgr
 import {CsBee, CsBeeBaby, CsBeeMad, CsBeeSad, CsSpider, CsSpiderDead} from "./actors/characters.js";
 import {CsTextBox} from "./actors/text.js";
 import {Resources} from "../resources.js";
+import jumpSound from "../../sounds/Jump.mp4";
+import * as ex from "excalibur";
 
 export class StartCutscene extends Scene {
     game
+    textOne
 
     constructor() {
         super();
@@ -14,6 +17,13 @@ export class StartCutscene extends Scene {
     onInitialize(_engine) {
         super.onInitialize(_engine);
         this.game = _engine
+        const keys = ex.Input.Keys;
+
+        _engine.input.keyboard.on("press", (evt) => {
+            if (evt.key === keys.Space) { //Jumping
+                    this.changeElements()
+            }
+        })
     }
     onActivate(_context) {
         super.onActivate(_context);
@@ -45,8 +55,8 @@ export class StartCutscene extends Scene {
         let spiderDead = new CsSpiderDead(200, 400)
         this.add(spiderDead)
 
-        let textOne = new CsTextBox(Resources.BeeText.toSprite())
-        this.add(textOne)
+        this.textOne = new CsTextBox(Resources.BeeText.toSprite())
+        this.add(this.textOne)
 
         let start = new StartButton()
         start.pos = new Vector(400, 500)
@@ -55,17 +65,12 @@ export class StartCutscene extends Scene {
         })
         this.add(start)
 
-
-
     }
-    onPostUpdate(_engine, _delta) {
-        super.onPostUpdate(_engine, _delta);
-
-    }
-
-    onDeactivate(_context) {
-        super.onDeactivate(_context);
-
+    changeElements() {
+        if(this.textOne) {
+            this.textOne.kill()
+            let textTwo = new CsTextBox(Resources.)
+        }
 
     }
 }
