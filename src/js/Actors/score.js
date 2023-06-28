@@ -14,4 +14,8 @@ export class Score {
         console.log(this.score)
     }
 
+    deleteScore() {
+        this.score = 0
+    }
+
 }

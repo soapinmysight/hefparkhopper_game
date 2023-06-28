@@ -71,7 +71,7 @@ export class LevelOne extends ex.Scene {
     }
 
     onActivate(_context) {
-
+        this.score.deleteScore()
         super.onActivate(_context);
         this.bgMusic = new Audio(music)
         this.bgMusic.loop = true
