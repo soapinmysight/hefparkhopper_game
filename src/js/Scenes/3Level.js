@@ -290,17 +290,17 @@ export class LevelThree extends ex.Scene {
         })
         this.add(platform22)
 
-        const spikes8 = new SpikesLvlThree(6300, 200, 925, 155);
+        const spikes8 = new SpikesLvlThree(6550, 200, 925, 155);
         spikes8.scale = new ex.Vector(0.25, 0.25)
         spikes8.rotation = Math.PI
         spikes8.actions.repeatForever((repeatCtx) => {
-            repeatCtx.moveTo(6300, 200, 70)
-            repeatCtx.moveTo(6300, 610, 70)
+            repeatCtx.moveTo(6550, 200, 70)
+            repeatCtx.moveTo(6550, 610, 70)
         })
         this.add(spikes8);
 
 
-        const spikes9 = new SpikesLvlThree(6665, 500);
+        const spikes9 = new SpikesLvlThree(6800, 500);
         this.add(spikes9);
 
         const platform221 = new PlatformLvlThree(6800, 450, 925, 155);
@@ -311,7 +311,7 @@ export class LevelThree extends ex.Scene {
         const flower10 = new Flower(6755, 280, this.score);
         this.add(flower10);
 
-        const spikes10 = new SpikesLvlThree(7130, 500);
+        const spikes10 = new SpikesLvlThree(7265, 500);
         this.add(spikes10);
 
         const platform222 = new PlatformLvlThree(7100, 450, 925, 155);
@@ -324,7 +324,7 @@ export class LevelThree extends ex.Scene {
         // platform13.rotation = (20 * Math.PI / 180); // Rotate by 180 degrees
         this.add(platform223);
 
-        const spikes11 = new SpikesLvlThree(7595, 500);
+        const spikes11 = new SpikesLvlThree(7730, 500);
         this.add(spikes11);
 
         const platform224 = new PlatformLvlThree(7550, 350, 925, 155);
