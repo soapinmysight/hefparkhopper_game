@@ -3,6 +3,7 @@ import { Resources } from '../resources.js'
 
 import { MaincharacterBoss } from "./bossCharacter.js";
 import { SpiderWebShot } from "./bossAttack.js";
+import DamageSound from "../../sounds/Damage.mp3"
 
 export class BossSpider extends Actor {
 
@@ -10,7 +11,7 @@ export class BossSpider extends Actor {
     timer;
     spriteTimer;
 
-    constructor(){
+    constructor() {
 
         super({
             width: 200,
@@ -18,8 +19,8 @@ export class BossSpider extends Actor {
         })
 
         this.timer = new Timer({
-            fcn: () => this.webShot(),      
-            repeats: true,                   
+            fcn: () => this.webShot(),
+            repeats: true,
             interval: 4000,
         })
 
@@ -31,13 +32,13 @@ export class BossSpider extends Actor {
 
     }
 
-    onActivate(ctx){
+    onActivate(ctx) {
 
         this.bossReset.bossReset();
-        
+
     }
 
-    onInitialize(engine){
+    onInitialize(engine) {
 
         this.game = engine
 
@@ -45,7 +46,7 @@ export class BossSpider extends Actor {
 
         this.graphics.add('Boss', Resources.Boss.toSprite());
         this.graphics.add('BossHit', Resources.BossHit.toSprite());
-        this.scale = new Vector (1.3, 1.3);
+        this.scale = new Vector(1.3, 1.3);
 
         this.graphics.use('Boss');
 
@@ -57,29 +58,31 @@ export class BossSpider extends Actor {
 
         })
 
-        this.game.currentScene.add(this.spriteTimer); 
+        this.game.currentScene.add(this.spriteTimer);
 
-        this.game.currentScene.add(this.timer);  
+        this.game.currentScene.add(this.timer);
         this.timer.start();
 
-        this.on('collisionstart', (event) => { this.doDamage(event)});
+        this.on('collisionstart', (event) => { this.doDamage(event) });
 
     }
 
-    bossReset(){
+    bossReset() {
         this.health = 300;
     }
 
-    doDamage(event){
+    doDamage(event) {
 
-        if(event.other instanceof MaincharacterBoss){
+        if (event.other instanceof MaincharacterBoss) {
             console.log("ouch!");
-            event.other.takeDamage(50);                
+            event.other.takeDamage(50);
+            this.DamageSound = new Audio(DamageSound)
+            this.DamageSound.play()
         }
 
     }
 
-    hitBoss(amount){
+    hitBoss(amount) {
 
         this.health -= amount;
         this.scene.updateBossHealth(this.health);
@@ -87,7 +90,7 @@ export class BossSpider extends Actor {
         this.graphics.use('BossHit');
         this.spriteTimer.start();
 
-        if(this.health < 1) {
+        if (this.health < 1) {
             this.timer.stop();
             this.kill();
             this.game.goToScene('bossCutscene');

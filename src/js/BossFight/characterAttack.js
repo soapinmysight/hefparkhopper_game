@@ -4,10 +4,12 @@ import { Resources } from "../resources.js"
 import { BossSpider } from "./boss.js"
 import { BossFloor } from "./bossBottomBorder.js"
 import { SpiderWebShot } from "./bossAttack.js"
+import BossdamageSound from "../../sounds/Bossdamage.mp3"
+import DestroyspiderwebSound from "../../sounds/Destroyspiderweb.mp3"
 
 export class HoneyBomber extends Actor {
 
-    constructor(x, y){
+    constructor(x, y) {
 
         const circle = Shape.Circle(50);
 
@@ -18,14 +20,14 @@ export class HoneyBomber extends Actor {
         })
     }
 
-    onInitialize(engine){
+    onInitialize(engine) {
 
         this.game = engine;
 
         this.body.collisionType = CollisionType.Active;
         this.body.useGravity = true;
 
-        this.vel = new Vector(400 , -400);
+        this.vel = new Vector(400, -400);
         this.rotation = Math.random() * 10;
 
         this.graphics.use(Resources.HoneyBomb.toSprite());
@@ -34,20 +36,25 @@ export class HoneyBomber extends Actor {
         this.on("collisionstart", (event) => this.bomb(event));
     }
 
-    bomb(event){
+    bomb(event) {
 
-        if(event.other instanceof BossSpider){
+        if (event.other instanceof BossSpider) {
             event.other.hitBoss(30);
             this.kill();
+            this.BossdamageSound = new Audio(BossdamageSound)
+            this.BossdamageSound.play()
+
         }
 
-        if(event.other instanceof BossFloor){
+        if (event.other instanceof BossFloor) {
             this.kill();
         }
 
-        if(event.other instanceof SpiderWebShot){
+        if (event.other instanceof SpiderWebShot) {
             this.kill();
             event.other.kill();
+            this.DestroyspiderwebSound = new Audio(DestroyspiderwebSound)
+            this.DestroyspiderwebSound.play()
         }
     }
 }
