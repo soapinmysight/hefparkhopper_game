@@ -1,7 +1,8 @@
-import {Color, Font, FontUnit, Label, Scene, Vector} from "excalibur";
-import {NextLvlButton} from "../Actors/button.js";
-import {ThreeFailVicBackground, TwoFailVicBackground} from "./failVictoryActors/background.js";
-import {VictoryText} from "./failVictoryActors/text.js";
+import { Color, Font, FontUnit, Label, Scene, Vector } from "excalibur";
+import { NextLvlButton } from "../Actors/button.js";
+import { ThreeFailVicBackground, TwoFailVicBackground } from "./failVictoryActors/background.js";
+import { VictoryText } from "./failVictoryActors/text.js";
+import victoryMusic from "../../sounds/Victory.mp4"
 
 export class VictoryThree extends Scene {
     game
@@ -16,17 +17,20 @@ export class VictoryThree extends Scene {
     }
     onActivate(_context) {
         super.onActivate(_context);
+        this.victoryMusic = new Audio(victoryMusic)
+        this.victoryMusic.loop = true
+        this.victoryMusic.play()
         this.startVictoryTwo()
     }
-    startVictoryTwo(){
+    startVictoryTwo() {
 
         this.actors.forEach((actor) => actor.kill());
 
         console.log('victory one')
-        let background = new ThreeFailVicBackground(0,0)
+        let background = new ThreeFailVicBackground(0, 0)
         this.add(background)
 
-        let victory = new VictoryText(screen.width/2-100, 150)
+        let victory = new VictoryText(screen.width / 2 - 100, 150)
         this.add(victory)
 
         let label2 = new Label({
@@ -45,6 +49,7 @@ export class VictoryThree extends Scene {
         nextLvlButton.pos = new Vector(650, 500)
         nextLvlButton.on('pointerup', () => {
             this.game.goToScene('secondCutscene')
+            this.victoryMusic.pause()
         })
         this.add(nextLvlButton)
     }
