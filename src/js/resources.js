@@ -49,6 +49,7 @@ import bossBackground from "../images/bossBackground.png"
 import bossPlatform from "../images/bossPlatform.png"
 
 // cutscenes
+        //bg
 import startAndFinalSceneBgImg from "../images/cutscenes/startendscene.png"
 import cutsceneOneBgImg from "../images/cutscenes/cutscene1.png"
 import cutsceneTwoBgImg from "../images/cutscenes/cutscene2.png"
@@ -60,6 +61,12 @@ import deadCutsceneSpiderImg from "../images/cutscenes/bossspiderded.png"
 
 import beeTextImg from "../images/cutscenes/textbee.png"
 import spiderTextImg from "../images/cutscenes/textspider.png"
+
+        //firstscene
+import textFirstSceneImg from "../images/cutsceneText/CSlevel1.png"
+
+        //secondscene
+import textSecondSceneImg from "../images/cutsceneText/CSlevel2.png"
 
 // fail victory screens
 import failVicOneBgImg from "../images/cutscenes/failvic1.png"
@@ -122,6 +129,7 @@ const Resources = {
     BossPlatform: new ImageSource(bossPlatform),
 
     // cutscenes
+            //bg:
     StartAndFinalSceneBg: new ImageSource(startAndFinalSceneBgImg),
     CutsceneOneBg: new ImageSource(cutsceneOneBgImg),
     CutsceneTwoBg: new ImageSource(cutsceneTwoBgImg),
@@ -133,6 +141,13 @@ const Resources = {
 
     BeeText: new ImageSource(beeTextImg),
     SpiderText: new ImageSource(spiderTextImg),
+
+            //firstscene
+    textFirstScene: new ImageSource(textFirstSceneImg),
+
+            //secondscene
+    textSecondScene: new ImageSource(textSecondSceneImg),
+
 
     // fail victory screens
 
@@ -197,6 +212,7 @@ const ResourceLoader = new Loader([
     Resources.BossPlatform,
 
     //cutscenes
+            //bg:
     Resources.StartAndFinalSceneBg,
     Resources.CutsceneOneBg,
     Resources.CutsceneTwoBg,
@@ -209,6 +225,10 @@ const ResourceLoader = new Loader([
     Resources.BeeText,
     Resources.SpiderText,
 
+            //firstscene
+    Resources.textFirstScene,
+            //scondscene
+    Resources.textSecondScene,
 
     // fail victory screens
     Resources.FailVicOneBg,
