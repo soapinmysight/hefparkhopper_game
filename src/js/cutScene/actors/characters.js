@@ -34,6 +34,16 @@ export class CsBeeMad extends Actor {
         this.scale = new Vector(0.4, 0.4)
     }
 }
+export class CsBeeHappy extends Actor {
+    constructor(x, y) {
+        super({
+            pos: new Vector(x, y),
+            anchor: Vector.Zero
+        });
+        this.graphics.use(Resources.HappiestBee.toSprite())
+        this.scale = new Vector(0.4, 0.4)
+    }
+}
 
 export class CsBeeBaby extends Actor {
     constructor(x, y) {
@@ -48,12 +58,22 @@ export class CsBeeBaby extends Actor {
 
 export class CsSpider extends Actor {
     constructor(x, y) {
-        super();
+        super({
+            pos: new Vector(x, y),
+            anchor: Vector.Zero
+        });
+        this.graphics.use(Resources.Boss.toSprite())
+        this.scale = new Vector(1.3, 1.3)
     }
 }
 
 export class CsSpiderDead extends Actor {
     constructor(x, y) {
-        super();
+        super({
+            pos: new Vector(x, y),
+            anchor: Vector.Zero
+        });
+        this.graphics.use(Resources.DeadCutsceneSpider.toSprite())
+        this.scale = new Vector(1.3, 1.3)
     }
 }
