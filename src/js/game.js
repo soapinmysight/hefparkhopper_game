@@ -81,20 +81,3 @@ export class Game extends ex.Engine {
 
 new Game();
 
-async function waitForFontLoad(font, timeout = 2000, interval = 100) {
-    return new Promise((resolve, reject) => {
-        // repeatedly poll check
-        const poller = setInterval(async () => {
-            try {
-                await document.fonts.load(font);
-            } catch (err) {
-                reject(err);
-            }
-            if (document.fonts.check(font)) {
-                clearInterval(poller);
-                resolve(true);
-            }
-        }, interval);
-        setTimeout(() => clearInterval(poller), timeout);
-    });
-}

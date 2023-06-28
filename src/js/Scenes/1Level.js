@@ -71,7 +71,7 @@ export class LevelOne extends ex.Scene {
     }
 
     onActivate(_context) {
-
+        this.score.deleteScore()
         super.onActivate(_context);
         this.bgMusic = new Audio(music)
         this.bgMusic.loop = true
@@ -258,10 +258,6 @@ export class LevelOne extends ex.Scene {
             repeatCtx.moveTo(6775, 610, 100)
         })
         this.add(spikes8);
-
-        // const spikes8 = new Spikes(3895, 500, 925, 155);
-        // spikes8.scale = new ex.Vector(0.5, 0.5)
-        // this.add(spikes8);
 
         //Flowers
         const flower1 = new Flower(100, 350, this.score);

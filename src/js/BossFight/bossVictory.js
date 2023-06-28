@@ -53,13 +53,6 @@ export class VictoryBoss extends Scene {
         })
         this.add(label3)
 
-        let nextLvlButton = new NextLvlButton()
-        nextLvlButton.pos = new Vector(650, 500)
-        nextLvlButton.on('pointerup', () => {
-            this.game.goToScene('secondCutscene')
-        })
-        this.add(nextLvlButton)
-
     }
 
 }
