@@ -63,10 +63,10 @@ import beeTextImg from "../images/cutscenes/textbee.png"
 import spiderTextImg from "../images/cutscenes/textspider.png"
 
         //firstscene
-import textFirstSceneImg from "../images/cutscenes/CSlevel1.png"
+import textFirstSceneImg from "../images/cutsceneText/CSlevel1.png"
 
         //secondscene
-import textSecondSceneImg from "../images/cutscenes/CSlevel2.png"
+import textSecondSceneImg from "../images/cutsceneText/CSlevel2.png"
 
 // fail victory screens
 import failVicOneBgImg from "../images/cutscenes/failvic1.png"
