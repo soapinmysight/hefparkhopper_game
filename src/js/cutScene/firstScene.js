@@ -34,7 +34,7 @@ export class FirstCutscene extends Scene {
 
         console.log('cutscene 1st')
         let start = new StartButton()
-        start.pos = new Vector(400, 500)
+        start.pos = new Vector(1100, 510)
         start.on('pointerup', () => {
             this.game.goToScene('LevelTwo')
         })
