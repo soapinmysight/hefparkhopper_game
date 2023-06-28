@@ -1,7 +1,7 @@
 import {Scene, Vector} from "excalibur";
 import {StartButton} from "../Actors/button.js";
-import {CutsceneOneBackground, CutsceneStartEndBackground} from "./actors/background.js";
-import {CsBee, CsBeeBaby, CsBeeMad, CsBeeSad, CsSpider, CsSpiderDead} from "./actors/characters.js";
+import {CutsceneOneBackground} from "./actors/background.js";
+import {CsBee, CsBeeBaby, CsBeeHappy, CsBeeMad, CsBeeSad, CsSpider, CsSpiderDead} from "./actors/characters.js";
 import {CsTextBox} from "./actors/text.js";
 import {Resources} from "../resources.js";
 import jumpSound from "../../sounds/Jump.mp4";
@@ -9,7 +9,17 @@ import * as ex from "excalibur";
 
 export class StartCutscene extends Scene {
     game
-    textOne
+    texts
+
+
+    beeSad
+    beeHappy
+    beeMad
+    beeBabyOne
+    beeBabyTwo
+    beeBabyThree
+    spider
+
 
     constructor() {
         super();
@@ -17,13 +27,7 @@ export class StartCutscene extends Scene {
     onInitialize(_engine) {
         super.onInitialize(_engine);
         this.game = _engine
-        const keys = ex.Input.Keys;
 
-        _engine.input.keyboard.on("press", (evt) => {
-            if (evt.key === keys.Space) { //Jumping
-                    this.changeElements()
-            }
-        })
     }
     onActivate(_context) {
         super.onActivate(_context);
@@ -36,40 +40,75 @@ export class StartCutscene extends Scene {
         let background = new CutsceneOneBackground(-100,0)
         this.add(background)
 
+        this.texts = [
+            new CsTextBox(Resources.CsStartOne.toSprite()),
+            new CsTextBox(Resources.CsStartTwo.toSprite()),
+            new CsTextBox(Resources.CsStartThree.toSprite()),
+            new CsTextBox(Resources.CsStartFour.toSprite()),
+            new CsTextBox(Resources.CsStartFive.toSprite()),
+            // Add more text instances as needed
+        ];
+        this.currentTextIndex = 0;
+        this.add(this.texts[this.currentTextIndex]);
 
-        let bee = new CsBee(200, 200)
-        this.add(bee)
+        const keys = ex.Input.Keys;
 
-        let sadBee = new CsBeeSad(400, 200)
-        this.add(sadBee)
 
-        let madBee = new CsBeeMad(600, 200)
-        this.add(madBee)
-
-        let babyBee = new CsBeeBaby(300, 400)
-        this.add(babyBee)
-
-        let spider = new CsSpider(200, 400)
-        this.add(spider)
-
-        let spiderDead = new CsSpiderDead(200, 400)
-        this.add(spiderDead)
-
-        this.textOne = new CsTextBox(Resources.BeeText.toSprite())
-        this.add(this.textOne)
-
-        let start = new StartButton()
-        start.pos = new Vector(400, 500)
-        start.on('pointerup', () => {
-            this.game.goToScene('LevelOne')
+        this.game.input.keyboard.on("press", (evt) => {
+            if (evt.key === keys.Space) { //Jumping
+                this.changeElements()
+            }
         })
-        this.add(start)
+
+        this.beeHappy = new CsBeeHappy(200, 200)
+        this.add(this.beeHappy)
+
+        this.beeBabyOne = new CsBeeBaby(150, 200)
+        this.add(this.beeBabyOne)
+
+        this.beeBabyTwo = new CsBeeBaby(170, 130)
+        this.add(this.beeBabyTwo)
+
+        this.beeBabyThree = new CsBeeBaby(220, 120)
+        this.add(this.beeBabyThree)
 
     }
+
     changeElements() {
-        if(this.textOne) {
-            this.textOne.kill()
-            let textTwo = new CsTextBox(Resources.)
+        if (this.currentTextIndex < this.texts.length - 1) {
+            this.texts[this.currentTextIndex].kill();
+            this.currentTextIndex++;
+            this.add(this.texts[this.currentTextIndex]);
+        } else if (this.currentTextIndex === this.texts.length - 1) {
+            this.texts[this.currentTextIndex].kill();
+            this.currentTextIndex++;
+            let start = new StartButton();
+            start.pos = new Vector(screen.width/2-100, 500);
+            start.on("pointerup", () => {
+                this.game.goToScene("LevelOne");
+            });
+            this.add(start);
+        }    if (this.currentTextIndex === 1) {
+            this.beeHappy.kill()
+            this.beeMad = new CsBeeMad(200,200)
+            this.add(this.beeMad)
+
+            this.spider = new CsSpider(1000, 300)
+            this.spider.actions.moveTo(850,300, 200)
+            this.add(this.spider)
+
+
+        } else if (this.currentTextIndex === 2) {
+            this.spider.actions.moveTo(1300,300, 200)
+
+        } else if (this.currentTextIndex === 3) {
+            this.beeMad.actions.moveTo(600, 200, 400)
+            this.beeBabyOne.actions.moveTo(-100, 170, 200)
+            this.beeBabyTwo.actions.moveTo(-100, 100, 200)
+            this.beeBabyThree.actions.moveTo(- 100, 90, 200)
+
+        } else if (this.currentTextIndex === 5) {
+            this.beeMad.actions.moveTo(1300, 1000, 400)
         }
 
     }

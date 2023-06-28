@@ -256,11 +256,27 @@ const ResourceLoader = new Loader([
 
     Resources.BeeText,
     Resources.SpiderText,
+    // startscene
+    Resources.CsStartOne,
+    Resources.CsStartTwo,
+    Resources.CsStartThree,
+    Resources.CsStartFour,
+    Resources.CsStartFive,
 
-            //firstscene
+    //firstscene
     Resources.textFirstScene,
-            //scondscene
+    //scondscene
     Resources.textSecondScene,
+
+    // third scene
+    Resources.CsThirdOne,
+    Resources.CsThirdTwo,
+    Resources.CsThirdThree,
+    Resources.CsThirdFour,
+
+    // boss scene
+    Resources.CsBossOne,
+    Resources.CsBossTwo,
 
     // fail victory screens
     Resources.FailVicOneBg,
