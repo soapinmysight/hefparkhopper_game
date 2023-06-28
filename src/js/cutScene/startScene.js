@@ -1,7 +1,9 @@
 import {Scene, Vector} from "excalibur";
 import {StartButton} from "../Actors/button.js";
 import {CutsceneOneBackground, CutsceneStartEndBackground} from "./actors/background.js";
-import {CsBee, CsBeeBaby, CsBeeMad, CsBeeSad} from "./actors/characters.js";
+import {CsBee, CsBeeBaby, CsBeeMad, CsBeeSad, CsSpider, CsSpiderDead} from "./actors/characters.js";
+import {CsTextBox} from "./actors/text.js";
+import {Resources} from "../resources.js";
 
 export class StartCutscene extends Scene {
     game
@@ -37,7 +39,14 @@ export class StartCutscene extends Scene {
         let babyBee = new CsBeeBaby(300, 400)
         this.add(babyBee)
 
-        // let spider =
+        let spider = new CsSpider(200, 400)
+        this.add(spider)
+
+        let spiderDead = new CsSpiderDead(200, 400)
+        this.add(spiderDead)
+
+        let textOne = new CsTextBox(Resources.BeeText.toSprite())
+        this.add(textOne)
 
         let start = new StartButton()
         start.pos = new Vector(400, 500)
