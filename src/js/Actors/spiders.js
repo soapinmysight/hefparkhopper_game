@@ -3,6 +3,7 @@ import { Resources } from "../resources.js";
 import { Maincharacter } from "./character.js";
 import { Actor, CollisionType } from "excalibur";
 import spiderkillMusic from "../../sounds/Deadbody.mp4"
+import DamageSound from "../../sounds/Damage.mp3"
 
 export class Spider extends ex.Actor {
     x
@@ -50,6 +51,8 @@ export class Spider extends ex.Actor {
                 this.kill()
 
             } else if (side === 'Right' || side === 'Left') {
+                this.DamageSound = new Audio(DamageSound)
+                this.DamageSound.play()
                 otherActor.kill()
                 console.log(`character walked into spider and died`)
             }

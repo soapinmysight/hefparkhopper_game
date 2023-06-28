@@ -1,6 +1,7 @@
 import * as ex from 'excalibur'
 import { Resources, ResourceLoader } from '../resources';
 import { Maincharacter } from "./character.js";
+import DamageSound from "../../sounds/Damage.mp3"
 
 export class MainSpike extends ex.Actor {
     onInitialize(engine) {
@@ -11,6 +12,8 @@ export class MainSpike extends ex.Actor {
     onPreCollision(event) {
         const otherActor = event.other
         if (otherActor instanceof Maincharacter) {
+            this.DamageSound = new Audio(DamageSound)
+            this.DamageSound.play()
             otherActor.kill();
         }
     }
