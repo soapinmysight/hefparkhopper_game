@@ -2,6 +2,7 @@ import * as ex from "excalibur";
 import { Resources } from "../resources.js";
 import { Maincharacter } from "./character.js";
 import { Actor, CollisionType } from "excalibur";
+import spiderkillMusic from "../../sounds/Deadbody.mp4"
 
 export class Spider extends ex.Actor {
     x
@@ -43,8 +44,11 @@ export class Spider extends ex.Actor {
 
         if (otherActor instanceof Maincharacter) {
             if (side === 'Top') {
+                this.spiderkillMusic = new Audio(spiderkillMusic)
+                this.spiderkillMusic.play(100)
                 console.log('character killed a spider')
                 this.kill()
+
             } else if (side === 'Right' || side === 'Left') {
                 otherActor.kill()
                 console.log(`character walked into spider and died`)
@@ -67,10 +71,12 @@ export class DeadSpider extends Actor {
         spider.height = 100
         this.graphics.add(spider)
 
+
     }
     onInitialize(_engine) {
         super.onInitialize(_engine);
         this.body.collisionType = CollisionType.Passive
+
     }
     onPostUpdate(_engine, _delta) {
         super.onPostUpdate(_engine, _delta);

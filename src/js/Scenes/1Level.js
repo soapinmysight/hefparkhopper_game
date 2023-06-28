@@ -8,7 +8,7 @@ import { SpikesLvlOne } from "../Actors/spikes.js"
 import { Spider } from "../Actors/spiders.js"
 import { ClosedPortalClass, Portal } from "../Actors/portal.js"
 import { Flower } from "../Actors/flower.js"
-import music from "../../images/bee..mp3"
+import music from "../../sounds/bee..mp3"
 
 
 export class LevelOne extends ex.Scene {
@@ -28,6 +28,7 @@ export class LevelOne extends ex.Scene {
     }
 
     onInitialize(_engine) {
+
         super.onInitialize(_engine);
         this.game = _engine
         this.health = 2
@@ -42,10 +43,6 @@ export class LevelOne extends ex.Scene {
                     console.log(this.righttext)
                 }, 500)
             }
-            // const sound = new Sound('./path/to/my.mp3', './path/to/fallback.wav');
-            // const loader = new Loader([sound]);
-            // await game.start(loader);
-            // sound.play(0.5);
         })
 
 
@@ -74,6 +71,7 @@ export class LevelOne extends ex.Scene {
     }
 
     onActivate(_context) {
+
         super.onActivate(_context);
         this.bgMusic = new Audio(music)
         this.bgMusic.loop = true
@@ -385,6 +383,7 @@ export class LevelOne extends ex.Scene {
         let otherActor = event.other
         if (otherActor instanceof Portal) {
             this.game.goToScene('VictoryOne')
+            this.bgMusic.pause()
         }
     }
 
@@ -408,6 +407,7 @@ export class LevelOne extends ex.Scene {
 
         if (!mainCharacter) {
             this.game.goToScene('FailOne')
+            this.bgMusic.pause()
         }
 
         const allSpiders = this.actors.filter((actor) => actor instanceof Spider);
@@ -423,8 +423,9 @@ export class LevelOne extends ex.Scene {
             // Add Portal if it doesn't exist
             const portal = this.actors.find((actor) => actor instanceof Portal);
             if (!portal) {
-                const newPortal = new Portal(8600, 350);
+                const newPortal = new Portal(8400, 350);
                 this.add(newPortal);
+
             }
         }
     }

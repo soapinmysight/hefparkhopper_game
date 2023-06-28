@@ -5,6 +5,7 @@ import { PlatformLvlTwo } from "./platform.js";
 import { PlatformLvlThree } from "./platform.js";
 import { Portal } from "./portal";
 import { Spider } from "./spiders";
+import jumpSound from "../../sounds/Jump.mp4"
 
 export class Maincharacter extends ex.Actor {
     health
@@ -56,6 +57,8 @@ export class Maincharacter extends ex.Actor {
         engine.input.keyboard.on("press", (evt) => {
             if (evt.key === keys.W || evt.key === keys.Up) { //Jumping
                 if (this.onGround === true) {
+                    this.jumpSound = new Audio(jumpSound)
+                    this.jumpSound.play(100)
                     this.vel.y = -500
                     this.onGround = false
                     this.jumped = true
@@ -82,31 +85,31 @@ export class Maincharacter extends ex.Actor {
 
         engine.currentScene.camera.x = this.pos.x + 80 //Tracking the bee with the camera
         // Commented code for speeding the bee up with A & D, just for programming ease
-        engine.input.keyboard.on("hold", (evt) => {
-            if (evt.key === ex.Input.Keys.A) {
-                this.vel.x = -800;
-            } else if (evt.key === ex.Input.Keys.D) {
-                this.vel.x = 800;
-            } else if (evt.key === ex.Input.Keys.W && this.onGround) {
-                this.jumped = true;
-                this.vel.y = -700;
-            }
-        })
+        // engine.input.keyboard.on("hold", (evt) => {
+        //     if (evt.key === ex.Input.Keys.A) {
+        //         this.vel.x = -800;
+        //     } else if (evt.key === ex.Input.Keys.D) {
+        //         this.vel.x = 800;
+        //     } else if (evt.key === ex.Input.Keys.W && this.onGround) {
+        //         this.jumped = true;
+        //         this.vel.y = -700;
+        //     }
+        // })
     }
 
     onCollisionStart(evt) {
-        if (evt.other instanceof PlatformLvlOne){ //Checking if there is collision with the platforms
+        if (evt.other instanceof PlatformLvlOne) { //Checking if there is collision with the platforms
             console.log("you're on the floor");
             this.onGround = true;
         }
-        if(evt.other instanceof PlatformLvlTwo){
+        if (evt.other instanceof PlatformLvlTwo) {
             console.log("you're on the floor");
-            this.onGround = true;                             
-        } 
-        if(evt.other instanceof PlatformLvlThree){
+            this.onGround = true;
+        }
+        if (evt.other instanceof PlatformLvlThree) {
             console.log("you're on the floor");
-            this.onGround = true;                             
-        } 
+            this.onGround = true;
+        }
 
     }
 
