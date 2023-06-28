@@ -43,10 +43,6 @@ export class LevelOne extends ex.Scene {
                     console.log(this.righttext)
                 }, 500)
             }
-            // const sound = new Sound('./path/to/my.mp3', './path/to/fallback.wav');
-            // const loader = new Loader([sound]);
-            // await game.start(loader);
-            // sound.play(0.5);
         })
 
 

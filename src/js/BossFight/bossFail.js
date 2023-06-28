@@ -2,7 +2,7 @@ import { Scene, Vector } from "excalibur";
 import { TryAgainButton } from "../Actors/button.js";
 import { BossFailVicBackground } from "../Scenes/failVictoryActors/background.js";
 import { FailText } from "../Scenes/failVictoryActors/text.js";
-import failMusic from "../../sounds/sad.mp3"
+import failMusic from "../../sounds/Sad.mp4"
 
 export class FailBoss extends Scene {
     game

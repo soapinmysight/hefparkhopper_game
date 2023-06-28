@@ -4,7 +4,7 @@ import { StartButton, TryAgainButton } from "../Actors/button.js";
 import { CutsceneOneBackground } from "../cutScene/actors/background.js";
 import { OneFailVicBackground } from "./failVictoryActors/background.js";
 import { FailText } from "./failVictoryActors/text.js";
-import failMusic from "../../sounds/sad.mp3"
+import failMusic from "../../sounds/Sad.mp4"
 
 
 export class FailOne extends Scene {
