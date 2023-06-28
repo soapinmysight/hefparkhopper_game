@@ -1,6 +1,8 @@
 import {Scene, Vector} from "excalibur";
 import {StartButton} from "../Actors/button.js";
 import {CutsceneThreeBackground, CutsceneTwoBackground} from "./actors/background.js";
+import {CsBeeMad} from "./actors/characters.js"
+
 
 export class SecondCutscene extends Scene {
     game
@@ -22,7 +24,7 @@ export class SecondCutscene extends Scene {
         this.add(background)
         console.log(background)
 
-        const bee = new BeePicture()
+        const bee = new CsBeeMad()
         bee.graphics.use(Resources.HappiestBee.toSprite())
         bee.pos = new Vector(400, 300)
         this.add(bee)
