@@ -57,6 +57,7 @@ export class VictoryBoss extends Scene {
         nextLvlButton.pos = new Vector(650, 500)
         nextLvlButton.on('pointerup', () => {
             this.game.goToScene('secondCutscene')
+            this.BossvictoryMusic.pause()
         })
         this.add(nextLvlButton)
 
